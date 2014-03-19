@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="90">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <logicalFolder name="f1" displayName="Components" projectFiles="true">
+        <itemPath>src/Components/CollisionDetection.cpp</itemPath>
+        <itemPath>src/Components/CollisionDetection.hpp</itemPath>
+        <itemPath>src/Components/CollisionResolution.cpp</itemPath>
+        <itemPath>src/Components/CollisionResolution.hpp</itemPath>
+        <itemPath>src/Components/EntityID.cpp</itemPath>
+        <itemPath>src/Components/EntityID.hpp</itemPath>
+        <itemPath>src/Components/Graphics.cpp</itemPath>
+        <itemPath>src/Components/Graphics.hpp</itemPath>
+        <itemPath>src/Components/Movement.cpp</itemPath>
+        <itemPath>src/Components/Movement.hpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2" displayName="Utils" projectFiles="true">
+        <itemPath>src/Utils/Strings.cpp</itemPath>
+        <itemPath>src/Utils/Strings.hpp</itemPath>
+      </logicalFolder>
+      <itemPath>src/Application.cpp</itemPath>
+      <itemPath>src/Application.hpp</itemPath>
+      <itemPath>main.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>src</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <standard>8</standard>
+          <incDir>
+            <pElem>E:/lib/SFML-2.1/include</pElem>
+            <pElem>E:/lib/glew-1.10.0/include</pElem>
+            <pElem>../libgltools/include</pElem>
+            <pElem>../libmatrix/include</pElem>
+            <pElem>../libvector/include</pElem>
+            <pElem>../libobj/include</pElem>
+            <pElem>../../../../../lib/glew-1.10.0/include</pElem>
+            <pElem>../../../../../lib/SFML-2.1/include</pElem>
+          </incDir>
+          <commandLine>-Wfatal-errors -Wall -Wextra -pedantic -Winit-self -Wmissing-include-dirs -Wswitch-default -Wswitch-enum -Wfloat-equal -Wshadow -Wcast-qual -Wcast-align -Wwrite-strings -Wconversion -Wsign-conversion -Wlogical-op -Wmissing-declarations -Wmissing-noreturn -Wmissing-format-attribute -Wpacked -Wpadded -Wredundant-decls -Wunreachable-code -Winline -Winvalid-pch -Wvolatile-register-var -Wdisabled-optimization -Wstack-protector</commandLine>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <linkerTool>
+          <linkerAddLib>
+            <pElem>E:/lib/glew-1.10.0/lib</pElem>
+            <pElem>E:/lib/SFML-2.1/lib</pElem>
+            <pElem>../../../../../lib/glew-1.10.0/lib</pElem>
+            <pElem>../../../../../lib/SFML-2.1/lib</pElem>
+          </linkerAddLib>
+          <linkerLibItems>
+            <linkerLibLibItem>sfml-window-d</linkerLibLibItem>
+            <linkerLibLibItem>sfml-system-d</linkerLibLibItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../libgltools"
+                            CT="3"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../libgltools"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="lib/liblibgltools-d.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../libmatrix"
+                            CT="3"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../libmatrix"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/liblibmatrix.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../libvector"
+                            CT="3"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../libvector"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/liblibvector.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../libobj"
+                            CT="3"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../libobj"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/liblibobj.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibLibItem>glew32.dll</linkerLibLibItem>
+            <linkerLibLibItem>opengl32</linkerLibLibItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Application.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Application.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Components/CollisionDetection.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/Components/CollisionDetection.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/Components/CollisionResolution.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/Components/CollisionResolution.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/Components/EntityID.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Components/EntityID.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Components/Graphics.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Components/Graphics.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Components/Movement.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Components/Movement.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Utils/Strings.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Utils/Strings.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <stripSymbols>true</stripSymbols>
+          <standard>8</standard>
+          <incDir>
+            <pElem>E:/lib/SFML-2.1/include</pElem>
+            <pElem>E:/lib/glew-1.10.0/include</pElem>
+          </incDir>
+          <commandLine>-Wfatal-errors -Wall -Wextra -pedantic -Winit-self -Wmissing-include-dirs -Wswitch-default -Wswitch-enum -Wfloat-equal -Wundef -Wshadow -Wcast-qual -Wcast-align -Wwrite-strings -Wconversion -Wsign-conversion -Wlogical-op -Wmissing-declarations -Wmissing-noreturn -Wmissing-format-attribute -Wpacked -Wpadded -Wredundant-decls -Wunreachable-code -Winline -Winvalid-pch -Wvolatile-register-var -Wdisabled-optimization -Wstack-protector</commandLine>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+        <linkerTool>
+          <linkerAddLib>
+            <pElem>E:/lib/SFML-2.1/lib</pElem>
+          </linkerAddLib>
+          <stripSymbols>true</stripSymbols>
+        </linkerTool>
+      </compileType>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Application.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Application.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Components/CollisionDetection.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/Components/CollisionDetection.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/Components/CollisionResolution.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/Components/CollisionResolution.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/Components/EntityID.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Components/EntityID.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Components/Graphics.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Components/Graphics.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Components/Movement.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Components/Movement.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Utils/Strings.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Utils/Strings.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
