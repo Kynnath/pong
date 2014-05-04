@@ -49,8 +49,8 @@ OBJECTFILES= \
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=-Wfatal-errors -Wall -Wextra -pedantic -Winit-self -Wmissing-include-dirs -Wswitch-default -Wswitch-enum -Wfloat-equal -Wshadow -Wcast-qual -Wcast-align -Wwrite-strings -Wconversion -Wsign-conversion -Wlogical-op -Wmissing-declarations -Wmissing-noreturn -Wmissing-format-attribute -Wpacked -Wpadded -Wredundant-decls -Wunreachable-code -Winline -Winvalid-pch -Wvolatile-register-var -Wdisabled-optimization -Wstack-protector
-CXXFLAGS=-Wfatal-errors -Wall -Wextra -pedantic -Winit-self -Wmissing-include-dirs -Wswitch-default -Wswitch-enum -Wfloat-equal -Wshadow -Wcast-qual -Wcast-align -Wwrite-strings -Wconversion -Wsign-conversion -Wlogical-op -Wmissing-declarations -Wmissing-noreturn -Wmissing-format-attribute -Wpacked -Wpadded -Wredundant-decls -Wunreachable-code -Winline -Winvalid-pch -Wvolatile-register-var -Wdisabled-optimization -Wstack-protector
+CCFLAGS=-Wfatal-errors -Wall -Wextra -pedantic -Winit-self -Wmissing-include-dirs -Wswitch-default -Wswitch-enum -Wfloat-equal -Wshadow -Wcast-qual -Wcast-align -Wwrite-strings -Wconversion -Wsign-conversion -Wlogical-op -Wmissing-declarations -Wmissing-noreturn -Wmissing-format-attribute -Wpacked -Wredundant-decls -Wunreachable-code -Winline -Winvalid-pch -Wvolatile-register-var -Wdisabled-optimization -Wstack-protector
+CXXFLAGS=-Wfatal-errors -Wall -Wextra -pedantic -Winit-self -Wmissing-include-dirs -Wswitch-default -Wswitch-enum -Wfloat-equal -Wshadow -Wcast-qual -Wcast-align -Wwrite-strings -Wconversion -Wsign-conversion -Wlogical-op -Wmissing-declarations -Wmissing-noreturn -Wmissing-format-attribute -Wpacked -Wredundant-decls -Wunreachable-code -Winline -Winvalid-pch -Wvolatile-register-var -Wdisabled-optimization -Wstack-protector
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -59,7 +59,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L/E/lib/glew-1.10.0/lib -L/E/lib/SFML-2.1/lib -L../../../../../lib/glew-1.10.0/lib -L../../../../../lib/SFML-2.1/lib -lsfml-window-d -lsfml-system-d ../libgltools/lib/liblibgltools-d.a ../libmatrix/dist/Debug/MinGW-Windows/liblibmatrix.a ../libvector/dist/Debug/MinGW-Windows/liblibvector.a ../libobj/dist/Debug/MinGW-Windows/liblibobj.a -lglew32.dll -lopengl32
+LDLIBSOPTIONS=-L/E/lib/glew-1.10.0/lib -L/E/lib/SFML-2.1/lib -L../../../../../lib/glew-1.10.0/lib -L../../../../../lib/SFML-2.1/lib -lsfml-window-d -lsfml-system-d ../libgltools/lib/liblibgltools-d.a ../libmatrix/dist/Debug/MinGW-Windows/liblibmatrix.a ../libvector/dist/Debug/MinGW-Windows/liblibvector.a ../libobj/dist/Debug/MinGW-Windows/liblibobj.a -lglew32.dll -lopengl32 ../libconf/dist/Debug/MinGW-Windows/liblibconf.a
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -73,6 +73,8 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/pongclone.exe: ../libvector/dist/Debu
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/pongclone.exe: ../libobj/dist/Debug/MinGW-Windows/liblibobj.a
 
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/pongclone.exe: ../libconf/dist/Debug/MinGW-Windows/liblibconf.a
+
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/pongclone.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/pongclone ${OBJECTFILES} ${LDLIBSOPTIONS}
@@ -80,42 +82,42 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/pongclone.exe: ${OBJECTFILES}
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/include -I../libmatrix/include -I../libvector/include -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -Wall -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/include -I../libmatrix/include -I../libvector/include -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 ${OBJECTDIR}/src/Application.o: src/Application.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/include -I../libmatrix/include -I../libvector/include -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Application.o src/Application.cpp
+	$(COMPILE.cc) -g -Wall -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/include -I../libmatrix/include -I../libvector/include -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Application.o src/Application.cpp
 
 ${OBJECTDIR}/src/Components/CollisionDetection.o: src/Components/CollisionDetection.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/include -I../libmatrix/include -I../libvector/include -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/CollisionDetection.o src/Components/CollisionDetection.cpp
+	$(COMPILE.cc) -g -Wall -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/include -I../libmatrix/include -I../libvector/include -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/CollisionDetection.o src/Components/CollisionDetection.cpp
 
 ${OBJECTDIR}/src/Components/CollisionResolution.o: src/Components/CollisionResolution.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/include -I../libmatrix/include -I../libvector/include -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/CollisionResolution.o src/Components/CollisionResolution.cpp
+	$(COMPILE.cc) -g -Wall -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/include -I../libmatrix/include -I../libvector/include -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/CollisionResolution.o src/Components/CollisionResolution.cpp
 
 ${OBJECTDIR}/src/Components/EntityID.o: src/Components/EntityID.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/include -I../libmatrix/include -I../libvector/include -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/EntityID.o src/Components/EntityID.cpp
+	$(COMPILE.cc) -g -Wall -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/include -I../libmatrix/include -I../libvector/include -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/EntityID.o src/Components/EntityID.cpp
 
 ${OBJECTDIR}/src/Components/Graphics.o: src/Components/Graphics.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/include -I../libmatrix/include -I../libvector/include -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/Graphics.o src/Components/Graphics.cpp
+	$(COMPILE.cc) -g -Wall -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/include -I../libmatrix/include -I../libvector/include -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/Graphics.o src/Components/Graphics.cpp
 
 ${OBJECTDIR}/src/Components/Movement.o: src/Components/Movement.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/include -I../libmatrix/include -I../libvector/include -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/Movement.o src/Components/Movement.cpp
+	$(COMPILE.cc) -g -Wall -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/include -I../libmatrix/include -I../libvector/include -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/Movement.o src/Components/Movement.cpp
 
 ${OBJECTDIR}/src/Utils/Strings.o: src/Utils/Strings.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Utils
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/include -I../libmatrix/include -I../libvector/include -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Utils/Strings.o src/Utils/Strings.cpp
+	$(COMPILE.cc) -g -Wall -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/include -I../libmatrix/include -I../libvector/include -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Utils/Strings.o src/Utils/Strings.cpp
 
 # Subprojects
 .build-subprojects:
@@ -123,6 +125,7 @@ ${OBJECTDIR}/src/Utils/Strings.o: src/Utils/Strings.cpp
 	cd ../libmatrix && ${MAKE}  -f Makefile CONF=Debug
 	cd ../libvector && ${MAKE}  -f Makefile CONF=Debug
 	cd ../libobj && ${MAKE}  -f Makefile CONF=Debug
+	cd ../libconf && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
@@ -135,6 +138,7 @@ ${OBJECTDIR}/src/Utils/Strings.o: src/Utils/Strings.cpp
 	cd ../libmatrix && ${MAKE}  -f Makefile CONF=Debug clean
 	cd ../libvector && ${MAKE}  -f Makefile CONF=Debug clean
 	cd ../libobj && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../libconf && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl

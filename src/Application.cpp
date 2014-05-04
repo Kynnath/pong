@@ -1,12 +1,13 @@
-/* 
+/*
  * File:   Application.cpp
  * Author: juan.garibotti
- * 
+ *
  * Created on 17 de febrero de 2014, 11:48
  */
 
 #include "Application.hpp"
 
+#include "CFG/Config.hpp"
 #include "GL/glew.h"
 
 Application::Application()
@@ -21,31 +22,40 @@ Application::Application()
 void Application::Run()
 {
     SetUp();
-    
+
     while ( m_running )
     {
         HandleEvents();
         Update();
         Render();
     }
-    
+
     CleanUp();
 }
 
 void Application::SetUp()
 {
+    // Load configuration
+    cfg::Config const config ( "default.conf" );
+
     // Create the window
-    sf::VideoMode mode ( 960 , 600 ); 
-    sf::String title ( "Pong" );
-    m_window.create( mode, title );
-    
+    {
+        int const xResolution ( config.GetIntProperty( "Window::xResolution" ) );
+        int const yResolution ( config.GetIntProperty( "Window::yResolution" ) );
+        std::string const title ( config.GetStringProperty( "Window::title" ) );
+
+        sf::VideoMode const mode ( (unsigned int)xResolution , (unsigned int)yResolution );
+
+        m_window.create( mode, title );
+    }
+
     m_graphics.Initialize();
-    
+
     m_running = true;
 }
 
 void Application::HandleEvents()
-{   
+{
     sf::Event event;
     while ( m_window.pollEvent( event ) )
     {
@@ -53,7 +63,7 @@ void Application::HandleEvents()
             m_running = false;
     }
 }
-    
+
 void Application::Update()
 {
     m_movement.Update();

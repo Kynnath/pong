@@ -13,6 +13,7 @@
                 <make-dep-project>../libobj</make-dep-project>
                 <make-dep-project>../libvector</make-dep-project>
                 <make-dep-project>../libgltools</make-dep-project>
+                <make-dep-project>../libconf</make-dep-project>
             </make-dep-projects>
             <sourceRootList>
                 <sourceRootElem>src</sourceRootElem>
