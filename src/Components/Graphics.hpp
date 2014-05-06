@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   Graphics.hpp
  * Author: juan.garibotti
  *
@@ -14,7 +14,7 @@
 #include "GLT/GeometryTransform.hpp"
 #include "Movement.hpp"
 
-struct GraphicsData
+struct GraphicsData // Entity specific
 {
     EntityID m_entityID;
     GLuint m_vertexArray;
@@ -25,10 +25,25 @@ struct GraphicsData
  	GLvoid const* m_indices;    // For VBOs, offset into index array
 };
 
+struct ModelData // Shared between entities with the same model
+{
+    GLuint m_vertexArray;
+    GLenum m_mode;              // Kind of primitives to render
+ 	GLsizei m_count;            // Number of elements
+ 	GLenum m_type;              // Type of the values in m_indices
+ 	GLvoid const* m_indices;    // For VBOs, offset into index array
+};
+
+namespace glt
+{
+    struct Model;
+}
+
 class GraphicsComponent
 {
     GLuint vertexArrayBufferObject;
     std::vector< GraphicsData > m_data;
+    std::vector< ModelData > m_models;
     MovementComponent const& k_movement;
     glt::Shader m_shader;
     glt::GeometryTransform m_geometryTransform;
@@ -36,6 +51,7 @@ class GraphicsComponent
     public:
         GraphicsComponent( MovementComponent const& i_movement );
         void Initialize();
+        void AddModel( glt::Model const& i_model );
         void AddEntity( GraphicsData const& i_graphicsData );
         void Update();
         void Render() const;

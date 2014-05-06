@@ -64,6 +64,44 @@ void GraphicsComponent::Initialize()
     AddEntity( paddleGraphicsData );
 }
 
+void GraphicsComponent::AddModel( glt::Model const& i_model )
+{
+    ModelData modelData;
+    // Create the vertex array object
+    glGenVertexArrays( 1, &modelData.m_vertexArray );
+    glBindVertexArray( modelData.m_vertexArray );
+    {
+        // Create vertex buffer object
+        GLuint vertexBuffer;
+        glGenBuffers( 1, &vertexBuffer );
+        // Copy data to buffer object
+        glBindBuffer( GL_ARRAY_BUFFER, vertexBuffer );
+        glBufferData( GL_ARRAY_BUFFER, GLsizeiptr(sizeof(glt::Vertex)*i_model.m_vertexList.size()), i_model.m_vertexList.data() , GL_STATIC_DRAW );
+    }
+    {
+        // Enable vertex position attribute
+        glEnableVertexAttribArray( glt::Vertex::Position );
+        glVertexAttribPointer( glt::Vertex::Position, 3, GL_FLOAT, GL_FALSE, GLsizei( sizeof( glt::Vertex ) ), 0 );
+    }
+    {
+        // Create index buffer object
+        GLuint indexBuffer;
+        glGenBuffers( 1, &indexBuffer );
+        // Copy index data
+        glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, indexBuffer );
+        glBufferData( GL_ELEMENT_ARRAY_BUFFER, GLsizeiptr(sizeof(GLuint)*i_model.m_indexList.size()), i_model.m_indexList.data(), GL_STATIC_DRAW);
+    }
+    // Unbind vertex array
+    glBindVertexArray(0);
+
+    modelData.m_mode = GL_TRIANGLES;
+    modelData.m_count = GLuint( i_model.m_indexList.size() );
+    modelData.m_type = GL_UNSIGNED_INT;
+    modelData.m_indices = 0;
+
+    m_models.push_back( modelData );
+}
+
 void GraphicsComponent::AddEntity( GraphicsData const& i_graphicsData )
 {
     m_data.push_back( i_graphicsData );
