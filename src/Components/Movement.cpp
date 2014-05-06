@@ -1,7 +1,7 @@
-/* 
+/*
  * File:   Movement.cpp
  * Author: juan.garibotti
- * 
+ *
  * Created on 17 de febrero de 2014, 14:08
  */
 
@@ -21,7 +21,7 @@ void MovementComponent::Swap()
 
 void MovementComponent::Update()
 {
-    
+
 }
 
 MovementData const& MovementComponent::GetData( EntityID const& i_id ) const
@@ -33,5 +33,5 @@ MovementData const& MovementComponent::GetData( EntityID const& i_id ) const
             return *first;
         }
     }
-    throw std::out_of_range( "No Entity found" );
+    throw std::range_error( "No Entity found" );
 }
