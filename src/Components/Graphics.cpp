@@ -57,9 +57,8 @@ void GraphicsComponent::Initialize()
     GraphicsData paddleGraphicsData =
     {
         0,  // entity id
-        vertexArrayBufferObject,
         { { { 0, 0, 0 } }, { { 0, 0, 1 } }, { { 0, 1, 0 } } }, // Frame
-        GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0
+        0 // Model index
     };
     AddEntity( paddleGraphicsData );
 }
@@ -95,7 +94,7 @@ void GraphicsComponent::AddModel( glt::Model const& i_model )
     glBindVertexArray(0);
 
     modelData.m_mode = GL_TRIANGLES;
-    modelData.m_count = GLuint( i_model.m_indexList.size() );
+    modelData.m_count = GLsizei( i_model.m_indexList.size() );
     modelData.m_type = GL_UNSIGNED_INT;
     modelData.m_indices = 0;
 
@@ -111,12 +110,13 @@ void GraphicsComponent::Render() const
 {
     glClear( GL_COLOR_BUFFER_BIT );
 
-    for ( auto const& model : m_data )
+    for ( auto const& entity : m_data )
     {
         // Select the vertex array to draw
+        ModelData const& model ( m_models.at( entity.m_modelIndex ) );
         glBindVertexArray( model.m_vertexArray );
         // Set the matrix uniform for the vertex shader
-        glUniformMatrix4fv( (GLint)m_shader.m_mvpLocation, 1, GL_FALSE, &m_geometryTransform.BuildMVPMatrix( model.m_frame ).m_data[0] );
+        glUniformMatrix4fv( (GLint)m_shader.m_mvpLocation, 1, GL_FALSE, &m_geometryTransform.BuildMVPMatrix( entity.m_frame ).m_data[0] );
         glDrawElements( model.m_mode, model.m_count, model.m_type, model.m_indices );
     }
 

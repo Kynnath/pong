@@ -17,12 +17,8 @@
 struct GraphicsData // Entity specific
 {
     EntityID m_entityID;
-    GLuint m_vertexArray;
     glt::Frame m_frame;
-    GLenum m_mode;              // Kind of primitives to render
- 	GLsizei m_count;            // Number of elements
- 	GLenum m_type;              // Type of the values in m_indices
- 	GLvoid const* m_indices;    // For VBOs, offset into index array
+    size_t m_modelIndex;
 };
 
 struct ModelData // Shared between entities with the same model

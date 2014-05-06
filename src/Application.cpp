@@ -7,8 +7,11 @@
 
 #include "Application.hpp"
 
-#include "CFG/Config.hpp"
 #include "GL/glew.h"
+#include "CFG/Config.hpp"
+#include "GLT/Model.hpp"
+#include "OBJ/Object.hpp"
+
 
 Application::Application()
     : m_running ( false )
@@ -50,6 +53,7 @@ void Application::SetUp()
     }
 
     m_graphics.Initialize();
+    m_graphics.AddModel( glt::Model( obj::Object( "resource/model/paddle.obj" ) ) );
 
     m_running = true;
 }
