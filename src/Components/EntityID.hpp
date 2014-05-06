@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   EntityID.hpp
  * Author: juan.garibotti
  *
@@ -9,12 +9,6 @@
 #define	ENTITYID_HPP
 
 typedef int EntityID;
-
-/*class EntityID 
-{
-
-
-};*/
 
 #endif	/* ENTITYID_HPP */
 
