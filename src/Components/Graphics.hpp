@@ -12,17 +12,19 @@
 #include "GLT/Frame.hpp"
 #include "GLT/Shader.hpp"
 #include "GLT/GeometryTransform.hpp"
+#include "ModelID.hpp"
 #include "Movement.hpp"
 
 struct GraphicsData // Entity specific
 {
     EntityID m_entityID;
     glt::Frame m_frame;
-    size_t m_modelIndex;
+    ModelID m_modelID;
 };
 
 struct ModelData // Shared between entities with the same model
 {
+    ModelID m_modelID;
     GLuint m_vertexArray;
     GLenum m_mode;              // Kind of primitives to render
  	GLsizei m_count;            // Number of elements
@@ -37,7 +39,6 @@ namespace glt
 
 class GraphicsComponent
 {
-    GLuint vertexArrayBufferObject;
     std::vector< GraphicsData > m_data;
     std::vector< ModelData > m_models;
     MovementComponent const& k_movement;
@@ -47,7 +48,7 @@ class GraphicsComponent
     public:
         GraphicsComponent( MovementComponent const& i_movement );
         void Initialize();
-        void AddModel( glt::Model const& i_model );
+        void AddModel( ModelID const& i_modelID, glt::Model const& i_model );
         void AddEntity( GraphicsData const& i_graphicsData );
         void Update();
         void Render() const;
