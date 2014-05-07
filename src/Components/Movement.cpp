@@ -21,16 +21,19 @@ void MovementComponent::Swap()
 
 void MovementComponent::Update()
 {
+    for ( auto & entity : m_data )
+    {
 
+    }
 }
 
-MovementData const& MovementComponent::GetData( EntityID const& i_id ) const
+MovementData const& MovementComponent::GetData( EntityID const& i_entityID ) const
 {
-    for ( auto first ( m_data.begin() ), end ( m_data.end() ); first != end; ++first )
+    for ( auto const& entity : m_data )
     {
-        if ( i_id == first->m_id )
+        if ( i_entityID == entity.m_entityID )
         {
-            return *first;
+            return entity;
         }
     }
     throw std::range_error( "No Entity found" );

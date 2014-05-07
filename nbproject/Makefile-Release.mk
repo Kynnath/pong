@@ -41,6 +41,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/Components/CollisionResolution.o \
 	${OBJECTDIR}/src/Components/EntityID.o \
 	${OBJECTDIR}/src/Components/Graphics.o \
+	${OBJECTDIR}/src/Components/ModelID.o \
 	${OBJECTDIR}/src/Components/Movement.o \
 	${OBJECTDIR}/src/Utils/Strings.o
 
@@ -98,6 +99,11 @@ ${OBJECTDIR}/src/Components/Graphics.o: src/Components/Graphics.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Wall -s -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/Graphics.o src/Components/Graphics.cpp
+
+${OBJECTDIR}/src/Components/ModelID.o: src/Components/ModelID.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/Components
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Wall -s -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/ModelID.o src/Components/ModelID.cpp
 
 ${OBJECTDIR}/src/Components/Movement.o: src/Components/Movement.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components

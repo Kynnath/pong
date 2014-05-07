@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   Movement.hpp
  * Author: juan.garibotti
  *
@@ -13,7 +13,7 @@
 
 struct MovementData
 {
-    EntityID m_id;
+    EntityID m_entityID;
     float m_position[3];
     float m_speed[3];
 };
@@ -22,9 +22,9 @@ class MovementComponent
 {
     std::vector< MovementData > m_data;
     std::vector< MovementData > m_buffer;
-    
+
     void Swap();
-    
+
     public:
         void AddEntity( MovementData const& i_data );
         void Update();

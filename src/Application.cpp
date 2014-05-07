@@ -43,17 +43,62 @@ void Application::SetUp()
 
     // Create the window
     {
-        int const xResolution ( config.GetIntProperty( "Window::xResolution" ) );
-        int const yResolution ( config.GetIntProperty( "Window::yResolution" ) );
-        std::string const title ( config.GetStringProperty( "Window::title" ) );
+        int const& resolutionX ( config.GetIntProperty( "Window::resolutionX" ) );
+        int const& resolutionY ( config.GetIntProperty( "Window::resolutionY" ) );
+        std::string const& title ( config.GetStringProperty( "Window::title" ) );
 
-        sf::VideoMode const mode ( (unsigned int)xResolution , (unsigned int)yResolution );
+        sf::VideoMode const mode ( (unsigned int)resolutionX , (unsigned int)resolutionY );
 
         m_window.create( mode, title );
+
+        m_window.setFramerateLimit( (unsigned int)config.GetIntProperty( "Window::framerate" ) );
     }
 
-    m_graphics.Initialize();
-    m_graphics.AddModel( glt::Model( obj::Object( "resource/model/paddle.obj" ) ) );
+    {
+    // Load resources
+        m_graphics.Initialize();
+        m_graphics.AddModel( config.GetIntProperty( "Resource::Paddle::id" ),
+                             glt::Model( obj::Object( config.GetStringProperty( "Resource::Paddle::model" ) ) ) );
+        m_graphics.AddModel( config.GetIntProperty( "Resource::Ball::id" ),
+                             glt::Model( obj::Object( config.GetStringProperty( "Resource::Ball::model" ) ) ) );
+    }
+
+    // Load entities
+    {
+        MovementData movementData =
+        {
+            config.GetIntProperty( "Entity::PlayerPaddle::id" ),
+            {
+                config.GetFloatProperty( "Entity::PlayerPaddle::positionX" ),
+                config.GetFloatProperty( "Entity::PlayerPaddle::positionY" ),
+                config.GetFloatProperty( "Entity::PlayerPaddle::positionZ" )
+            },
+            {
+                0.0f, 0.0f, 0.0f
+            }
+        };
+        GraphicsData graphicsData =
+        {
+            1,  // entity id
+            { { { 0, 0, 0 } }, { { 0, 0, 1 } }, { { 0, 1, 0 } } }, // Frame
+            1 // ModelID
+        };
+        m_movement.AddEntity( movementData );
+        m_graphics.AddEntity( graphicsData );
+
+        movementData.m_entityID = config.GetIntProperty( "Entity::AIPaddle::id" );
+        movementData.m_position[0] = config.GetFloatProperty( "Entity::AIPaddle::positionX" );
+        graphicsData.m_entityID = config.GetIntProperty( "Entity::AIPaddle::id" );
+        m_movement.AddEntity( movementData );
+        m_graphics.AddEntity( graphicsData );
+
+        movementData.m_entityID = config.GetIntProperty( "Entity::Ball::id" );
+        movementData.m_position[0] = config.GetFloatProperty( "Entity::Ball::positionX" );
+        graphicsData.m_entityID = config.GetIntProperty( "Entity::Ball::id" );
+        graphicsData.m_modelID = config.GetIntProperty( "Entity::Ball::modelID" );
+        m_movement.AddEntity( movementData );
+        m_graphics.AddEntity( graphicsData );
+    }
 
     m_running = true;
 }

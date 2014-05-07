@@ -41,6 +41,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/Components/CollisionResolution.o \
 	${OBJECTDIR}/src/Components/EntityID.o \
 	${OBJECTDIR}/src/Components/Graphics.o \
+	${OBJECTDIR}/src/Components/ModelID.o \
 	${OBJECTDIR}/src/Components/Movement.o \
 	${OBJECTDIR}/src/Utils/Strings.o
 
@@ -59,7 +60,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L/E/lib/glew-1.10.0/lib -L/E/lib/SFML-2.1/lib -L../../../../../lib/glew-1.10.0/lib -L../../../../../lib/SFML-2.1/lib -lsfml-window-d -lsfml-system-d ../libgltools/lib/liblibgltools-d.a ../libmatrix/dist/Debug/MinGW-Windows/liblibmatrix.a ../libvector/dist/Debug/MinGW-Windows/liblibvector.a ../libobj/dist/Debug/MinGW-Windows/liblibobj.a -lglew32.dll -lopengl32 ../libconf/dist/Debug/MinGW-Windows/liblibconf.a
+LDLIBSOPTIONS=-L/C/lib/glew-1.10.0/lib -L/E/lib/SFML-2.1/lib -L../../../../../lib/glew-1.10.0/lib -L../../../../../lib/SFML-2.1/lib -L/E/lib/glew-1.10.0/lib -lsfml-window-d -lsfml-system-d ../libgltools/lib/liblibgltools-d.a ../libmatrix/dist/Debug/MinGW-Windows/liblibmatrix.a ../libvector/dist/Debug/MinGW-Windows/liblibvector.a ../libobj/dist/Debug/MinGW-Windows/liblibobj.a -lglew32.dll -lopengl32 ../libconf/dist/Debug/MinGW-Windows/liblibconf.a
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -108,6 +109,11 @@ ${OBJECTDIR}/src/Components/Graphics.o: src/Components/Graphics.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Wall -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/include -I../libmatrix/include -I../libvector/include -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/Graphics.o src/Components/Graphics.cpp
+
+${OBJECTDIR}/src/Components/ModelID.o: src/Components/ModelID.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/Components
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Wall -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/include -I../libmatrix/include -I../libvector/include -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/ModelID.o src/Components/ModelID.cpp
 
 ${OBJECTDIR}/src/Components/Movement.o: src/Components/Movement.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
