@@ -94,6 +94,7 @@ void Application::SetUp()
 
         movementData.m_entityID = config.GetIntProperty( "Entity::Ball::id" );
         movementData.m_position[0] = config.GetFloatProperty( "Entity::Ball::positionX" );
+        movementData.m_speed[0] = -1.0f;
         graphicsData.m_entityID = config.GetIntProperty( "Entity::Ball::id" );
         graphicsData.m_modelID = config.GetIntProperty( "Entity::Ball::modelID" );
         m_movement.AddEntity( movementData );

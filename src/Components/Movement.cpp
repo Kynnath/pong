@@ -21,9 +21,13 @@ void MovementComponent::Swap()
 
 void MovementComponent::Update()
 {
+    // Update time is 1/60th of a second, or 16.7 ms
+    // Speed is in units/second
     for ( auto & entity : m_data )
     {
-
+        entity.m_position[0] += entity.m_speed[0] * ( 1.0f / 60.f );
+        entity.m_position[1] += entity.m_speed[1] * ( 1.0f / 60.f );
+        entity.m_position[2] += entity.m_speed[2] * ( 1.0f / 60.f );
     }
 }
 
