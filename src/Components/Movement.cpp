@@ -42,3 +42,16 @@ MovementData const& MovementComponent::GetData( EntityID const& i_entityID ) con
     }
     throw std::range_error( "No Entity found" );
 }
+
+void MovementComponent::SetData( EntityID const& i_entityID, MovementData const& i_data )
+{
+    for ( auto & entity : m_data )
+    {
+        if ( i_entityID == entity.m_entityID )
+        {
+            entity = i_data;
+            return;
+        }
+    }
+    throw std::range_error( "No Entity found" );
+}

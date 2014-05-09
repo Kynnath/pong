@@ -28,7 +28,8 @@ class MovementComponent
     public:
         void AddEntity( MovementData const& i_data );
         void Update();
-        MovementData const& GetData( EntityID const& i_id ) const;
+        MovementData const& GetData( EntityID const& i_entityID ) const;
+        void SetData( EntityID const& i_entityID, MovementData const& i_data );
 };
 
 #endif	/* MOVEMENT_HPP */
