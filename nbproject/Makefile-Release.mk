@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/src/Application.o \
+	${OBJECTDIR}/src/Components/AIComponent.o \
 	${OBJECTDIR}/src/Components/CollisionDetection.o \
 	${OBJECTDIR}/src/Components/CollisionResolution.o \
 	${OBJECTDIR}/src/Components/EntityID.o \
@@ -79,6 +80,11 @@ ${OBJECTDIR}/src/Application.o: src/Application.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Wall -s -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Application.o src/Application.cpp
+
+${OBJECTDIR}/src/Components/AIComponent.o: src/Components/AIComponent.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/Components
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Wall -s -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/AIComponent.o src/Components/AIComponent.cpp
 
 ${OBJECTDIR}/src/Components/CollisionDetection.o: src/Components/CollisionDetection.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components

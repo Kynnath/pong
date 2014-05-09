@@ -14,6 +14,8 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="f1" displayName="Components" projectFiles="true">
+        <itemPath>src/Components/AIComponent.cpp</itemPath>
+        <itemPath>src/Components/AIComponent.hpp</itemPath>
         <itemPath>src/Components/CollisionDetection.cpp</itemPath>
         <itemPath>src/Components/CollisionDetection.hpp</itemPath>
         <itemPath>src/Components/CollisionResolution.cpp</itemPath>
@@ -159,6 +161,10 @@
       </item>
       <item path="src/Application.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/Components/AIComponent.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Components/AIComponent.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/Components/CollisionDetection.cpp"
             ex="false"
             tool="1"
@@ -241,6 +247,10 @@
       <item path="src/Application.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Application.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Components/AIComponent.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Components/AIComponent.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/Components/CollisionDetection.cpp"
             ex="false"
