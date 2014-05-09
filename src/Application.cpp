@@ -83,22 +83,35 @@ void Application::SetUp()
             { { { 0, 0, 0 } }, { { 0, 0, 1 } }, { { 0, 1, 0 } } }, // Frame
             1 // ModelID
         };
+        CollisionData collisionData =
+        {
+            1, // entity id
+            0.5f, 2.0f // size x, y
+        };
+
         m_movement.AddEntity( movementData );
         m_graphics.AddEntity( graphicsData );
+        m_collisionDetection.AddEntity( collisionData );
 
         movementData.m_entityID = config.GetIntProperty( "Entity::AIPaddle::id" );
         movementData.m_position[0] = config.GetFloatProperty( "Entity::AIPaddle::positionX" );
         graphicsData.m_entityID = config.GetIntProperty( "Entity::AIPaddle::id" );
+        collisionData.m_entityID = config.GetIntProperty( "Entity::AIPaddle::id" );
         m_movement.AddEntity( movementData );
         m_graphics.AddEntity( graphicsData );
+        m_collisionDetection.AddEntity( collisionData );
 
         movementData.m_entityID = config.GetIntProperty( "Entity::Ball::id" );
         movementData.m_position[0] = config.GetFloatProperty( "Entity::Ball::positionX" );
         movementData.m_speed[0] = -1.0f;
         graphicsData.m_entityID = config.GetIntProperty( "Entity::Ball::id" );
         graphicsData.m_modelID = config.GetIntProperty( "Entity::Ball::modelID" );
+        collisionData.m_entityID = config.GetIntProperty( "Entity::Ball::id" );
+        collisionData.m_sizeX = 0.5f;
+        collisionData.m_sizeY = 0.5f;
         m_movement.AddEntity( movementData );
         m_graphics.AddEntity( graphicsData );
+        m_collisionDetection.AddEntity( collisionData );
     }
 
     m_running = true;
@@ -111,6 +124,36 @@ void Application::HandleEvents()
     {
         if ( event.type == sf::Event::Closed )
             m_running = false;
+
+        else if ( event.type == sf::Event::KeyPressed )
+        {
+            if ( event.key.code == sf::Keyboard::Up )
+            {
+                // Set paddle speed up
+                MovementData data ( m_movement.GetData( 1 ) );
+                data.m_speed[1] = 2.0f;
+                m_movement.SetData( 1, data );
+            }
+            else if ( event.key.code == sf::Keyboard::Down )
+            {
+                // Set paddle speed down
+                MovementData data ( m_movement.GetData( 1 ) );
+                data.m_speed[1] = -2.0f;
+                m_movement.SetData( 1, data );
+            }
+        }
+
+        else if ( event.type == sf::Event::KeyReleased )
+        {
+            if ( event.key.code == sf::Keyboard::Up ||
+                 event.key.code == sf::Keyboard::Down )
+            {
+                // Set paddle speed 0
+                MovementData data ( m_movement.GetData( 1 ) );
+                data.m_speed[1] = 0.0f;
+                m_movement.SetData( 1, data );
+            }
+        }
     }
 }
 
