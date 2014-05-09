@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   CollisionResolution.hpp
  * Author: juan.garibotti
  *
@@ -14,13 +14,13 @@
 class MovementComponent;
 class CollisionDetectionComponent;
 
-class CollisionResolutionComponent 
+class CollisionResolutionComponent
 {
     MovementComponent & m_movement;
-    CollisionDetectionComponent const& k_collisionDetection;
-    
+    CollisionDetectionComponent & m_collisionDetection;
+
     public:
-        CollisionResolutionComponent( MovementComponent & i_movement, CollisionDetectionComponent const& m_collisionDetection );
+        CollisionResolutionComponent( MovementComponent & io_movement, CollisionDetectionComponent & io_collisionDetection );
         void Update();
 
 };
