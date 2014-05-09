@@ -17,6 +17,7 @@ Application::Application()
     : m_running ( false )
     , m_window ()
     , m_movement ()
+    , m_ai ( m_movement )
     , m_collisionDetection ( m_movement )
     , m_collisionResolution ( m_movement, m_collisionDetection )
     , m_graphics ( m_movement )
@@ -52,6 +53,7 @@ void Application::SetUp()
         m_window.create( mode, title );
 
         m_window.setFramerateLimit( (unsigned int)config.GetIntProperty( "Window::framerate" ) );
+        m_window.setKeyRepeatEnabled( false );
     }
 
     {
@@ -103,7 +105,8 @@ void Application::SetUp()
 
         movementData.m_entityID = config.GetIntProperty( "Entity::Ball::id" );
         movementData.m_position[0] = config.GetFloatProperty( "Entity::Ball::positionX" );
-        movementData.m_speed[0] = -1.0f;
+        movementData.m_speed[0] = -2.0f;
+        movementData.m_speed[1] = -0.5f;
         graphicsData.m_entityID = config.GetIntProperty( "Entity::Ball::id" );
         graphicsData.m_modelID = config.GetIntProperty( "Entity::Ball::modelID" );
         collisionData.m_entityID = config.GetIntProperty( "Entity::Ball::id" );
@@ -159,6 +162,7 @@ void Application::HandleEvents()
 
 void Application::Update()
 {
+    m_ai.Update();
     m_movement.Update();
     m_collisionDetection.Update();
     m_collisionResolution.Update();
