@@ -22,16 +22,31 @@ void CollisionDetectionComponent::AddEntity( CollisionData const& i_data )
 
 CollisionDetectionComponent::CollisionDetectionComponent( MovementComponent const& i_movement )
     : k_movement ( i_movement )
+    , m_boundaries ( { 10.0f, -10.0f, -16.0f, 16.0f } )
+    , m_boundaryCheck ( { 0, BoundaryCheck::e_bottom } )
+    , m_collisionDetected ( false )
 {}
+
+BoundaryCheck const& CollisionDetectionComponent::GetBoundaryCheck() const
+{
+    return m_boundaryCheck;
+}
 
 CollisionsList const& CollisionDetectionComponent::GetCollisions() const
 {
     return m_collisions;
 }
 
+bool const& CollisionDetectionComponent::CollisionDetected() const
+{
+    return m_collisionDetected;
+}
+
 void CollisionDetectionComponent::ClearCollisions()
 {
     m_collisions.clear();
+    m_boundaryCheck.m_entityID = 0;
+    m_collisionDetected = false;
 }
 
 void CollisionDetectionComponent::Update()
@@ -39,6 +54,31 @@ void CollisionDetectionComponent::Update()
     for ( auto entity ( m_data.begin() ), end ( m_data.end() ); entity != end; ++entity )
     {
         MovementData const& entityMovData ( k_movement.GetData( entity->m_entityID ) );
+
+        if ( entityMovData.m_position[0] + entity->m_sizeX > m_boundaries.m_right )
+        {
+            m_boundaryCheck.m_entityID = entity->m_entityID;
+            m_boundaryCheck.m_side = BoundaryCheck::e_right;
+            m_collisionDetected = true;
+        }
+        else if ( entityMovData.m_position[0] - entity->m_sizeX < m_boundaries.m_left )
+        {
+            m_boundaryCheck.m_entityID = entity->m_entityID;
+            m_boundaryCheck.m_side = BoundaryCheck::e_left;
+            m_collisionDetected = true;
+        }
+        else if ( entityMovData.m_position[1] + entity->m_sizeY > m_boundaries.m_top )
+        {
+            m_boundaryCheck.m_entityID = entity->m_entityID;
+            m_boundaryCheck.m_side = BoundaryCheck::e_top;
+            m_collisionDetected = true;
+        }
+        else if ( entityMovData.m_position[1] - entity->m_sizeY < m_boundaries.m_bottom )
+        {
+            m_boundaryCheck.m_entityID = entity->m_entityID;
+            m_boundaryCheck.m_side = BoundaryCheck::e_bottom;
+            m_collisionDetected = true;
+        }
 
         for ( auto collider ( entity+1 ); collider != end; ++collider )
         {
@@ -48,6 +88,7 @@ void CollisionDetectionComponent::Update()
                  std::abs( entityMovData.m_position[1] - colliderMovData.m_position[1] ) < ( entity->m_sizeY + collider->m_sizeY ) )
             {
                 m_collisions.push_back( CollisionPair( entity->m_entityID, collider->m_entityID ) );
+                m_collisionDetected = true;
             }
         }
     }
