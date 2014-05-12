@@ -28,19 +28,6 @@ void MovementComponent::Update()
         entity.m_position[0] += entity.m_speed[0] * ( 1.0f / 60.f );
         entity.m_position[1] += entity.m_speed[1] * ( 1.0f / 60.f );
         entity.m_position[2] += entity.m_speed[2] * ( 1.0f / 60.f );
-
-        if ( entity.m_entityID == 3 )
-        {
-            if ( entity.m_position[1] > 9.5f || entity.m_position[1] < -9.5f )
-            {
-                entity.m_speed[1] *= -1.0f;
-            }
-        }
-        else if ( entity.m_position[1] > 8.0f || entity.m_position[1] < -8.0f )
-        {
-            entity.m_position[1] -= entity.m_speed[1] * ( 1.0f / 60.f );
-            entity.m_speed[1] = 0.0f;
-        }
     }
 }
 

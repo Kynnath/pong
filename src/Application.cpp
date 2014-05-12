@@ -165,7 +165,11 @@ void Application::Update()
     m_ai.Update();
     m_movement.Update();
     m_collisionDetection.Update();
-    m_collisionResolution.Update();
+    while ( m_collisionDetection.CollisionDetected() )
+    {
+        m_collisionResolution.Update();
+        m_collisionDetection.Update();
+    }
     m_graphics.Update();
 }
 
