@@ -9,13 +9,14 @@
 #define	MOVEMENT_HPP
 
 #include <vector>
+#include "VEC/Vector3.hpp"
 #include "EntityID.hpp"
 
 struct MovementData
 {
     EntityID m_entityID;
-    float m_position[3];
-    float m_speed[3];
+    vec::Vector3 m_position;
+    vec::Vector3 m_speed;
 };
 
 class MovementComponent
