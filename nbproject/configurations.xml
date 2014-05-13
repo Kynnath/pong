@@ -8,6 +8,14 @@
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
                    projectFiles="true">
+      <logicalFolder name="f1" displayName="model" projectFiles="true">
+        <itemPath>resource/model/ball.obj</itemPath>
+        <itemPath>resource/model/numbers.obj</itemPath>
+        <itemPath>resource/model/paddle.obj</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2" displayName="texture" projectFiles="true">
+        <itemPath>resource/texture/numbers.tga</itemPath>
+      </logicalFolder>
       <itemPath>default.conf</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
@@ -157,6 +165,14 @@
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="resource/model/ball.obj" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resource/model/numbers.obj" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resource/model/paddle.obj" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resource/texture/numbers.tga" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/Application.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Application.hpp" ex="false" tool="3" flavor2="0">
@@ -243,6 +259,14 @@
       <item path="default.conf" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="resource/model/ball.obj" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resource/model/numbers.obj" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resource/model/paddle.obj" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resource/texture/numbers.tga" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/Application.cpp" ex="false" tool="1" flavor2="0">
       </item>

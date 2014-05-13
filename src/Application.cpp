@@ -63,6 +63,7 @@ void Application::SetUp()
                              glt::Model( obj::Object( config.GetStringProperty( "Resource::Paddle::model" ) ) ) );
         m_graphics.AddModel( config.GetIntProperty( "Resource::Ball::id" ),
                              glt::Model( obj::Object( config.GetStringProperty( "Resource::Ball::model" ) ) ) );
+        //m_graphics.AddModel( 3, glt::Model( obj::Object( "resource/model/numbers.obj" ) ) );
     }
 
     // Load entities
