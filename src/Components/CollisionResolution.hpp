@@ -8,7 +8,9 @@
 #ifndef COLLISIONRESOLUTION_HPP
 #define	COLLISIONRESOLUTION_HPP
 
+#include <vector>
 #include "CollisionDetection.hpp"
+#include "GameLogicComponent.hpp"
 
 
 class MovementComponent;
@@ -17,10 +19,14 @@ class CollisionDetectionComponent;
 class CollisionResolutionComponent
 {
     MovementComponent & m_movement;
-    CollisionDetectionComponent & m_collisionDetection;
+    CollisionDetectionComponent const& m_collisionDetection;
+    std::vector< GameEvent > m_eventList;
+
+    void ClearEvents();
 
     public:
         CollisionResolutionComponent( MovementComponent & io_movement, CollisionDetectionComponent & io_collisionDetection );
+        std::vector< GameEvent > const& GetEvents() const;
         void Update();
 
 };

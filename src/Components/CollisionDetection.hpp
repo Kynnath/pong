@@ -58,13 +58,14 @@ class CollisionDetectionComponent
     BoundaryCheck m_boundaryCheck;
     bool m_collisionDetected;
 
+    void ClearCollisions();
+
     public:
         CollisionDetectionComponent( MovementComponent const& i_movement );
         void AddEntity( CollisionData const& i_data );
         BoundaryCheck const& GetBoundaryCheck() const;
         CollisionsList const& GetCollisions() const;
         bool const& CollisionDetected() const;
-        void ClearCollisions();
         void Update();
 };
 

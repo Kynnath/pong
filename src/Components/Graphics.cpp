@@ -61,6 +61,11 @@ void GraphicsComponent::AddModel( ModelID const& i_modelID, glt::Model const& i_
         glVertexAttribPointer( glt::Vertex::Position, 3, GL_FLOAT, GL_FALSE, GLsizei( sizeof( glt::Vertex ) ), 0 );
     }
     {
+        // Enable texture attribute
+        glEnableVertexAttribArray( glt::Vertex::Texture );
+        glVertexAttribPointer (glt::Vertex::Texture, 2, GL_FLOAT, GL_FALSE, GLsizei( sizeof( glt::Vertex ) ), (GLvoid const*)(sizeof(GLfloat)*6) );
+    }
+    {
         // Create index buffer object
         GLuint indexBuffer;
         glGenBuffers( 1, &indexBuffer );

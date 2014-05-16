@@ -14,13 +14,14 @@
 
 
 Application::Application()
-    : m_running ( false )
-    , m_window ()
+    : m_window ()
     , m_movement ()
     , m_ai ( m_movement )
     , m_collisionDetection ( m_movement )
     , m_collisionResolution ( m_movement, m_collisionDetection )
+    , m_gameLogic ( m_collisionResolution )
     , m_graphics ( m_movement )
+    , m_running ( false )
 {}
 
 void Application::Run()
@@ -29,7 +30,7 @@ void Application::Run()
 
     while ( m_running )
     {
-        HandleEvents();
+        ProcessInput();
         Update();
         Render();
     }
@@ -63,7 +64,7 @@ void Application::SetUp()
                              glt::Model( obj::Object( config.GetStringProperty( "Resource::Paddle::model" ) ) ) );
         m_graphics.AddModel( config.GetIntProperty( "Resource::Ball::id" ),
                              glt::Model( obj::Object( config.GetStringProperty( "Resource::Ball::model" ) ) ) );
-        //m_graphics.AddModel( 3, glt::Model( obj::Object( "resource/model/numbers.obj" ) ) );
+        m_graphics.AddModel( 3, glt::Model( obj::Object( "resource/model/numbers.obj" ) ) );
     }
 
     // Load entities
@@ -116,12 +117,22 @@ void Application::SetUp()
         m_movement.AddEntity( movementData );
         m_graphics.AddEntity( graphicsData );
         m_collisionDetection.AddEntity( collisionData );
+
+        // UI
+        movementData.m_speed[0] = 0.0f;
+        movementData.m_speed[1] = 0.0f;
+        movementData.m_entityID = 4;
+        graphicsData.m_entityID = 4;
+        graphicsData.m_modelID = 3;
+        m_movement.AddEntity( movementData );
+        m_graphics.AddEntity( graphicsData );
+
     }
 
     m_running = true;
 }
 
-void Application::HandleEvents()
+void Application::ProcessInput()
 {
     sf::Event event;
     while ( m_window.pollEvent( event ) )
@@ -169,6 +180,12 @@ void Application::Update()
     while ( m_collisionDetection.CollisionDetected() )
     {
         m_collisionResolution.Update();
+        m_gameLogic.Update();
+        if ( m_gameLogic.SignalResetLevel() )
+        {
+            ResetLevel();
+            m_gameLogic.ClearSignal();
+        }
         m_collisionDetection.Update();
     }
     m_graphics.Update();
@@ -177,6 +194,7 @@ void Application::Update()
 void Application::Render()
 {
     m_graphics.Render();
+    m_interface.Render();
     m_window.display();
 }
 
@@ -185,3 +203,26 @@ void Application::CleanUp()
     m_window.close();
 }
 
+void Application::ResetLevel()
+{
+    MovementData movementData =
+    {
+        1,
+        {
+            -15.0f, 0.0f, 0.0f
+        },
+        {
+            0.0f, 0.0f, 0.0f
+        }
+    };
+    m_movement.SetData( 1, movementData );
+
+    movementData.m_entityID = 2;
+    movementData.m_position[0] = 15.0f;
+    m_movement.SetData( 2, movementData );
+
+    movementData.m_entityID = 3;
+    movementData.m_position[0] = 0.0f;
+    movementData.m_speed = vec::Vector3{ -2.0f, 1.0f, 0.0 };
+    m_movement.SetData( 3, movementData );
+}

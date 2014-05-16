@@ -10,26 +10,31 @@
 
 #include "SFML/Window.hpp"
 #include "Components/AIComponent.hpp"
-#include "Components/Movement.hpp"
 #include "Components/CollisionDetection.hpp"
 #include "Components/CollisionResolution.hpp"
+#include "Components/GameLogicComponent.hpp"
 #include "Components/Graphics.hpp"
+#include "Components/InterfaceComponent.hpp"
+#include "Components/Movement.hpp"
 
 class Application
 {
-    bool m_running;
     sf::Window m_window;
+    InterfaceComponent m_interface;
     MovementComponent m_movement;
     AIComponent m_ai;
     CollisionDetectionComponent m_collisionDetection;
     CollisionResolutionComponent m_collisionResolution;
+    GameLogicComponent m_gameLogic;
     GraphicsComponent m_graphics;
+    bool m_running;
 
     void SetUp();
-    void HandleEvents();
+    void ProcessInput();
     void Update();
     void Render();
     void CleanUp();
+    void ResetLevel();
 
     public:
         Application();

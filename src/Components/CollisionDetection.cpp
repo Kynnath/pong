@@ -51,6 +51,7 @@ void CollisionDetectionComponent::ClearCollisions()
 
 void CollisionDetectionComponent::Update()
 {
+    ClearCollisions();
     for ( auto entity ( m_data.begin() ), end ( m_data.end() ); entity != end; ++entity )
     {
         MovementData const& entityMovData ( k_movement.GetData( entity->m_entityID ) );
