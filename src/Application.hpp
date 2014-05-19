@@ -34,6 +34,7 @@ class Application
     void Update();
     void Render();
     void CleanUp();
+    void ProcessSignals();
     void ResetLevel();
 
     public:

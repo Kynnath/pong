@@ -9,6 +9,7 @@
 #define	COLLISIONDETECTION_HPP
 
 #include <vector>
+#include "GameLogicComponent.hpp"
 #include "EntityID.hpp"
 
 struct CollisionPair
@@ -53,11 +54,13 @@ class CollisionDetectionComponent
 {
     MovementComponent const& k_movement;
     std::vector< CollisionData > m_data;
+    std::vector< GameEvent > m_eventList;
     CollisionsList m_collisions;
     BoundaryData m_boundaries;
     BoundaryCheck m_boundaryCheck;
     bool m_collisionDetected;
 
+    void ClearEvents();
     void ClearCollisions();
 
     public:
@@ -67,6 +70,7 @@ class CollisionDetectionComponent
         CollisionsList const& GetCollisions() const;
         bool const& CollisionDetected() const;
         void Update();
+        std::vector< GameEvent > const& GetEvents() const;
 };
 
 #endif	/* COLLISIONDETECTIONCOMPONENT_HPP */

@@ -8,29 +8,51 @@
 #ifndef GAMELOGICCOMPONENT_HPP
 #define	GAMELOGICCOMPONENT_HPP
 
+#include <vector>
+
+enum class PlayerInput
+{
+    e_moveUp,
+    e_moveDown,
+    e_stopMoving,
+    e_quit
+};
+
+enum class GameSignal
+{
+    e_quit,
+    e_resetLevel
+};
+
 enum class GameEvent
 {
     e_ballHitsPlayerGoalLine,
     e_ballHitsAIGoalLine
 };
 
-class CollisionResolutionComponent;
+class MovementComponent;
+class CollisionDetectionComponent;
 
 class GameLogicComponent
 {
-    CollisionResolutionComponent const& m_collisionResolution;
+    CollisionDetectionComponent const& k_collisionDetection;
+    MovementComponent & m_movement;
+    std::vector<PlayerInput> m_playerInput;
+    std::vector<GameSignal> m_signal;
     int m_playerScore;
     int m_aiScore;
-    bool m_signalResetLevel;
+
+    void ClearSignals();
 
     public:
-        GameLogicComponent( CollisionResolutionComponent const& i_collisionResolution );
+        GameLogicComponent( CollisionDetectionComponent const& i_collisionDetection, MovementComponent & i_movement );
         int const& GetPlayerScore() const;
         int const& GetAIScore() const;
         void Update();
+        void PushInput( PlayerInput const& i_input );
+        void ProcessInput();
         void ProcessEvent( GameEvent const& i_event );
-        bool const& SignalResetLevel() const;
-        void ClearSignal();
+        std::vector<GameSignal> const& GetSignals() const;
 };
 
 #endif	/* GAMELOGICCOMPONENT_HPP */

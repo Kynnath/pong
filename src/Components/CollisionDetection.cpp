@@ -52,21 +52,20 @@ void CollisionDetectionComponent::ClearCollisions()
 void CollisionDetectionComponent::Update()
 {
     ClearCollisions();
+    ClearEvents();
     for ( auto entity ( m_data.begin() ), end ( m_data.end() ); entity != end; ++entity )
     {
         MovementData const& entityMovData ( k_movement.GetData( entity->m_entityID ) );
 
         if ( entityMovData.m_position[0] + entity->m_sizeX > m_boundaries.m_right )
         {
-            m_boundaryCheck.m_entityID = entity->m_entityID;
-            m_boundaryCheck.m_side = BoundaryCheck::e_right;
-            m_collisionDetected = true;
+            // Player scores a point
+            m_eventList.push_back( GameEvent::e_ballHitsAIGoalLine );
         }
         else if ( entityMovData.m_position[0] - entity->m_sizeX < m_boundaries.m_left )
         {
-            m_boundaryCheck.m_entityID = entity->m_entityID;
-            m_boundaryCheck.m_side = BoundaryCheck::e_left;
-            m_collisionDetected = true;
+            // AI scores a point
+            m_eventList.push_back( GameEvent::e_ballHitsPlayerGoalLine );
         }
         else if ( entityMovData.m_position[1] + entity->m_sizeY > m_boundaries.m_top )
         {
@@ -93,4 +92,14 @@ void CollisionDetectionComponent::Update()
             }
         }
     }
+}
+
+std::vector< GameEvent > const& CollisionDetectionComponent::GetEvents() const
+{
+    return m_eventList;
+}
+
+void CollisionDetectionComponent::ClearEvents()
+{
+    m_eventList.clear();
 }

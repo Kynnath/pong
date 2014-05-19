@@ -19,7 +19,7 @@ Application::Application()
     , m_ai ( m_movement )
     , m_collisionDetection ( m_movement )
     , m_collisionResolution ( m_movement, m_collisionDetection )
-    , m_gameLogic ( m_collisionResolution )
+    , m_gameLogic ( m_collisionDetection, m_movement )
     , m_graphics ( m_movement )
     , m_running ( false )
 {}
@@ -119,13 +119,13 @@ void Application::SetUp()
         m_collisionDetection.AddEntity( collisionData );
 
         // UI
-        movementData.m_speed[0] = 0.0f;
+        /*movementData.m_speed[0] = 0.0f;
         movementData.m_speed[1] = 0.0f;
         movementData.m_entityID = 4;
         graphicsData.m_entityID = 4;
         graphicsData.m_modelID = 3;
         m_movement.AddEntity( movementData );
-        m_graphics.AddEntity( graphicsData );
+        m_graphics.AddEntity( graphicsData );*/
 
     }
 
@@ -138,35 +138,26 @@ void Application::ProcessInput()
     while ( m_window.pollEvent( event ) )
     {
         if ( event.type == sf::Event::Closed )
-            m_running = false;
-
+        {
+            m_gameLogic.PushInput( PlayerInput::e_quit );
+        }
         else if ( event.type == sf::Event::KeyPressed )
         {
             if ( event.key.code == sf::Keyboard::Up )
             {
-                // Set paddle speed up
-                MovementData data ( m_movement.GetData( 1 ) );
-                data.m_speed[1] = 2.0f;
-                m_movement.SetData( 1, data );
+                m_gameLogic.PushInput( PlayerInput::e_moveUp );
             }
             else if ( event.key.code == sf::Keyboard::Down )
             {
-                // Set paddle speed down
-                MovementData data ( m_movement.GetData( 1 ) );
-                data.m_speed[1] = -2.0f;
-                m_movement.SetData( 1, data );
+                m_gameLogic.PushInput( PlayerInput::e_moveDown );
             }
         }
-
         else if ( event.type == sf::Event::KeyReleased )
         {
             if ( event.key.code == sf::Keyboard::Up ||
                  event.key.code == sf::Keyboard::Down )
             {
-                // Set paddle speed 0
-                MovementData data ( m_movement.GetData( 1 ) );
-                data.m_speed[1] = 0.0f;
-                m_movement.SetData( 1, data );
+                m_gameLogic.PushInput( PlayerInput::e_stopMoving );
             }
         }
     }
@@ -174,20 +165,18 @@ void Application::ProcessInput()
 
 void Application::Update()
 {
+    m_gameLogic.ProcessInput();
     m_ai.Update();
     m_movement.Update();
     m_collisionDetection.Update();
     while ( m_collisionDetection.CollisionDetected() )
     {
         m_collisionResolution.Update();
-        m_gameLogic.Update();
-        if ( m_gameLogic.SignalResetLevel() )
-        {
-            ResetLevel();
-            m_gameLogic.ClearSignal();
-        }
         m_collisionDetection.Update();
     }
+    m_gameLogic.Update();
+    ProcessSignals();
+
     m_graphics.Update();
 }
 
@@ -201,6 +190,21 @@ void Application::Render()
 void Application::CleanUp()
 {
     m_window.close();
+}
+
+void Application::ProcessSignals()
+{
+    for ( auto const& signal : m_gameLogic.GetSignals() )
+    {
+        if ( signal == GameSignal::e_quit )
+        {
+            m_running = false;
+        }
+        else
+        {
+            ResetLevel();
+        }
+    }
 }
 
 void Application::ResetLevel()

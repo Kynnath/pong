@@ -15,20 +15,8 @@ CollisionResolutionComponent::CollisionResolutionComponent( MovementComponent & 
     , m_collisionDetection ( io_collisionDetection )
 {}
 
-std::vector< GameEvent > const& CollisionResolutionComponent::GetEvents() const
-{
-    return m_eventList;
-}
-
-void CollisionResolutionComponent::ClearEvents()
-{
-    m_eventList.clear();
-}
-
 void CollisionResolutionComponent::Update()
 {
-    ClearEvents();
-
     BoundaryCheck const& boundaryCheck ( m_collisionDetection.GetBoundaryCheck() );
     if ( boundaryCheck.m_entityID != 0 )
     {
@@ -40,16 +28,6 @@ void CollisionResolutionComponent::Update()
                 ball.m_position[1] -= ball.m_speed[1] / 60.0f;
                 ball.m_speed[1] *= -1.0f;
                 m_movement.SetData( ball.m_entityID, ball );
-            }
-            else if ( boundaryCheck.m_side == BoundaryCheck::e_left )
-            {
-                // AI scores a point
-                m_eventList.push_back( GameEvent::e_ballHitsPlayerGoalLine );
-            }
-            else
-            {
-                // Player scores a point
-                m_eventList.push_back( GameEvent::e_ballHitsAIGoalLine );
             }
         }
         else
