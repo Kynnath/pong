@@ -86,6 +86,11 @@ void GraphicsComponent::AddEntity( GraphicsData const& i_graphicsData )
     m_data.push_back( i_graphicsData );
 }
 
+void GraphicsComponent::AddElement( GraphicsData const& i_element )
+{
+    m_elements.push_back( i_element );
+}
+
 void GraphicsComponent::Render() const
 {
     glClear( GL_COLOR_BUFFER_BIT );
@@ -99,6 +104,17 @@ void GraphicsComponent::Render() const
         // Set the matrix uniform for the vertex shader
         glUniformMatrix4fv( (GLint)m_shader.m_mvpLocation, 1, GL_FALSE, &m_geometryTransform.BuildMVPMatrix( entity.m_frame ).m_data[0] );
         glDrawElements( model.m_mode, model.m_count, model.m_type, model.m_indices );
+    }
+
+    for ( auto const& element : m_elements )
+    {
+        // Select the vertex array to draw
+        assert( element.m_modelID > 0 );
+        ModelData const& model ( m_models.at( size_t( element.m_modelID - 1 ) ) );
+        glBindVertexArray( model.m_vertexArray );
+        // Set the matrix uniform for the vertex shader
+        glUniformMatrix4fv( (GLint)m_shader.m_mvpLocation, 1, GL_FALSE, &m_geometryTransform.BuildMVPMatrix( element.m_frame ).m_data[0] );
+        glDrawElements( model.m_mode, 6, model.m_type, model.m_indices );
     }
 }
 

@@ -41,6 +41,7 @@ class GraphicsComponent
 {
     std::vector< GraphicsData > m_data;
     std::vector< ModelData > m_models;
+    std::vector<GraphicsData> m_elements;
     MovementComponent const& k_movement;
     glt::Shader m_shader;
     glt::GeometryTransform m_geometryTransform;
@@ -49,6 +50,7 @@ class GraphicsComponent
         GraphicsComponent( MovementComponent const& i_movement );
         void Initialize();
         void AddModel( ModelID const& i_modelID, glt::Model const& i_model );
+        void AddElement( GraphicsData const& i_element );
         void AddEntity( GraphicsData const& i_graphicsData );
         void Update();
         void Render() const;

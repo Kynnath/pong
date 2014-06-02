@@ -14,13 +14,11 @@
 #include "Components/CollisionResolution.hpp"
 #include "Components/GameLogicComponent.hpp"
 #include "Components/Graphics.hpp"
-#include "Components/InterfaceComponent.hpp"
 #include "Components/Movement.hpp"
 
 class Application
 {
     sf::Window m_window;
-    InterfaceComponent m_interface;
     MovementComponent m_movement;
     AIComponent m_ai;
     CollisionDetectionComponent m_collisionDetection;

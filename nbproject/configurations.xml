@@ -34,8 +34,6 @@
         <itemPath>src/Components/GameLogicComponent.hpp</itemPath>
         <itemPath>src/Components/Graphics.cpp</itemPath>
         <itemPath>src/Components/Graphics.hpp</itemPath>
-        <itemPath>src/Components/InterfaceComponent.cpp</itemPath>
-        <itemPath>src/Components/InterfaceComponent.hpp</itemPath>
         <itemPath>src/Components/ModelID.cpp</itemPath>
         <itemPath>src/Components/ModelID.hpp</itemPath>
         <itemPath>src/Components/Movement.cpp</itemPath>
@@ -223,16 +221,6 @@
       </item>
       <item path="src/Components/Graphics.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/Components/InterfaceComponent.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="src/Components/InterfaceComponent.hpp"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="src/Components/ModelID.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Components/ModelID.hpp" ex="false" tool="3" flavor2="0">
@@ -337,16 +325,6 @@
       <item path="src/Components/Graphics.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Components/Graphics.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/Components/InterfaceComponent.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="src/Components/InterfaceComponent.hpp"
-            ex="false"
-            tool="3"
-            flavor2="0">
       </item>
       <item path="src/Components/ModelID.cpp" ex="false" tool="1" flavor2="0">
       </item>

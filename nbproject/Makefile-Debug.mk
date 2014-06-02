@@ -43,7 +43,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/Components/EntityID.o \
 	${OBJECTDIR}/src/Components/GameLogicComponent.o \
 	${OBJECTDIR}/src/Components/Graphics.o \
-	${OBJECTDIR}/src/Components/InterfaceComponent.o \
 	${OBJECTDIR}/src/Components/ModelID.o \
 	${OBJECTDIR}/src/Components/Movement.o \
 	${OBJECTDIR}/src/Utils/Strings.o
@@ -122,11 +121,6 @@ ${OBJECTDIR}/src/Components/Graphics.o: src/Components/Graphics.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Wall -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/include -I../libmatrix/include -I../libvector/include -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/Graphics.o src/Components/Graphics.cpp
-
-${OBJECTDIR}/src/Components/InterfaceComponent.o: src/Components/InterfaceComponent.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/Components
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/include -I../libmatrix/include -I../libvector/include -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/InterfaceComponent.o src/Components/InterfaceComponent.cpp
 
 ${OBJECTDIR}/src/Components/ModelID.o: src/Components/ModelID.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components

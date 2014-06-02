@@ -34,7 +34,7 @@ void ResolveBallPaddleCollision( MovementData & io_ball, MovementData & io_paddl
         // collision happened from front
         io_ball.m_speed[0] = -io_ball.m_speed[0];
         io_ball.m_speed[1] += io_paddle.m_speed[1];
-        if ( io_ball.m_position[0] < 0 )
+        if ( io_ball.m_position[0] < 0.0f )
         {
             io_ball.m_position[0] -= 1.0f - std::abs( io_ball.m_position[0] );
         }
@@ -46,18 +46,19 @@ void ResolveBallPaddleCollision( MovementData & io_ball, MovementData & io_paddl
     else
     {
         io_ball.m_speed[1] = -io_ball.m_speed[1];
-        if ( io_ball.m_position[1] < 0 )
+        if ( io_ball.m_position[1] < 0.0f )
         {
-            io_ball.m_position[1] -= ( 1.0f - std::abs( io_ball.m_position[1] ) ) / 2.0f;
-            io_paddle.m_position[1] += ( 1.0f - std::abs( io_ball.m_position[1] ) ) / 2.0f;
+            io_ball.m_position[1] -= ( 2.5f - std::abs( io_ball.m_position[1] ) );// / 2.0f;
+            io_paddle.m_position[1] += ( 2.5f - std::abs( io_ball.m_position[1] ) );// / 2.0f;
         }
         else
         {
-            io_ball.m_position[1] += ( 1.0f - std::abs( io_ball.m_position[1] ) ) / 2.0f;
-            io_paddle.m_position[1] -= ( 1.0f - std::abs( io_ball.m_position[1] ) ) / 2.0f;
+            io_ball.m_position[1] += ( 2.5f - std::abs( io_ball.m_position[1] ) );// / 2.0f;
+            io_paddle.m_position[1] -= ( 2.5f - std::abs( io_ball.m_position[1] ) );// / 2.0f;
         }
     }
 
+    // Return ball to game frame of reference
     io_ball.m_position.Add( io_paddle.m_position );
 
 }
@@ -112,19 +113,6 @@ void CollisionResolutionComponent::Update()
                 ResolveBallPaddleCollision( entityB, entityA );
                 m_movement.SetData( entityB.m_entityID, entityB );
             }
-
-
-
-
-            /*MovementData entityA ( m_movement.GetData( collisions.front().m_entityIDA ) );
-            entityA.m_position[0] -= entityA.m_speed[0] / 60.0f;
-            entityA.m_speed[0] *= -1.0f;
-            m_movement.SetData( entityA.m_entityID, entityA );
-
-            MovementData entityB ( m_movement.GetData( collisions.front().m_entityIDB ) );
-            entityB.m_position[0] -= entityB.m_speed[0] / 60.0f;
-            entityB.m_speed[0] *= -1.0f;
-            m_movement.SetData( entityB.m_entityID, entityB );*/
         }
     }
 }

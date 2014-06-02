@@ -117,16 +117,18 @@ void Application::SetUp()
         m_movement.AddEntity( movementData );
         m_graphics.AddEntity( graphicsData );
         m_collisionDetection.AddEntity( collisionData );
+    }
 
+    // Load interface
+    {
+        GraphicsData graphicsData =
+        {
+            4,  // entity id player score
+            { { { 0, 0, 0 } }, { { 0, 0, 1 } }, { { 0, 1, 0 } } }, // Frame
+            3 // ModelID for numbers
+        };
         // UI
-        /*movementData.m_speed[0] = 0.0f;
-        movementData.m_speed[1] = 0.0f;
-        movementData.m_entityID = 4;
-        graphicsData.m_entityID = 4;
-        graphicsData.m_modelID = 3;
-        m_movement.AddEntity( movementData );
-        m_graphics.AddEntity( graphicsData );*/
-
+        m_graphics.AddElement( graphicsData );
     }
 
     m_running = true;
@@ -183,7 +185,6 @@ void Application::Update()
 void Application::Render()
 {
     m_graphics.Render();
-    m_interface.Render();
     m_window.display();
 }
 
