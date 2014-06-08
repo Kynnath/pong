@@ -10,6 +10,7 @@
 #include <cassert>
 #include "../Utils/Strings.hpp"
 #include "GLT/Model.hpp"
+#include "TGA/tga.hpp"
 #include "Movement.hpp"
 
 GraphicsComponent::GraphicsComponent( MovementComponent const& i_movement )
@@ -60,10 +61,15 @@ void GraphicsComponent::AddModel( ModelID const& i_modelID, glt::Model const& i_
         glEnableVertexAttribArray( glt::Vertex::Position );
         glVertexAttribPointer( glt::Vertex::Position, 3, GL_FLOAT, GL_FALSE, GLsizei( sizeof( glt::Vertex ) ), 0 );
     }
+    /*{
+        // Not enabled since obj files don't hold color information
+        glEnableVertexAttribArray( glt::Vertex::Color );
+        glVertexAttribPointer( glt::Vertex::Color, 3, GL_FLOAT, GL_FALSE, GLsizei( sizeof( glt::Vertex ) ), (GLvoid const*)(sizeof(GLfloat)*3) );
+    }*/
     {
         // Enable texture attribute
         glEnableVertexAttribArray( glt::Vertex::Texture );
-        glVertexAttribPointer (glt::Vertex::Texture, 2, GL_FLOAT, GL_FALSE, GLsizei( sizeof( glt::Vertex ) ), (GLvoid const*)(sizeof(GLfloat)*6) );
+        glVertexAttribPointer( glt::Vertex::Texture, 2, GL_FLOAT, GL_FALSE, GLsizei( sizeof( glt::Vertex ) ), (GLvoid const*)(sizeof(GLfloat)*6) );
     }
     {
         // Create index buffer object
@@ -89,6 +95,48 @@ void GraphicsComponent::AddEntity( GraphicsData const& i_graphicsData )
 void GraphicsComponent::AddElement( GraphicsData const& i_element )
 {
     m_elements.push_back( i_element );
+}
+
+void GraphicsComponent::AddTexture( TextureData const& i_texture )
+{
+    TextureData texture = i_texture;
+    tga::Image image = tga::MakeImage( i_texture.m_filename );
+
+    glGenTextures(1, &texture.m_name);
+    glBindTexture(GL_TEXTURE_2D, texture.m_name);
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+
+    GLenum pixelFormat;
+    GLenum pixelType = GL_BYTE;
+    // Convert pixel format to GL approved pixel format
+    // Accepted: GL_RED, GL_RG, GL_RGB, GL_BGR, GL_RGBA, and GL_BGRA
+    // In case of tga formats ARGB or ABW we need to reorder the bytes.
+    if ( image.GetPixelFormat() == tga::PixelFormat::e_BW8 )
+    {
+        pixelFormat = GL_RED;
+    }
+    else if ( image.GetPixelFormat() == tga::PixelFormat::e_RGB24 )
+    {
+        pixelFormat = GL_RGB;
+    }
+    else if ( image.GetPixelFormat() == tga::PixelFormat::e_ARGB32 )
+    {
+        pixelFormat = GL_RGBA;
+        image.FlipAlpha();
+    }
+    else // image.GetPixelFormat() == tga::PixelFormat::e_ABW16
+    {
+        pixelFormat = GL_RG;
+        image.FlipAlpha();
+    }
+
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, image.GetWidth(), image.GetHeight(), 0, pixelFormat, pixelType, image.Data() );
+
+    m_textures.push_back( texture );
 }
 
 void GraphicsComponent::Render() const

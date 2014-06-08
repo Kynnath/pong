@@ -45,6 +45,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/Components/Graphics.o \
 	${OBJECTDIR}/src/Components/ModelID.o \
 	${OBJECTDIR}/src/Components/Movement.o \
+	${OBJECTDIR}/src/Components/TextureID.o \
 	${OBJECTDIR}/src/Utils/Strings.o
 
 
@@ -121,6 +122,11 @@ ${OBJECTDIR}/src/Components/Movement.o: src/Components/Movement.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Wall -s -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/Movement.o src/Components/Movement.cpp
+
+${OBJECTDIR}/src/Components/TextureID.o: src/Components/TextureID.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/Components
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Wall -s -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/TextureID.o src/Components/TextureID.cpp
 
 ${OBJECTDIR}/src/Utils/Strings.o: src/Utils/Strings.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Utils

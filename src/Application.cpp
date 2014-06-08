@@ -50,21 +50,26 @@ void Application::SetUp()
         std::string const& title ( config.GetStringProperty( "Window::title" ) );
 
         sf::VideoMode const mode ( (unsigned int)resolutionX , (unsigned int)resolutionY );
+        sf::ContextSettings const context { 0, 0, 0, 3, 2 };
 
-        m_window.create( mode, title );
+        m_window.create( mode, title, sf::Style::Default, context );
 
         m_window.setFramerateLimit( (unsigned int)config.GetIntProperty( "Window::framerate" ) );
         m_window.setKeyRepeatEnabled( false );
     }
 
-    {
     // Load resources
+    {
         m_graphics.Initialize();
         m_graphics.AddModel( config.GetIntProperty( "Resource::Paddle::id" ),
                              glt::Model( obj::Object( config.GetStringProperty( "Resource::Paddle::model" ) ) ) );
         m_graphics.AddModel( config.GetIntProperty( "Resource::Ball::id" ),
                              glt::Model( obj::Object( config.GetStringProperty( "Resource::Ball::model" ) ) ) );
-        m_graphics.AddModel( 3, glt::Model( obj::Object( "resource/model/numbers.obj" ) ) );
+        m_graphics.AddModel( 3, glt::Model( obj::Object( config.GetStringProperty( "Resource::Numbers::model" ) ) ) );
+        m_graphics.AddTexture( TextureData { config.GetIntProperty( "Resource::Numbers::texID" ),
+                                             config.GetStringProperty( "Resource::Numbers::texture" ),
+                                             0 } );
+
     }
 
     // Load entities
@@ -85,7 +90,8 @@ void Application::SetUp()
         {
             1,  // entity id
             { { { 0, 0, 0 } }, { { 0, 0, 1 } }, { { 0, 1, 0 } } }, // Frame
-            1 // ModelID
+            1, // ModelID
+            0
         };
         CollisionData collisionData =
         {
@@ -125,7 +131,8 @@ void Application::SetUp()
         {
             4,  // entity id player score
             { { { 0, 0, 0 } }, { { 0, 0, 1 } }, { { 0, 1, 0 } } }, // Frame
-            3 // ModelID for numbers
+            3, // ModelID for numbers
+            0
         };
         // UI
         m_graphics.AddElement( graphicsData );

@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   Strings.hpp
  * Author: juan.garibotti
  *
@@ -10,9 +10,10 @@
 
 namespace cstr
 {
-    extern char const k_windowTitle[];
-    extern char const k_posColorVertexShader[];
-    extern char const k_posColorFragmentShader[];
+    extern char const k_posVertexShader[];
+    extern char const k_posFragmentShader[];
+    extern char const k_posTextureVertexShader[];
+    extern char const k_posTextureFragmentShader[];
 }
 
 #endif	/* STRINGS_HPP */
