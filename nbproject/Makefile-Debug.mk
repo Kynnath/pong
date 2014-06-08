@@ -45,8 +45,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/Components/Graphics.o \
 	${OBJECTDIR}/src/Components/ModelID.o \
 	${OBJECTDIR}/src/Components/Movement.o \
-	${OBJECTDIR}/src/Components/TextureID.o \
-	${OBJECTDIR}/src/Utils/Strings.o
+	${OBJECTDIR}/src/Components/TextureID.o
 
 
 # C Compiler Flags
@@ -137,11 +136,6 @@ ${OBJECTDIR}/src/Components/TextureID.o: src/Components/TextureID.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Wall -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/include -I../libmatrix/include -I../libvector/include -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libtga/src -I../libtools/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/TextureID.o src/Components/TextureID.cpp
-
-${OBJECTDIR}/src/Utils/Strings.o: src/Utils/Strings.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/Utils
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/include -I../libmatrix/include -I../libvector/include -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libtga/src -I../libtools/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Utils/Strings.o src/Utils/Strings.cpp
 
 # Subprojects
 .build-subprojects:

@@ -52,8 +52,8 @@ class GraphicsComponent
     std::vector< ModelData > m_models;
     std::vector< GraphicsData > m_elements;
     std::vector< TextureData > m_textures;
+    std::vector< glt::Shader > m_shaders;
     MovementComponent const& k_movement;
-    glt::Shader m_shader;
     glt::GeometryTransform m_geometryTransform;
 
     public:

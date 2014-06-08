@@ -8,7 +8,7 @@
 #include "Graphics.hpp"
 
 #include <cassert>
-#include "../Utils/Strings.hpp"
+#include <fstream>
 #include "GLT/Model.hpp"
 #include "TGA/tga.hpp"
 #include "Movement.hpp"
@@ -27,11 +27,30 @@ void GraphicsComponent::Initialize()
     m_geometryTransform.Reset();
     m_geometryTransform.DefineOrthographicProjection( -16.0, 16.0, -10.0, 10.0, -10.0, 10.0 );
 
-    // Load shader
-    m_shader = glt::LoadShaderCode( cstr::k_posVertexShader, cstr::k_posFragmentShader );
+    // Load shaders
+    {
+        std::ifstream passThrough { "resource/shader/PassThrough.vs" };
+        std::string passThroughVertex;
+        char character = static_cast<char>( passThrough.get() );
+        while ( passThrough.good() )
+        {
+            passThroughVertex += character;
+            character = static_cast<char>( passThrough.get() );
+        }
+        passThrough.close();
+        passThrough.open( "resource/shader/PassThrough.fs" );
+        std::string passThroughFragment;
+        character = static_cast<char>( passThrough.get() );
+        while ( passThrough.good() )
+        {
+            passThroughFragment += character;
+            character = static_cast<char>( passThrough.get() );
+        }
+        m_shaders.push_back( glt::LoadShaderCode( passThroughVertex.c_str(), passThroughFragment.c_str() ) );
+    }
 
     // Bind shader
-    glUseProgram( m_shader.m_shaderID );
+    glUseProgram( m_shaders.front().m_shaderID );
 }
 
 void GraphicsComponent::AddModel( ModelID const& i_modelID, glt::Model const& i_model )
@@ -150,7 +169,7 @@ void GraphicsComponent::Render() const
         ModelData const& model ( m_models.at( size_t( entity.m_modelID - 1 ) ) );
         glBindVertexArray( model.m_vertexArray );
         // Set the matrix uniform for the vertex shader
-        glUniformMatrix4fv( (GLint)m_shader.m_mvpLocation, 1, GL_FALSE, &m_geometryTransform.BuildMVPMatrix( entity.m_frame ).m_data[0] );
+        glUniformMatrix4fv( (GLint)m_shaders.front().m_mvpLocation, 1, GL_FALSE, &m_geometryTransform.BuildMVPMatrix( entity.m_frame ).m_data[0] );
         glDrawElements( model.m_mode, model.m_count, model.m_type, model.m_indices );
     }
 
@@ -161,7 +180,7 @@ void GraphicsComponent::Render() const
         ModelData const& model ( m_models.at( size_t( element.m_modelID - 1 ) ) );
         glBindVertexArray( model.m_vertexArray );
         // Set the matrix uniform for the vertex shader
-        glUniformMatrix4fv( (GLint)m_shader.m_mvpLocation, 1, GL_FALSE, &m_geometryTransform.BuildMVPMatrix( element.m_frame ).m_data[0] );
+        glUniformMatrix4fv( (GLint)m_shaders.front().m_mvpLocation, 1, GL_FALSE, &m_geometryTransform.BuildMVPMatrix( element.m_frame ).m_data[0] );
         glDrawElements( model.m_mode, 6, model.m_type, model.m_indices );
     }
 }
