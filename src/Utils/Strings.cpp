@@ -30,6 +30,6 @@ namespace cstr
         "   fragColor = o_color;                                            \n"
         "}                                                                  \n";
 
-    extern char const k_posTextureVertexShader[] = {};
-    extern char const k_posTextureFragmentShader[] = {};
+    extern char const k_posTextureVertexShader[] = {""};
+    extern char const k_posTextureFragmentShader[] = {""};
 }

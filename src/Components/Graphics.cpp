@@ -28,7 +28,7 @@ void GraphicsComponent::Initialize()
     m_geometryTransform.DefineOrthographicProjection( -16.0, 16.0, -10.0, 10.0, -10.0, 10.0 );
 
     // Load shader
-    m_shader = glt::LoadShaderCode( cstr::k_posColorVertexShader, cstr::k_posColorFragmentShader );
+    m_shader = glt::LoadShaderCode( cstr::k_posVertexShader, cstr::k_posFragmentShader );
 
     // Bind shader
     glUseProgram( m_shader.m_shaderID );
