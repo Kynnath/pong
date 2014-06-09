@@ -29,24 +29,46 @@ void GraphicsComponent::Initialize()
 
     // Load shaders
     {
-        std::ifstream passThrough { "resource/shader/PassThrough.vs" };
-        std::string passThroughVertex;
-        char character = static_cast<char>( passThrough.get() );
-        while ( passThrough.good() )
+        std::ifstream shaderFile { "resource/shader/PassThrough.vs" };
+        std::string vertexShader;
+        char character = static_cast<char>( shaderFile.get() );
+        while ( shaderFile.good() )
         {
-            passThroughVertex += character;
-            character = static_cast<char>( passThrough.get() );
+            vertexShader += character;
+            character = static_cast<char>( shaderFile.get() );
         }
-        passThrough.close();
-        passThrough.open( "resource/shader/PassThrough.fs" );
-        std::string passThroughFragment;
-        character = static_cast<char>( passThrough.get() );
-        while ( passThrough.good() )
+        shaderFile.close();
+        shaderFile.open( "resource/shader/PassThrough.fs" );
+        std::string fragmentShader;
+        character = static_cast<char>( shaderFile.get() );
+        while ( shaderFile.good() )
         {
-            passThroughFragment += character;
-            character = static_cast<char>( passThrough.get() );
+            fragmentShader += character;
+            character = static_cast<char>( shaderFile.get() );
         }
-        m_shaders.push_back( glt::LoadShaderCode( passThroughVertex.c_str(), passThroughFragment.c_str() ) );
+        m_shaders.push_back( glt::LoadShaderCode( vertexShader.c_str(), fragmentShader.c_str() ) );
+        shaderFile.close();
+        vertexShader.clear();
+        fragmentShader.clear();
+
+        shaderFile.open( "resource/shader/Textured.fs" );
+        character = static_cast<char>( shaderFile.get() );
+        while ( shaderFile.good() )
+        {
+            vertexShader += character;
+            character = static_cast<char>( shaderFile.get() );
+        }
+        shaderFile.close();
+        shaderFile.open( "resource/shader/Textured.fs" );
+        character = static_cast<char>( shaderFile.get() );
+        while ( shaderFile.good() )
+        {
+            fragmentShader += character;
+            character = static_cast<char>( shaderFile.get() );
+        }
+        m_shaders.push_back( glt::LoadShaderCode( vertexShader.c_str(), fragmentShader.c_str() ) );
+
+
     }
 
     // Bind shader
