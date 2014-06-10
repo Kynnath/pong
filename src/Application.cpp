@@ -20,7 +20,7 @@ Application::Application()
     , m_collisionDetection ( m_movement )
     , m_collisionResolution ( m_movement, m_collisionDetection )
     , m_gameLogic ( m_collisionDetection, m_movement )
-    , m_graphics ( m_movement )
+    , m_graphics ( m_movement, m_gameLogic )
     , m_running ( false )
 {}
 

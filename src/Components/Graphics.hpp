@@ -12,6 +12,7 @@
 #include "GLT/Frame.hpp"
 #include "GLT/Shader.hpp"
 #include "GLT/GeometryTransform.hpp"
+#include "GameLogicComponent.hpp"
 #include "ModelID.hpp"
 #include "Movement.hpp"
 #include "TextureID.hpp"
@@ -54,10 +55,14 @@ class GraphicsComponent
     std::vector< TextureData > m_textures;
     std::vector< glt::Shader > m_shaders;
     MovementComponent const& k_movement;
+    GameLogicComponent const& k_gameLogic;
     glt::GeometryTransform m_geometryTransform;
 
+    int playerScoreOffset;
+    int aiScoreOffset;
+
     public:
-        GraphicsComponent( MovementComponent const& i_movement );
+        GraphicsComponent( MovementComponent const& i_movement, GameLogicComponent const& i_gameLogic );
         void Initialize();
         void AddModel( ModelID const& i_modelID, glt::Model const& i_model );
         void AddElement( GraphicsData const& i_element );

@@ -18,6 +18,16 @@ GameLogicComponent::GameLogicComponent( CollisionDetectionComponent const& i_col
     , m_aiScore ( 0 )
 {}
 
+int const& GameLogicComponent::GetPlayerScore() const
+{
+    return m_playerScore;
+}
+
+int const& GameLogicComponent::GetAIScore() const
+{
+    return m_aiScore;
+}
+
 void GameLogicComponent::Update()
 {
     for ( auto const& event : k_collisionDetection.GetEvents() )

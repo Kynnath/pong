@@ -13,8 +13,9 @@
 #include "TGA/tga.hpp"
 #include "Movement.hpp"
 
-GraphicsComponent::GraphicsComponent( MovementComponent const& i_movement )
+GraphicsComponent::GraphicsComponent( MovementComponent const& i_movement, GameLogicComponent const& i_gameLogic )
 : k_movement ( i_movement )
+, k_gameLogic ( i_gameLogic )
 {}
 
 void GraphicsComponent::Initialize()
@@ -194,17 +195,19 @@ void GraphicsComponent::Render() const
         glDrawElements( model.m_mode, model.m_count, model.m_type, model.m_indices );
     }
 
-    glBindTexture(GL_TEXTURE_2D, m_textures.front().m_name);
     glUseProgram( m_shaders.back().m_shaderID );
+    int scoreOffset { 0 };
     for ( auto const& element : m_elements )
     {
+        scoreOffset = scoreOffset? aiScoreOffset : playerScoreOffset ;
+        ++scoreOffset;
         // Select the vertex array to draw
         assert( element.m_modelID > 0 );
         ModelData const& model ( m_models.at( size_t( element.m_modelID - 1 ) ) );
         glBindVertexArray( model.m_vertexArray );
         // Set the matrix uniform for the vertex shader
         glUniformMatrix4fv( (GLint)m_shaders.back().m_mvpLocation, 1, GL_FALSE, &m_geometryTransform.BuildMVPMatrix( element.m_frame ).m_data[0] );
-        glDrawElements( model.m_mode, 6, model.m_type, model.m_indices );
+        glDrawElements( model.m_mode, 6, model.m_type, model.m_indices+scoreOffset );
     }
 }
 
@@ -217,4 +220,7 @@ void GraphicsComponent::Update()
         entity.m_frame.m_position[1] = movementData.m_position[1];
         entity.m_frame.m_position[2] = movementData.m_position[2];
     }
+
+    playerScoreOffset = k_gameLogic.GetPlayerScore()%10 * 24;
+    aiScoreOffset = k_gameLogic.GetAIScore()%10 * 24;
 }
