@@ -6,18 +6,6 @@
     </data>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/juan.garibotti/Documents/NetBeansProjects/PongClone/resource/model/numbers.obj</file>
-            <file>file:/C:/Users/juan.garibotti/Documents/NetBeansProjects/PongClone/src/Components/Graphics.hpp</file>
-            <file>file:/C:/Users/juan.garibotti/Documents/NetBeansProjects/PongClone/src/Components/Graphics.cpp</file>
-            <file>file:/C:/Users/juan.garibotti/Documents/NetBeansProjects/PongClone/src/Components/CollisionResolution.cpp</file>
-            <file>file:/C:/Users/juan.garibotti/Documents/NetBeansProjects/PongClone/resource/shader/Textured.vs</file>
-            <file>file:/C:/Users/juan.garibotti/Documents/NetBeansProjects/PongClone/src/Components/GameLogicComponent.cpp</file>
-            <file>file:/C:/Users/juan.garibotti/Documents/NetBeansProjects/PongClone/main.cpp</file>
-            <file>file:/C:/Users/juan.garibotti/Documents/NetBeansProjects/PongClone/src/Application.cpp</file>
-            <file>file:/C:/Users/juan.garibotti/Documents/NetBeansProjects/PongClone/resource/shader/PassThrough.vs</file>
-            <file>file:/C:/Users/juan.garibotti/Documents/NetBeansProjects/PongClone/src/Components/GameLogicComponent.hpp</file>
-            <file>file:/C:/Users/juan.garibotti/Documents/NetBeansProjects/PongClone/src/Application.hpp</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
