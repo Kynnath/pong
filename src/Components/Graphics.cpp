@@ -22,6 +22,8 @@ void GraphicsComponent::Initialize()
     // OpenGL settings
     glewInit();
     glClearColor( 0.0f, 0.5f, 1.0f, 1.0f );
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     // Projection settings
     m_geometryTransform.Reset();
@@ -51,7 +53,7 @@ void GraphicsComponent::Initialize()
         vertexShader.clear();
         fragmentShader.clear();
 
-        shaderFile.open( "resource/shader/Textured.fs" );
+        shaderFile.open( "resource/shader/Textured.vs" );
         character = static_cast<char>( shaderFile.get() );
         while ( shaderFile.good() )
         {
@@ -67,12 +69,8 @@ void GraphicsComponent::Initialize()
             character = static_cast<char>( shaderFile.get() );
         }
         m_shaders.push_back( glt::LoadShaderCode( vertexShader.c_str(), fragmentShader.c_str() ) );
-
-
+        glUniform1i(glGetUniformLocation(m_shaders.back().m_shaderID, "colorMap"), 0);
     }
-
-    // Bind shader
-    glUseProgram( m_shaders.front().m_shaderID );
 }
 
 void GraphicsComponent::AddModel( ModelID const& i_modelID, glt::Model const& i_model )
@@ -146,13 +144,8 @@ void GraphicsComponent::AddTexture( TextureData const& i_texture )
     glGenTextures(1, &texture.m_name);
     glBindTexture(GL_TEXTURE_2D, texture.m_name);
 
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-
     GLenum pixelFormat;
-    GLenum pixelType = GL_BYTE;
+    GLenum pixelType = GL_UNSIGNED_BYTE;
     // Convert pixel format to GL approved pixel format
     // Accepted: GL_RED, GL_RG, GL_RGB, GL_BGR, GL_RGBA, and GL_BGRA
     // In case of tga formats ARGB or ABW we need to reorder the bytes.
@@ -177,6 +170,11 @@ void GraphicsComponent::AddTexture( TextureData const& i_texture )
 
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, image.GetWidth(), image.GetHeight(), 0, pixelFormat, pixelType, image.Data() );
 
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
     m_textures.push_back( texture );
 }
 
@@ -184,6 +182,7 @@ void GraphicsComponent::Render() const
 {
     glClear( GL_COLOR_BUFFER_BIT );
 
+    glUseProgram( m_shaders.front().m_shaderID );
     for ( auto const& entity : m_data )
     {
         // Select the vertex array to draw
@@ -195,6 +194,8 @@ void GraphicsComponent::Render() const
         glDrawElements( model.m_mode, model.m_count, model.m_type, model.m_indices );
     }
 
+    glBindTexture(GL_TEXTURE_2D, m_textures.front().m_name);
+    glUseProgram( m_shaders.back().m_shaderID );
     for ( auto const& element : m_elements )
     {
         // Select the vertex array to draw
@@ -202,7 +203,7 @@ void GraphicsComponent::Render() const
         ModelData const& model ( m_models.at( size_t( element.m_modelID - 1 ) ) );
         glBindVertexArray( model.m_vertexArray );
         // Set the matrix uniform for the vertex shader
-        glUniformMatrix4fv( (GLint)m_shaders.front().m_mvpLocation, 1, GL_FALSE, &m_geometryTransform.BuildMVPMatrix( element.m_frame ).m_data[0] );
+        glUniformMatrix4fv( (GLint)m_shaders.back().m_mvpLocation, 1, GL_FALSE, &m_geometryTransform.BuildMVPMatrix( element.m_frame ).m_data[0] );
         glDrawElements( model.m_mode, 6, model.m_type, model.m_indices );
     }
 }

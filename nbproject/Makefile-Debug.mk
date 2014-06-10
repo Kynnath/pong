@@ -62,21 +62,11 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L/C/lib/glew-1.10.0/lib -L/E/lib/SFML-2.1/lib -L../../../../../lib/glew-1.10.0/lib -L../../../../../lib/SFML-2.1/lib -L/E/lib/glew-1.10.0/lib -L../libtga/dist/Debug/MinGW-Windows -L../libtools/dist/Debug/MinGW-Windows -lsfml-window-d -lsfml-system-d ../libgltools/lib/liblibgltools-d.a ../libmatrix/dist/Debug/MinGW-Windows/liblibmatrix.a ../libvector/dist/Debug/MinGW-Windows/liblibvector.a ../libobj/dist/Debug/MinGW-Windows/liblibobj.a -lglew32.dll -lopengl32 ../libconf/dist/Debug/MinGW-Windows/liblibconf.a -llibtga -llibtools
+LDLIBSOPTIONS=-L/C/lib/glew-1.10.0/lib -L/E/lib/SFML-2.1/lib -L../../../../../lib/glew-1.10.0/lib -L../../../../../lib/SFML-2.1/lib -L/E/lib/glew-1.10.0/lib -L../libtga/dist/Debug/MinGW-Windows -L../libtools/dist/Debug/MinGW-Windows -L../libmatrix/dist/Debug/MinGW-Windows -L../libconf/dist/Debug/MinGW-Windows -L../libgltools/dist/Debug/MinGW-Windows -L../libobj/dist/Debug/MinGW-Windows -L../libvector/dist/Debug/MinGW-Windows -llibobj -llibgltools -llibconf -llibvector -llibmatrix -llibtga -llibtools -lsfml-window-d -lsfml-system-d -lglew32.dll -lopengl32
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/pongclone.exe
-
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/pongclone.exe: ../libgltools/lib/liblibgltools-d.a
-
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/pongclone.exe: ../libmatrix/dist/Debug/MinGW-Windows/liblibmatrix.a
-
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/pongclone.exe: ../libvector/dist/Debug/MinGW-Windows/liblibvector.a
-
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/pongclone.exe: ../libobj/dist/Debug/MinGW-Windows/liblibobj.a
-
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/pongclone.exe: ../libconf/dist/Debug/MinGW-Windows/liblibconf.a
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/pongclone.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
@@ -139,11 +129,6 @@ ${OBJECTDIR}/src/Components/TextureID.o: src/Components/TextureID.cpp
 
 # Subprojects
 .build-subprojects:
-	cd ../libgltools && ${MAKE}  -f Makefile CONF=Debug
-	cd ../libmatrix && ${MAKE}  -f Makefile CONF=Debug
-	cd ../libvector && ${MAKE}  -f Makefile CONF=Debug
-	cd ../libobj && ${MAKE}  -f Makefile CONF=Debug
-	cd ../libconf && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
@@ -152,11 +137,6 @@ ${OBJECTDIR}/src/Components/TextureID.o: src/Components/TextureID.cpp
 
 # Subprojects
 .clean-subprojects:
-	cd ../libgltools && ${MAKE}  -f Makefile CONF=Debug clean
-	cd ../libmatrix && ${MAKE}  -f Makefile CONF=Debug clean
-	cd ../libvector && ${MAKE}  -f Makefile CONF=Debug clean
-	cd ../libobj && ${MAKE}  -f Makefile CONF=Debug clean
-	cd ../libconf && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl

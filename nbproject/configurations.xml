@@ -102,74 +102,24 @@
             <pElem>E:/lib/glew-1.10.0/lib</pElem>
             <pElem>../libtga/dist/Debug/MinGW-Windows</pElem>
             <pElem>../libtools/dist/Debug/MinGW-Windows</pElem>
+            <pElem>../libmatrix/dist/Debug/MinGW-Windows</pElem>
+            <pElem>../libconf/dist/Debug/MinGW-Windows</pElem>
+            <pElem>../libgltools/dist/Debug/MinGW-Windows</pElem>
+            <pElem>../libobj/dist/Debug/MinGW-Windows</pElem>
+            <pElem>../libvector/dist/Debug/MinGW-Windows</pElem>
           </linkerAddLib>
           <linkerLibItems>
-            <linkerLibLibItem>sfml-window-d</linkerLibLibItem>
-            <linkerLibLibItem>sfml-system-d</linkerLibLibItem>
-            <linkerLibProjectItem>
-              <makeArtifact PL="../libgltools"
-                            CT="3"
-                            CN="Debug"
-                            AC="true"
-                            BL="true"
-                            WD="../libgltools"
-                            BC="${MAKE}  -f Makefile CONF=Debug"
-                            CC="${MAKE}  -f Makefile CONF=Debug clean"
-                            OP="lib/liblibgltools-d.a">
-              </makeArtifact>
-            </linkerLibProjectItem>
-            <linkerLibProjectItem>
-              <makeArtifact PL="../libmatrix"
-                            CT="3"
-                            CN="Debug"
-                            AC="true"
-                            BL="true"
-                            WD="../libmatrix"
-                            BC="${MAKE}  -f Makefile CONF=Debug"
-                            CC="${MAKE}  -f Makefile CONF=Debug clean"
-                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/liblibmatrix.a">
-              </makeArtifact>
-            </linkerLibProjectItem>
-            <linkerLibProjectItem>
-              <makeArtifact PL="../libvector"
-                            CT="3"
-                            CN="Debug"
-                            AC="true"
-                            BL="true"
-                            WD="../libvector"
-                            BC="${MAKE}  -f Makefile CONF=Debug"
-                            CC="${MAKE}  -f Makefile CONF=Debug clean"
-                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/liblibvector.a">
-              </makeArtifact>
-            </linkerLibProjectItem>
-            <linkerLibProjectItem>
-              <makeArtifact PL="../libobj"
-                            CT="3"
-                            CN="Debug"
-                            AC="true"
-                            BL="true"
-                            WD="../libobj"
-                            BC="${MAKE}  -f Makefile CONF=Debug"
-                            CC="${MAKE}  -f Makefile CONF=Debug clean"
-                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/liblibobj.a">
-              </makeArtifact>
-            </linkerLibProjectItem>
-            <linkerLibLibItem>glew32.dll</linkerLibLibItem>
-            <linkerLibLibItem>opengl32</linkerLibLibItem>
-            <linkerLibProjectItem>
-              <makeArtifact PL="../libconf"
-                            CT="3"
-                            CN="Debug"
-                            AC="true"
-                            BL="true"
-                            WD="../libconf"
-                            BC="${MAKE}  -f Makefile CONF=Debug"
-                            CC="${MAKE}  -f Makefile CONF=Debug clean"
-                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/liblibconf.a">
-              </makeArtifact>
-            </linkerLibProjectItem>
+            <linkerLibLibItem>libobj</linkerLibLibItem>
+            <linkerLibLibItem>libgltools</linkerLibLibItem>
+            <linkerLibLibItem>libconf</linkerLibLibItem>
+            <linkerLibLibItem>libvector</linkerLibLibItem>
+            <linkerLibLibItem>libmatrix</linkerLibLibItem>
             <linkerLibLibItem>libtga</linkerLibLibItem>
             <linkerLibLibItem>libtools</linkerLibLibItem>
+            <linkerLibLibItem>sfml-window-d</linkerLibLibItem>
+            <linkerLibLibItem>sfml-system-d</linkerLibLibItem>
+            <linkerLibLibItem>glew32.dll</linkerLibLibItem>
+            <linkerLibLibItem>opengl32</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>

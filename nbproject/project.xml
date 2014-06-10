@@ -8,13 +8,7 @@
             <cpp-extensions>cpp</cpp-extensions>
             <header-extensions>hpp</header-extensions>
             <sourceEncoding>UTF-8</sourceEncoding>
-            <make-dep-projects>
-                <make-dep-project>../libmatrix</make-dep-project>
-                <make-dep-project>../libobj</make-dep-project>
-                <make-dep-project>../libvector</make-dep-project>
-                <make-dep-project>../libgltools</make-dep-project>
-                <make-dep-project>../libconf</make-dep-project>
-            </make-dep-projects>
+            <make-dep-projects/>
             <sourceRootList>
                 <sourceRootElem>src</sourceRootElem>
             </sourceRootList>
