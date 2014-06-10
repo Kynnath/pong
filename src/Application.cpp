@@ -130,11 +130,14 @@ void Application::SetUp()
         GraphicsData graphicsData =
         {
             4,  // entity id player score
-            { { { 0, 0, 0 } }, { { 0, 0, 1 } }, { { 0, 1, 0 } } }, // Frame
+            { { { -8, 8, 0 } }, { { 0, 0, 1 } }, { { 0, 1, 0 } } }, // Frame
             3, // ModelID for numbers
             0
         };
-        // UI
+        m_graphics.AddElement( graphicsData );
+
+        graphicsData.m_entityID = 5; // AI score id
+        graphicsData.m_frame.m_position = { 8, 8, 0 };
         m_graphics.AddElement( graphicsData );
     }
 

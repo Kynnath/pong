@@ -21,7 +21,7 @@ void GraphicsComponent::Initialize()
 {
     // OpenGL settings
     glewInit();
-    glClearColor( 0.0f, 0.5f, 1.0f, 1.0f );
+    glClearColor( 0.0f, 0.0f, 0.0f, 1.0f );
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
