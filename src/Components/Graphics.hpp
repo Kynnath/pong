@@ -58,8 +58,8 @@ class GraphicsComponent
     GameLogicComponent const& k_gameLogic;
     glt::GeometryTransform m_geometryTransform;
 
-    int playerScoreOffset;
-    int aiScoreOffset;
+    unsigned int playerScoreOffset;
+    unsigned int aiScoreOffset;
 
     public:
         GraphicsComponent( MovementComponent const& i_movement, GameLogicComponent const& i_gameLogic );
