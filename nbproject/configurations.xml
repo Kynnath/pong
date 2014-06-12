@@ -44,6 +44,8 @@
         <itemPath>src/Components/ModelID.hpp</itemPath>
         <itemPath>src/Components/Movement.cpp</itemPath>
         <itemPath>src/Components/Movement.hpp</itemPath>
+        <itemPath>src/Components/RNGSystem.cpp</itemPath>
+        <itemPath>src/Components/RNGSystem.hpp</itemPath>
         <itemPath>src/Components/TextureID.cpp</itemPath>
         <itemPath>src/Components/TextureID.hpp</itemPath>
       </logicalFolder>
@@ -197,6 +199,10 @@
       </item>
       <item path="src/Components/Movement.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/Components/RNGSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Components/RNGSystem.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/Components/TextureID.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Components/TextureID.hpp" ex="false" tool="3" flavor2="0">
@@ -309,6 +315,10 @@
       <item path="src/Components/Movement.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Components/Movement.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Components/RNGSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Components/RNGSystem.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/Components/TextureID.cpp" ex="false" tool="1" flavor2="0">
       </item>

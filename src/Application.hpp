@@ -8,6 +8,7 @@
 #ifndef APPLICATION_HPP
 #define	APPLICATION_HPP
 
+#include <random>
 #include "SFML/Window.hpp"
 #include "Components/AIComponent.hpp"
 #include "Components/CollisionDetection.hpp"
@@ -19,6 +20,7 @@
 class Application
 {
     sf::Window m_window;
+    std::minstd_rand m_rng;
     MovementComponent m_movement;
     AIComponent m_ai;
     CollisionDetectionComponent m_collisionDetection;
@@ -32,6 +34,7 @@ class Application
     void Update();
     void Render();
     void CleanUp();
+    
     void ProcessSignals();
     void ResetLevel();
 

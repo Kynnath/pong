@@ -142,6 +142,8 @@ void Application::SetUp()
     }
 
     m_running = true;
+
+    ResetLevel();
 }
 
 void Application::ProcessInput()
@@ -238,6 +240,8 @@ void Application::ResetLevel()
 
     movementData.m_entityID = 3;
     movementData.m_position[0] = 0.0f;
-    movementData.m_speed = vec::Vector3{ -2.0f, 1.0f, 0.0 };
+    std::uniform_real_distribution<> speedY ( -3.0f,  3.0f );
+    std::uniform_real_distribution<> speedX ( -2.0f, -4.0f );
+    movementData.m_speed = vec::Vector3{ speedX(m_rng), speedY(m_rng), 0.0 };
     m_movement.SetData( 3, movementData );
 }

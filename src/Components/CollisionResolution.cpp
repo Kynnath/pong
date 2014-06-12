@@ -42,6 +42,7 @@ void ResolveBallPaddleCollision( MovementData & io_ball, MovementData & io_paddl
         {
             io_ball.m_position[0] += 1.0f - std::abs( io_ball.m_position[0] );
         }
+        io_ball.m_speed.Scale( 1.2 );
     }
     else
     {
@@ -56,6 +57,7 @@ void ResolveBallPaddleCollision( MovementData & io_ball, MovementData & io_paddl
             io_ball.m_position[1] += ( 2.5f - std::abs( io_ball.m_position[1] ) );// / 2.0f;
             io_paddle.m_position[1] -= ( 2.5f - std::abs( io_ball.m_position[1] ) );// / 2.0f;
         }
+        io_ball.m_speed.Scale( 1.2 );
     }
 
     // Return ball to game frame of reference
