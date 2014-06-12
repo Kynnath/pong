@@ -188,7 +188,7 @@ void GraphicsComponent::Render() const
     {
         // Select the vertex array to draw
         assert( entity.m_modelID > 0 );
-        ModelData const& model ( m_models.at( size_t( entity.m_modelID - 1 ) ) );
+        ModelData const& model ( m_models.at( std::size_t( entity.m_modelID - 1 ) ) );
         glBindVertexArray( model.m_vertexArray );
         // Set the matrix uniform for the vertex shader
         glUniformMatrix4fv( (GLint)m_shaders.front().m_mvpLocation, 1, GL_FALSE, &m_geometryTransform.BuildMVPMatrix( entity.m_frame ).m_data[0] );
@@ -197,7 +197,7 @@ void GraphicsComponent::Render() const
 
     glUseProgram( m_shaders.back().m_shaderID );
     int scoreOffset { 0 };
-    std::size_t offsets[2] =
+    std::size_t const offsets[2] =
     {
         playerScoreOffset,
         aiScoreOffset
@@ -206,11 +206,11 @@ void GraphicsComponent::Render() const
     {
         // Select the vertex array to draw
         assert( element.m_modelID > 0 );
-        ModelData const& model ( m_models.at( size_t( element.m_modelID - 1 ) ) );
+        ModelData const& model ( m_models.at( std::size_t( element.m_modelID - 1 ) ) );
         glBindVertexArray( model.m_vertexArray );
         // Set the matrix uniform for the vertex shader
         glUniformMatrix4fv( (GLint)m_shaders.back().m_mvpLocation, 1, GL_FALSE, &m_geometryTransform.BuildMVPMatrix( element.m_frame ).m_data[0] );
-        glDrawElements( model.m_mode, 6, model.m_type, model.m_indices+offsets[scoreOffset] );
+        glDrawElements( model.m_mode, 6, model.m_type, reinterpret_cast<GLvoid const*>( reinterpret_cast<char const*>(model.m_indices)+offsets[scoreOffset] ) );
         ++scoreOffset;
     }
 }
@@ -225,6 +225,6 @@ void GraphicsComponent::Update()
         entity.m_frame.m_position[2] = movementData.m_position[2];
     }
 
-    playerScoreOffset = k_gameLogic.GetPlayerScore()%10 * sizeof(GL_UNSIGNED_INT) * 6;
-    aiScoreOffset = k_gameLogic.GetAIScore()%10 * sizeof(GL_UNSIGNED_INT) * 6;
+    playerScoreOffset = static_cast<size_t>(k_gameLogic.GetPlayerScore())%10 * sizeof(GL_UNSIGNED_INT) * 6;
+    aiScoreOffset = static_cast<size_t>(k_gameLogic.GetAIScore())%10 * sizeof(GL_UNSIGNED_INT) * 6;
 }

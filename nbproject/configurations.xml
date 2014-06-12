@@ -225,8 +225,17 @@
           <incDir>
             <pElem>E:/lib/SFML-2.1/include</pElem>
             <pElem>E:/lib/glew-1.10.0/include</pElem>
+            <pElem>../libgltools/include</pElem>
+            <pElem>../libmatrix/include</pElem>
+            <pElem>../libvector/include</pElem>
+            <pElem>../libobj/include</pElem>
+            <pElem>../../../../../lib/glew-1.10.0/include</pElem>
+            <pElem>../../../../../lib/SFML-2.1/include</pElem>
+            <pElem>../libconf/src</pElem>
+            <pElem>../libtga/src</pElem>
+            <pElem>../libtools/src</pElem>
           </incDir>
-          <commandLine>-Wfatal-errors -Wall -Wextra -pedantic -Winit-self -Wmissing-include-dirs -Wswitch-default -Wswitch-enum -Wfloat-equal -Wundef -Wshadow -Wcast-qual -Wcast-align -Wwrite-strings -Wconversion -Wsign-conversion -Wlogical-op -Wmissing-declarations -Wmissing-noreturn -Wmissing-format-attribute -Wpacked -Wpadded -Wredundant-decls -Wunreachable-code -Winline -Winvalid-pch -Wvolatile-register-var -Wdisabled-optimization -Wstack-protector</commandLine>
+          <commandLine>-mwindows -Wfatal-errors -Wall -Wextra -pedantic -Winit-self -Wmissing-include-dirs -Wswitch-default -Wswitch-enum -Wfloat-equal -Wshadow -Wcast-qual -Wcast-align -Wwrite-strings -Wconversion -Wsign-conversion -Wlogical-op -Wmissing-declarations -Wmissing-noreturn -Wmissing-format-attribute -Wpacked -Wredundant-decls -Wunreachable-code -Winvalid-pch -Wvolatile-register-var -Wdisabled-optimization -Wstack-protector</commandLine>
           <warningLevel>2</warningLevel>
         </ccTool>
         <fortranCompilerTool>
@@ -237,9 +246,33 @@
         </asmTool>
         <linkerTool>
           <linkerAddLib>
+            <pElem>C:/lib/glew-1.10.0/lib</pElem>
             <pElem>E:/lib/SFML-2.1/lib</pElem>
+            <pElem>../../../../../lib/glew-1.10.0/lib</pElem>
+            <pElem>../../../../../lib/SFML-2.1/lib</pElem>
+            <pElem>E:/lib/glew-1.10.0/lib</pElem>
+            <pElem>../libtga/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
+            <pElem>../libtools/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
+            <pElem>../libmatrix/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
+            <pElem>../libconf/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
+            <pElem>../libgltools/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
+            <pElem>../libobj/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
+            <pElem>../libvector/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
           </linkerAddLib>
           <stripSymbols>true</stripSymbols>
+          <linkerLibItems>
+            <linkerLibLibItem>libobj</linkerLibLibItem>
+            <linkerLibLibItem>libgltools</linkerLibLibItem>
+            <linkerLibLibItem>libconf</linkerLibLibItem>
+            <linkerLibLibItem>libvector</linkerLibLibItem>
+            <linkerLibLibItem>libmatrix</linkerLibLibItem>
+            <linkerLibLibItem>libtga</linkerLibLibItem>
+            <linkerLibLibItem>libtools</linkerLibLibItem>
+            <linkerLibLibItem>sfml-window-d</linkerLibLibItem>
+            <linkerLibLibItem>sfml-system-d</linkerLibLibItem>
+            <linkerLibLibItem>glew32.dll</linkerLibLibItem>
+            <linkerLibLibItem>opengl32</linkerLibLibItem>
+          </linkerLibItems>
         </linkerTool>
       </compileType>
       <item path="default.conf" ex="false" tool="3" flavor2="0">
