@@ -52,7 +52,7 @@ void Application::SetUp()
         sf::VideoMode const mode ( (unsigned int)resolutionX , (unsigned int)resolutionY );
         sf::ContextSettings const context { 0, 0, 0, 3, 2 };
 
-        m_window.create( mode, title, sf::Style::Default, context );
+        m_window.create( mode, title, sf::Style::None, context );
 
         m_window.setFramerateLimit( (unsigned int)config.GetIntProperty( "Window::framerate" ) );
         m_window.setKeyRepeatEnabled( false );
