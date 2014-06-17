@@ -82,9 +82,9 @@
           <incDir>
             <pElem>E:/lib/SFML-2.1/include</pElem>
             <pElem>E:/lib/glew-1.10.0/include</pElem>
-            <pElem>../libgltools/include</pElem>
+            <pElem>../libgltools/src</pElem>
             <pElem>../libmatrix/include</pElem>
-            <pElem>../libvector/include</pElem>
+            <pElem>../libvector/src</pElem>
             <pElem>../libobj/include</pElem>
             <pElem>../../../../../lib/glew-1.10.0/include</pElem>
             <pElem>../../../../../lib/SFML-2.1/include</pElem>
@@ -92,7 +92,7 @@
             <pElem>../libtga/src</pElem>
             <pElem>../libtools/src</pElem>
           </incDir>
-          <commandLine>-Wfatal-errors -Wall -Wextra -pedantic -Winit-self -Wmissing-include-dirs -Wswitch-default -Wswitch-enum -Wfloat-equal -Wshadow -Wcast-qual -Wcast-align -Wwrite-strings -Wconversion -Wsign-conversion -Wlogical-op -Wmissing-declarations -Wmissing-noreturn -Wmissing-format-attribute -Wpacked -Wredundant-decls -Wunreachable-code -Winline -Winvalid-pch -Wvolatile-register-var -Wdisabled-optimization -Wstack-protector</commandLine>
+          <commandLine>-Wfatal-errors -Wall -Wextra -pedantic -Winit-self -Wmissing-include-dirs -Wswitch-default -Wswitch-enum -Wswitch-default -Wfloat-equal -Wshadow -Wcast-qual -Wcast-align -Wwrite-strings -Wconversion -Wsign-conversion -Wlogical-op -Wmissing-declarations -Wmissing-noreturn -Wmissing-format-attribute -Wpacked -Wredundant-decls -Wunreachable-code -Winline -Winvalid-pch -Wvolatile-register-var -Wdisabled-optimization -Wstack-protector</commandLine>
           <warningLevel>2</warningLevel>
         </ccTool>
         <linkerTool>
@@ -225,9 +225,9 @@
           <incDir>
             <pElem>E:/lib/SFML-2.1/include</pElem>
             <pElem>E:/lib/glew-1.10.0/include</pElem>
-            <pElem>../libgltools/include</pElem>
+            <pElem>../libgltools/src</pElem>
             <pElem>../libmatrix/include</pElem>
-            <pElem>../libvector/include</pElem>
+            <pElem>../libvector/src</pElem>
             <pElem>../libobj/include</pElem>
             <pElem>../../../../../lib/glew-1.10.0/include</pElem>
             <pElem>../../../../../lib/SFML-2.1/include</pElem>
@@ -235,7 +235,7 @@
             <pElem>../libtga/src</pElem>
             <pElem>../libtools/src</pElem>
           </incDir>
-          <commandLine>-mwindows -Wfatal-errors -Wall -Wextra -pedantic -Winit-self -Wmissing-include-dirs -Wswitch-default -Wswitch-enum -Wfloat-equal -Wshadow -Wcast-qual -Wcast-align -Wwrite-strings -Wconversion -Wsign-conversion -Wlogical-op -Wmissing-declarations -Wmissing-noreturn -Wmissing-format-attribute -Wpacked -Wredundant-decls -Wunreachable-code -Winvalid-pch -Wvolatile-register-var -Wdisabled-optimization -Wstack-protector</commandLine>
+          <commandLine>-mwindows -Wfatal-errors -Wall -Wextra -pedantic -Winit-self -Wmissing-include-dirs -Wswitch-default -Wswitch-enum -Wswitch-default -Wfloat-equal -Wshadow -Wcast-qual -Wcast-align -Wwrite-strings -Wconversion -Wsign-conversion -Wlogical-op -Wmissing-declarations -Wmissing-noreturn -Wmissing-format-attribute -Wpacked -Wredundant-decls -Wunreachable-code -Winvalid-pch -Wvolatile-register-var -Wdisabled-optimization -Wstack-protector</commandLine>
           <warningLevel>2</warningLevel>
         </ccTool>
         <fortranCompilerTool>
@@ -261,8 +261,8 @@
           </linkerAddLib>
           <stripSymbols>true</stripSymbols>
           <linkerLibItems>
-            <linkerLibLibItem>libobj</linkerLibLibItem>
             <linkerLibLibItem>libgltools</linkerLibLibItem>
+            <linkerLibLibItem>libobj</linkerLibLibItem>
             <linkerLibLibItem>libconf</linkerLibLibItem>
             <linkerLibLibItem>libvector</linkerLibLibItem>
             <linkerLibLibItem>libmatrix</linkerLibLibItem>

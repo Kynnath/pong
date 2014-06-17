@@ -139,44 +139,21 @@ void GraphicsComponent::AddElement( GraphicsData const& i_element )
 
 void GraphicsComponent::AddTexture( TextureData const& i_texture )
 {
-    TextureData texture = i_texture;
-    tga::Image image = tga::MakeImage( i_texture.m_filename );
+    m_texes.push_back( glt::Texture { tga::MakeImage( i_texture.m_filename ) } );
+}
 
-    glGenTextures(1, &texture.m_name);
-    glBindTexture(GL_TEXTURE_2D, texture.m_name);
-
-    GLenum pixelFormat;
-    GLenum pixelType = GL_UNSIGNED_BYTE;
-    // Convert pixel format to GL approved pixel format
-    // Accepted: GL_RED, GL_RG, GL_RGB, GL_BGR, GL_RGBA, and GL_BGRA
-    // In case of tga formats ARGB or ABW we need to reorder the bytes.
-    if ( image.GetPixelFormat() == tga::PixelFormat::e_BW8 )
+void GraphicsComponent::Update()
+{
+    for ( auto & entity : m_data )
     {
-        pixelFormat = GL_RED;
-    }
-    else if ( image.GetPixelFormat() == tga::PixelFormat::e_RGB24 )
-    {
-        pixelFormat = GL_RGB;
-    }
-    else if ( image.GetPixelFormat() == tga::PixelFormat::e_ARGB32 )
-    {
-        pixelFormat = GL_RGBA;
-        image.FlipAlpha();
-    }
-    else // image.GetPixelFormat() == tga::PixelFormat::e_ABW16
-    {
-        pixelFormat = GL_RG;
-        image.FlipAlpha();
+        MovementData const& movementData ( k_movement.GetData( entity.m_entityID ) );
+        entity.m_frame.m_position[0] = movementData.m_position[0];
+        entity.m_frame.m_position[1] = movementData.m_position[1];
+        entity.m_frame.m_position[2] = movementData.m_position[2];
     }
 
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, image.GetWidth(), image.GetHeight(), 0, pixelFormat, pixelType, image.Data() );
-
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-    m_textures.push_back( texture );
+    playerScoreOffset = static_cast<size_t>(k_gameLogic.GetPlayerScore())%10 * sizeof(GL_UNSIGNED_INT) * 6;
+    aiScoreOffset = static_cast<size_t>(k_gameLogic.GetAIScore())%10 * sizeof(GL_UNSIGNED_INT) * 6;
 }
 
 void GraphicsComponent::Render() const
@@ -202,6 +179,7 @@ void GraphicsComponent::Render() const
         playerScoreOffset,
         aiScoreOffset
     };
+    glBindTexture( GL_TEXTURE_2D, m_texes.front().Name() );
     for ( auto const& element : m_elements )
     {
         // Select the vertex array to draw
@@ -213,18 +191,4 @@ void GraphicsComponent::Render() const
         glDrawElements( model.m_mode, 6, model.m_type, reinterpret_cast<GLvoid const*>( reinterpret_cast<char const*>(model.m_indices)+offsets[scoreOffset] ) );
         ++scoreOffset;
     }
-}
-
-void GraphicsComponent::Update()
-{
-    for ( auto & entity : m_data )
-    {
-        MovementData const& movementData ( k_movement.GetData( entity.m_entityID ) );
-        entity.m_frame.m_position[0] = movementData.m_position[0];
-        entity.m_frame.m_position[1] = movementData.m_position[1];
-        entity.m_frame.m_position[2] = movementData.m_position[2];
-    }
-
-    playerScoreOffset = static_cast<size_t>(k_gameLogic.GetPlayerScore())%10 * sizeof(GL_UNSIGNED_INT) * 6;
-    aiScoreOffset = static_cast<size_t>(k_gameLogic.GetAIScore())%10 * sizeof(GL_UNSIGNED_INT) * 6;
 }

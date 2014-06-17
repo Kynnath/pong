@@ -12,6 +12,7 @@
 #include "GLT/Frame.hpp"
 #include "GLT/Shader.hpp"
 #include "GLT/GeometryTransform.hpp"
+#include "GLT/Texture.hpp"
 #include "GameLogicComponent.hpp"
 #include "ModelID.hpp"
 #include "Movement.hpp"
@@ -53,6 +54,7 @@ class GraphicsComponent
     std::vector< ModelData > m_models;
     std::vector< GraphicsData > m_elements;
     std::vector< TextureData > m_textures;
+    std::vector< glt::Texture > m_texes;
     std::vector< glt::Shader > m_shaders;
     MovementComponent const& k_movement;
     GameLogicComponent const& k_gameLogic;
