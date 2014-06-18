@@ -37,14 +37,22 @@
         <itemPath>src/Components/CollisionDetection.hpp</itemPath>
         <itemPath>src/Components/CollisionResolution.cpp</itemPath>
         <itemPath>src/Components/CollisionResolution.hpp</itemPath>
+        <itemPath>src/Components/EntityId.cpp</itemPath>
+        <itemPath>src/Components/EntityId.hpp</itemPath>
         <itemPath>src/Components/GameLogicComponent.cpp</itemPath>
         <itemPath>src/Components/GameLogicComponent.hpp</itemPath>
         <itemPath>src/Components/Graphics.cpp</itemPath>
         <itemPath>src/Components/Graphics.hpp</itemPath>
+        <itemPath>src/Components/ModelId.cpp</itemPath>
+        <itemPath>src/Components/ModelId.hpp</itemPath>
         <itemPath>src/Components/Movement.cpp</itemPath>
         <itemPath>src/Components/Movement.hpp</itemPath>
         <itemPath>src/Components/RNGSystem.cpp</itemPath>
         <itemPath>src/Components/RNGSystem.hpp</itemPath>
+        <itemPath>src/Components/ShaderId.cpp</itemPath>
+        <itemPath>src/Components/ShaderId.hpp</itemPath>
+        <itemPath>src/Components/TextureId.cpp</itemPath>
+        <itemPath>src/Components/TextureId.hpp</itemPath>
       </logicalFolder>
       <itemPath>src/Application.cpp</itemPath>
       <itemPath>src/Application.hpp</itemPath>
@@ -176,6 +184,10 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="src/Components/EntityId.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Components/EntityId.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/Components/GameLogicComponent.cpp"
             ex="false"
             tool="1"
@@ -190,6 +202,10 @@
       </item>
       <item path="src/Components/Graphics.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/Components/ModelId.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Components/ModelId.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/Components/Movement.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Components/Movement.hpp" ex="false" tool="3" flavor2="0">
@@ -197,6 +213,14 @@
       <item path="src/Components/RNGSystem.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Components/RNGSystem.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Components/ShaderId.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Components/ShaderId.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Components/TextureId.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Components/TextureId.hpp" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -320,6 +344,10 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="src/Components/EntityId.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Components/EntityId.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/Components/GameLogicComponent.cpp"
             ex="false"
             tool="1"
@@ -334,6 +362,10 @@
       </item>
       <item path="src/Components/Graphics.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/Components/ModelId.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Components/ModelId.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/Components/Movement.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Components/Movement.hpp" ex="false" tool="3" flavor2="0">
@@ -341,6 +373,14 @@
       <item path="src/Components/RNGSystem.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Components/RNGSystem.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Components/ShaderId.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Components/ShaderId.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Components/TextureId.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Components/TextureId.hpp" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>
