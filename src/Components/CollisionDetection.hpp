@@ -10,7 +10,7 @@
 
 #include <vector>
 #include "GameLogicComponent.hpp"
-#include "EntityID.hpp"
+#include "EntityId.hpp"
 
 struct CollisionPair
 {

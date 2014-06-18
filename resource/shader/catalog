@@ -1,0 +1,15 @@
+[PassThroughVertex]
+    id = 1
+    file = "PassThrough.vs"
+
+[PassThroughFragment]
+    id = 2
+    file = "PassThrough.fs"
+
+[TexturedVertex]
+    id = 3
+    file = "Textured.vs"
+
+[TexturedFragment]
+    id = 4
+    file = "Textured.fs"

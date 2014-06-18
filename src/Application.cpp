@@ -60,7 +60,11 @@ void Application::SetUp()
 
     // Load resources
     {
-        m_graphics.Initialize();
+        GraphicsSettings const graphicsSettings = { config.GetStringProperty( "Catalog::models" ),
+                                                    config.GetStringProperty( "Catalog::shaders" ),
+                                                    config.GetStringProperty( "Catalog::textures" ) };
+        m_graphics.Initialize( graphicsSettings );
+        
         m_graphics.AddModel( config.GetIntProperty( "Resource::Paddle::id" ),
                              glt::Model( obj::Object( config.GetStringProperty( "Resource::Paddle::model" ) ) ) );
         m_graphics.AddModel( config.GetIntProperty( "Resource::Ball::id" ),

@@ -10,7 +10,7 @@
 
 #include <vector>
 #include "VEC/Vector3.hpp"
-#include "EntityID.hpp"
+#include "EntityId.hpp"
 
 struct MovementData
 {

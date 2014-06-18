@@ -10,6 +10,7 @@
                    projectFiles="true">
       <logicalFolder name="f1" displayName="model" projectFiles="true">
         <itemPath>resource/model/ball.obj</itemPath>
+        <itemPath>resource/model/catalog</itemPath>
         <itemPath>resource/model/numbers.obj</itemPath>
         <itemPath>resource/model/paddle.obj</itemPath>
       </logicalFolder>
@@ -18,8 +19,10 @@
         <itemPath>resource/shader/PassThrough.vs</itemPath>
         <itemPath>resource/shader/Textured.fs</itemPath>
         <itemPath>resource/shader/Textured.vs</itemPath>
+        <itemPath>resource/shader/catalog</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="texture" projectFiles="true">
+        <itemPath>resource/texture/catalog</itemPath>
         <itemPath>resource/texture/numbers.tga</itemPath>
       </logicalFolder>
       <itemPath>default.conf</itemPath>
@@ -34,8 +37,8 @@
         <itemPath>src/Components/CollisionDetection.hpp</itemPath>
         <itemPath>src/Components/CollisionResolution.cpp</itemPath>
         <itemPath>src/Components/CollisionResolution.hpp</itemPath>
-        <itemPath>src/Components/EntityID.cpp</itemPath>
-        <itemPath>src/Components/EntityID.hpp</itemPath>
+        <itemPath>src/Components/EntityId.cpp</itemPath>
+        <itemPath>src/Components/EntityId.hpp</itemPath>
         <itemPath>src/Components/GameLogicComponent.cpp</itemPath>
         <itemPath>src/Components/GameLogicComponent.hpp</itemPath>
         <itemPath>src/Components/Graphics.cpp</itemPath>
@@ -46,6 +49,8 @@
         <itemPath>src/Components/Movement.hpp</itemPath>
         <itemPath>src/Components/RNGSystem.cpp</itemPath>
         <itemPath>src/Components/RNGSystem.hpp</itemPath>
+        <itemPath>src/Components/ShaderId.cpp</itemPath>
+        <itemPath>src/Components/ShaderId.hpp</itemPath>
         <itemPath>src/Components/TextureID.cpp</itemPath>
         <itemPath>src/Components/TextureID.hpp</itemPath>
       </logicalFolder>
@@ -131,6 +136,8 @@
       </item>
       <item path="resource/model/ball.obj" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="resource/model/catalog" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="resource/model/numbers.obj" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resource/model/paddle.obj" ex="false" tool="3" flavor2="0">
@@ -142,6 +149,10 @@
       <item path="resource/shader/Textured.fs" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resource/shader/Textured.vs" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resource/shader/catalog" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resource/texture/catalog" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resource/texture/numbers.tga" ex="false" tool="3" flavor2="0">
       </item>
@@ -173,9 +184,9 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="src/Components/EntityID.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/Components/EntityId.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="src/Components/EntityID.hpp" ex="false" tool="3" flavor2="0">
+      <item path="src/Components/EntityId.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/Components/GameLogicComponent.cpp"
             ex="false"
@@ -202,6 +213,10 @@
       <item path="src/Components/RNGSystem.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Components/RNGSystem.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Components/ShaderId.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Components/ShaderId.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/Components/TextureID.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -281,6 +296,8 @@
       </item>
       <item path="resource/model/ball.obj" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="resource/model/catalog" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="resource/model/numbers.obj" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resource/model/paddle.obj" ex="false" tool="3" flavor2="0">
@@ -292,6 +309,10 @@
       <item path="resource/shader/Textured.fs" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resource/shader/Textured.vs" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resource/shader/catalog" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resource/texture/catalog" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resource/texture/numbers.tga" ex="false" tool="3" flavor2="0">
       </item>
@@ -323,9 +344,9 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="src/Components/EntityID.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/Components/EntityId.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="src/Components/EntityID.hpp" ex="false" tool="3" flavor2="0">
+      <item path="src/Components/EntityId.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/Components/GameLogicComponent.cpp"
             ex="false"
@@ -352,6 +373,10 @@
       <item path="src/Components/RNGSystem.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Components/RNGSystem.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Components/ShaderId.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Components/ShaderId.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/Components/TextureID.cpp" ex="false" tool="1" flavor2="0">
       </item>

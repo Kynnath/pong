@@ -18,13 +18,18 @@ GraphicsComponent::GraphicsComponent( MovementComponent const& i_movement, GameL
 , k_gameLogic ( i_gameLogic )
 {}
 
-void GraphicsComponent::Initialize()
+void GraphicsComponent::Initialize( GraphicsSettings const& i_settings )
 {
     // OpenGL settings
     glewInit();
     glClearColor( 0.0f, 0.0f, 0.0f, 1.0f );
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+    // Load catalogs
+    m_modelCatalog.LoadConfiguration( i_settings.m_modelCatalog );
+    m_shaderCatalog.LoadConfiguration( i_settings.m_shaderCatalog );
+    m_textureCatalog.LoadConfiguration( i_settings.m_textureCatalog );
 
     // Projection settings
     m_geometryTransform.Reset();
