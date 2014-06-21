@@ -283,8 +283,8 @@
             <linkerLibLibItem>libmatrix</linkerLibLibItem>
             <linkerLibLibItem>libtga</linkerLibLibItem>
             <linkerLibLibItem>libtools</linkerLibLibItem>
-            <linkerLibLibItem>sfml-window-d</linkerLibLibItem>
-            <linkerLibLibItem>sfml-system-d</linkerLibLibItem>
+            <linkerLibLibItem>sfml-window</linkerLibLibItem>
+            <linkerLibLibItem>sfml-system</linkerLibLibItem>
             <linkerLibLibItem>glew32.dll</linkerLibLibItem>
             <linkerLibLibItem>opengl32</linkerLibLibItem>
           </linkerLibItems>

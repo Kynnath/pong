@@ -64,7 +64,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L/C/lib/glew-1.10.0/lib -L/E/lib/SFML-2.1/lib -L../../../../../lib/glew-1.10.0/lib -L../../../../../lib/SFML-2.1/lib -L/E/lib/glew-1.10.0/lib -L../libtga/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM} -L../libtools/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM} -L../libmatrix/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM} -L../libconf/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM} -L../libgltools/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM} -L../libobj/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM} -L../libvector/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM} -llibgltools -llibobj -llibconf -llibvector -llibmatrix -llibtga -llibtools -lsfml-window-d -lsfml-system-d -lglew32.dll -lopengl32
+LDLIBSOPTIONS=-L/C/lib/glew-1.10.0/lib -L/E/lib/SFML-2.1/lib -L../../../../../lib/glew-1.10.0/lib -L../../../../../lib/SFML-2.1/lib -L/E/lib/glew-1.10.0/lib -L../libtga/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM} -L../libtools/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM} -L../libmatrix/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM} -L../libconf/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM} -L../libgltools/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM} -L../libobj/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM} -L../libvector/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM} -llibgltools -llibobj -llibconf -llibvector -llibmatrix -llibtga -llibtools -lsfml-window -lsfml-system -lglew32.dll -lopengl32
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
