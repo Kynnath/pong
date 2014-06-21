@@ -77,67 +77,67 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/pongclone.exe: ${OBJECTFILES}
 ${OBJECTDIR}/src/Application.o: src/Application.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Wall -s -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/src -I../libmatrix/include -I../libvector/src -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libtga/src -I../libtools/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Application.o src/Application.cpp
+	$(COMPILE.cc) -O2 -Wall -s -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libgltools/src -I../libmatrix/src -I../libvector/src -I../libobj/src -I../libconf/src -I../libtga/src -I../libtools/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Application.o src/Application.cpp
 
 ${OBJECTDIR}/src/Components/AIComponent.o: src/Components/AIComponent.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Wall -s -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/src -I../libmatrix/include -I../libvector/src -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libtga/src -I../libtools/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/AIComponent.o src/Components/AIComponent.cpp
+	$(COMPILE.cc) -O2 -Wall -s -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libgltools/src -I../libmatrix/src -I../libvector/src -I../libobj/src -I../libconf/src -I../libtga/src -I../libtools/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/AIComponent.o src/Components/AIComponent.cpp
 
 ${OBJECTDIR}/src/Components/CollisionDetection.o: src/Components/CollisionDetection.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Wall -s -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/src -I../libmatrix/include -I../libvector/src -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libtga/src -I../libtools/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/CollisionDetection.o src/Components/CollisionDetection.cpp
+	$(COMPILE.cc) -O2 -Wall -s -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libgltools/src -I../libmatrix/src -I../libvector/src -I../libobj/src -I../libconf/src -I../libtga/src -I../libtools/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/CollisionDetection.o src/Components/CollisionDetection.cpp
 
 ${OBJECTDIR}/src/Components/CollisionResolution.o: src/Components/CollisionResolution.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Wall -s -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/src -I../libmatrix/include -I../libvector/src -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libtga/src -I../libtools/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/CollisionResolution.o src/Components/CollisionResolution.cpp
+	$(COMPILE.cc) -O2 -Wall -s -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libgltools/src -I../libmatrix/src -I../libvector/src -I../libobj/src -I../libconf/src -I../libtga/src -I../libtools/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/CollisionResolution.o src/Components/CollisionResolution.cpp
 
 ${OBJECTDIR}/src/Components/EntityId.o: src/Components/EntityId.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Wall -s -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/src -I../libmatrix/include -I../libvector/src -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libtga/src -I../libtools/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/EntityId.o src/Components/EntityId.cpp
+	$(COMPILE.cc) -O2 -Wall -s -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libgltools/src -I../libmatrix/src -I../libvector/src -I../libobj/src -I../libconf/src -I../libtga/src -I../libtools/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/EntityId.o src/Components/EntityId.cpp
 
 ${OBJECTDIR}/src/Components/GameLogicComponent.o: src/Components/GameLogicComponent.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Wall -s -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/src -I../libmatrix/include -I../libvector/src -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libtga/src -I../libtools/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/GameLogicComponent.o src/Components/GameLogicComponent.cpp
+	$(COMPILE.cc) -O2 -Wall -s -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libgltools/src -I../libmatrix/src -I../libvector/src -I../libobj/src -I../libconf/src -I../libtga/src -I../libtools/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/GameLogicComponent.o src/Components/GameLogicComponent.cpp
 
 ${OBJECTDIR}/src/Components/Graphics.o: src/Components/Graphics.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Wall -s -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/src -I../libmatrix/include -I../libvector/src -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libtga/src -I../libtools/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/Graphics.o src/Components/Graphics.cpp
+	$(COMPILE.cc) -O2 -Wall -s -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libgltools/src -I../libmatrix/src -I../libvector/src -I../libobj/src -I../libconf/src -I../libtga/src -I../libtools/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/Graphics.o src/Components/Graphics.cpp
 
 ${OBJECTDIR}/src/Components/ModelId.o: src/Components/ModelId.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Wall -s -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/src -I../libmatrix/include -I../libvector/src -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libtga/src -I../libtools/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/ModelId.o src/Components/ModelId.cpp
+	$(COMPILE.cc) -O2 -Wall -s -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libgltools/src -I../libmatrix/src -I../libvector/src -I../libobj/src -I../libconf/src -I../libtga/src -I../libtools/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/ModelId.o src/Components/ModelId.cpp
 
 ${OBJECTDIR}/src/Components/Movement.o: src/Components/Movement.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Wall -s -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/src -I../libmatrix/include -I../libvector/src -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libtga/src -I../libtools/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/Movement.o src/Components/Movement.cpp
+	$(COMPILE.cc) -O2 -Wall -s -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libgltools/src -I../libmatrix/src -I../libvector/src -I../libobj/src -I../libconf/src -I../libtga/src -I../libtools/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/Movement.o src/Components/Movement.cpp
 
 ${OBJECTDIR}/src/Components/RNGSystem.o: src/Components/RNGSystem.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Wall -s -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/src -I../libmatrix/include -I../libvector/src -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libtga/src -I../libtools/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/RNGSystem.o src/Components/RNGSystem.cpp
+	$(COMPILE.cc) -O2 -Wall -s -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libgltools/src -I../libmatrix/src -I../libvector/src -I../libobj/src -I../libconf/src -I../libtga/src -I../libtools/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/RNGSystem.o src/Components/RNGSystem.cpp
 
 ${OBJECTDIR}/src/Components/ShaderId.o: src/Components/ShaderId.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Wall -s -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/src -I../libmatrix/include -I../libvector/src -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libtga/src -I../libtools/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/ShaderId.o src/Components/ShaderId.cpp
+	$(COMPILE.cc) -O2 -Wall -s -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libgltools/src -I../libmatrix/src -I../libvector/src -I../libobj/src -I../libconf/src -I../libtga/src -I../libtools/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/ShaderId.o src/Components/ShaderId.cpp
 
 ${OBJECTDIR}/src/Components/TextureId.o: src/Components/TextureId.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Wall -s -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/src -I../libmatrix/include -I../libvector/src -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libtga/src -I../libtools/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/TextureId.o src/Components/TextureId.cpp
+	$(COMPILE.cc) -O2 -Wall -s -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libgltools/src -I../libmatrix/src -I../libvector/src -I../libobj/src -I../libconf/src -I../libtga/src -I../libtools/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/TextureId.o src/Components/TextureId.cpp
 
 ${OBJECTDIR}/src/main.o: src/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Wall -s -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/src -I../libmatrix/include -I../libvector/src -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libtga/src -I../libtools/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main.o src/main.cpp
+	$(COMPILE.cc) -O2 -Wall -s -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libgltools/src -I../libmatrix/src -I../libvector/src -I../libobj/src -I../libconf/src -I../libtga/src -I../libtools/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main.o src/main.cpp
 
 # Subprojects
 .build-subprojects:

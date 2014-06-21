@@ -87,12 +87,12 @@
           <incDir>
             <pElem>E:/lib/SFML-2.1/include</pElem>
             <pElem>E:/lib/glew-1.10.0/include</pElem>
-            <pElem>../libgltools/src</pElem>
-            <pElem>../libmatrix/include</pElem>
-            <pElem>../libvector/src</pElem>
-            <pElem>../libobj/include</pElem>
             <pElem>../../../../../lib/glew-1.10.0/include</pElem>
             <pElem>../../../../../lib/SFML-2.1/include</pElem>
+            <pElem>../libgltools/src</pElem>
+            <pElem>../libmatrix/src</pElem>
+            <pElem>../libvector/src</pElem>
+            <pElem>../libobj/src</pElem>
             <pElem>../libconf/src</pElem>
             <pElem>../libtga/src</pElem>
             <pElem>../libtools/src</pElem>
@@ -240,12 +240,12 @@
           <incDir>
             <pElem>E:/lib/SFML-2.1/include</pElem>
             <pElem>E:/lib/glew-1.10.0/include</pElem>
-            <pElem>../libgltools/src</pElem>
-            <pElem>../libmatrix/include</pElem>
-            <pElem>../libvector/src</pElem>
-            <pElem>../libobj/include</pElem>
             <pElem>../../../../../lib/glew-1.10.0/include</pElem>
             <pElem>../../../../../lib/SFML-2.1/include</pElem>
+            <pElem>../libgltools/src</pElem>
+            <pElem>../libmatrix/src</pElem>
+            <pElem>../libvector/src</pElem>
+            <pElem>../libobj/src</pElem>
             <pElem>../libconf/src</pElem>
             <pElem>../libtga/src</pElem>
             <pElem>../libtools/src</pElem>
