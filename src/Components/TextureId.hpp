@@ -8,7 +8,7 @@
 #ifndef TEXTUREID_HPP
 #define	TEXTUREID_HPP
 
-typedef int TextureID;
+typedef int TextureId;
 
 #endif	/* TEXTUREID_HPP */
 

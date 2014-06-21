@@ -29,15 +29,15 @@ struct GraphicsSettings
 
 struct GraphicsData // Entity specific
 {
-    EntityID m_entityID;
+    EntityID m_id;
     glt::Frame m_frame;
     ModelID m_modelID;
-    TextureID m_textureID;
+    TextureId m_textureId;
 };
 
 struct ModelData // Shared between entities with the same model
 {
-    ModelID m_modelID;
+    ModelID m_id;
     GLuint m_vertexArray;
     GLenum m_mode;              // Kind of primitives to render
  	GLsizei m_count;            // Number of elements
@@ -47,9 +47,8 @@ struct ModelData // Shared between entities with the same model
 
 struct TextureData
 {
-    TextureID m_textureID;
-    std::string m_filename;
-    GLuint m_name;
+    TextureId m_id;
+    glt::Texture m_texture;
 };
 
 namespace glt
@@ -79,7 +78,7 @@ class GraphicsComponent
         void Initialize( GraphicsSettings const& i_settings );
         void AddModel( ModelID const& i_modelID, glt::Model const& i_model );
         void AddElement( GraphicsData const& i_element );
-        void AddTexture( TextureData const& i_texture );
+        void AddTexture( std::string const& i_texture );
         void AddEntity( GraphicsData const& i_graphicsData );
         void Update();
         void Render() const;

@@ -58,6 +58,7 @@ void GraphicsComponent::Initialize( GraphicsSettings const& i_settings )
         shaderFile.close();
         vertexShader.clear();
         fragmentShader.clear();
+        // Function Load shader
 
         shaderFile.open( "resource/shader/Textured.vs" );
         character = static_cast<char>( shaderFile.get() );
@@ -142,16 +143,16 @@ void GraphicsComponent::AddElement( GraphicsData const& i_element )
     m_elements.push_back( i_element );
 }
 
-void GraphicsComponent::AddTexture( TextureData const& i_texture )
+void GraphicsComponent::AddTexture( std::string const& i_texture )
 {
-    m_texes.push_back( glt::Texture { tga::MakeImage( i_texture.m_filename ) } );
+    m_texes.push_back( glt::Texture { tga::MakeImage( "resource/texture/" + m_textureCatalog.GetStringProperty( i_texture + "::file" ) ) } );
 }
 
 void GraphicsComponent::Update()
 {
     for ( auto & entity : m_data )
     {
-        MovementData const& movementData ( k_movement.GetData( entity.m_entityID ) );
+        MovementData const& movementData ( k_movement.GetData( entity.m_id ) );
         entity.m_frame.m_position[0] = movementData.m_position[0];
         entity.m_frame.m_position[1] = movementData.m_position[1];
         entity.m_frame.m_position[2] = movementData.m_position[2];

@@ -64,15 +64,13 @@ void Application::SetUp()
                                                     config.GetStringProperty( "Catalog::shaders" ),
                                                     config.GetStringProperty( "Catalog::textures" ) };
         m_graphics.Initialize( graphicsSettings );
-        
+
         m_graphics.AddModel( config.GetIntProperty( "Resource::Paddle::id" ),
                              glt::Model( obj::Object( config.GetStringProperty( "Resource::Paddle::model" ) ) ) );
         m_graphics.AddModel( config.GetIntProperty( "Resource::Ball::id" ),
                              glt::Model( obj::Object( config.GetStringProperty( "Resource::Ball::model" ) ) ) );
         m_graphics.AddModel( 3, glt::Model( obj::Object( config.GetStringProperty( "Resource::Numbers::model" ) ) ) );
-        m_graphics.AddTexture( TextureData { config.GetIntProperty( "Resource::Numbers::texID" ),
-                                             config.GetStringProperty( "Resource::Numbers::texture" ),
-                                             0 } );
+        m_graphics.AddTexture( "Id1" );
 
     }
 
@@ -109,7 +107,7 @@ void Application::SetUp()
 
         movementData.m_entityID = config.GetIntProperty( "Entity::AIPaddle::id" );
         movementData.m_position[0] = config.GetFloatProperty( "Entity::AIPaddle::positionX" );
-        graphicsData.m_entityID = config.GetIntProperty( "Entity::AIPaddle::id" );
+        graphicsData.m_id = config.GetIntProperty( "Entity::AIPaddle::id" );
         collisionData.m_entityID = config.GetIntProperty( "Entity::AIPaddle::id" );
         m_movement.AddEntity( movementData );
         m_graphics.AddEntity( graphicsData );
@@ -119,7 +117,7 @@ void Application::SetUp()
         movementData.m_position[0] = config.GetFloatProperty( "Entity::Ball::positionX" );
         movementData.m_speed[0] = -2.0f;
         movementData.m_speed[1] = -0.5f;
-        graphicsData.m_entityID = config.GetIntProperty( "Entity::Ball::id" );
+        graphicsData.m_id = config.GetIntProperty( "Entity::Ball::id" );
         graphicsData.m_modelID = config.GetIntProperty( "Entity::Ball::modelID" );
         collisionData.m_entityID = config.GetIntProperty( "Entity::Ball::id" );
         collisionData.m_sizeX = 0.5f;
@@ -140,7 +138,7 @@ void Application::SetUp()
         };
         m_graphics.AddElement( graphicsData );
 
-        graphicsData.m_entityID = 5; // AI score id
+        graphicsData.m_id = 5; // AI score id
         graphicsData.m_frame.m_position = { 8, 8, 0 };
         m_graphics.AddElement( graphicsData );
     }
