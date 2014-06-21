@@ -35,7 +35,6 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/src/Application.o \
 	${OBJECTDIR}/src/Components/AIComponent.o \
 	${OBJECTDIR}/src/Components/CollisionDetection.o \
@@ -47,7 +46,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/Components/Movement.o \
 	${OBJECTDIR}/src/Components/RNGSystem.o \
 	${OBJECTDIR}/src/Components/ShaderId.o \
-	${OBJECTDIR}/src/Components/TextureId.o
+	${OBJECTDIR}/src/Components/TextureId.o \
+	${OBJECTDIR}/src/main.o
 
 
 # C Compiler Flags
@@ -73,11 +73,6 @@ LDLIBSOPTIONS=-L/C/lib/glew-1.10.0/lib -L/E/lib/SFML-2.1/lib -L../../../../../li
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/pongclone.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/pongclone ${OBJECTFILES} ${LDLIBSOPTIONS} -s
-
-${OBJECTDIR}/main.o: main.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Wall -s -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/src -I../libmatrix/include -I../libvector/src -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libtga/src -I../libtools/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 ${OBJECTDIR}/src/Application.o: src/Application.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
@@ -138,6 +133,11 @@ ${OBJECTDIR}/src/Components/TextureId.o: src/Components/TextureId.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Wall -s -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/src -I../libmatrix/include -I../libvector/src -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libtga/src -I../libtools/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/TextureId.o src/Components/TextureId.cpp
+
+${OBJECTDIR}/src/main.o: src/main.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Wall -s -I/E/lib/SFML-2.1/include -I/E/lib/glew-1.10.0/include -I../libgltools/src -I../libmatrix/include -I../libvector/src -I../libobj/include -I../../../../../lib/glew-1.10.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libtga/src -I../libtools/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main.o src/main.cpp
 
 # Subprojects
 .build-subprojects:
