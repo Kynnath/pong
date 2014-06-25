@@ -10,6 +10,7 @@
 #include <cassert>
 #include <fstream>
 #include "GLT/Model.hpp"
+#include "FNT/Face.hpp"
 #include "TGA/tga.hpp"
 #include "Movement.hpp"
 
@@ -25,6 +26,9 @@ void GraphicsComponent::Initialize( GraphicsSettings const& i_settings )
     glClearColor( 0.0f, 0.0f, 0.0f, 1.0f );
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+    // Font init
+    fnt::Face face;
 
     // Load catalogs
     m_modelCatalog.LoadConfiguration( i_settings.m_modelCatalog );
