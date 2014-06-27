@@ -28,7 +28,7 @@ void GraphicsComponent::Initialize( GraphicsSettings const& i_settings )
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     // Font init
-    fnt::Face face;
+    fnt::Face face { "resource/font/ocraext.ttf", 12 };
 
     // Load catalogs
     m_modelCatalog.LoadConfiguration( i_settings.m_modelCatalog );
