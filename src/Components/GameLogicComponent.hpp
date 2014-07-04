@@ -47,7 +47,7 @@ class GameLogicComponent
     public:
         GameLogicComponent( CollisionDetectionComponent const& i_collisionDetection, MovementComponent & i_movement );
         int const& GetPlayerScore() const;
-        int const& GetAIScore() const;
+        int const& GetAiScore() const;
         void Update();
         void PushInput( PlayerInput const& i_input );
         void ProcessInput();

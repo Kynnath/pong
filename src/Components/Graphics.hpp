@@ -8,7 +8,9 @@
 #ifndef GRAPHICS_HPP
 #define	GRAPHICS_HPP
 
+#include <string>
 #include "CFG/Config.hpp"
+#include "FNT/Face.hpp"
 #include "GL/glew.h"
 #include "GLT/Frame.hpp"
 #include "GLT/Shader.hpp"
@@ -69,9 +71,10 @@ class GraphicsComponent
     cfg::Config m_modelCatalog;
     cfg::Config m_shaderCatalog;
     cfg::Config m_textureCatalog;
+    fnt::Face fontFace;
 
-    std::size_t playerScoreOffset;
-    std::size_t aiScoreOffset;
+    std::string playerScore;
+    std::string aiScore;
 
     public:
         GraphicsComponent( MovementComponent const& i_movement, GameLogicComponent const& i_gameLogic );

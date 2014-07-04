@@ -23,7 +23,7 @@ int const& GameLogicComponent::GetPlayerScore() const
     return m_playerScore;
 }
 
-int const& GameLogicComponent::GetAIScore() const
+int const& GameLogicComponent::GetAiScore() const
 {
     return m_aiScore;
 }

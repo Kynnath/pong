@@ -10,13 +10,13 @@
 #include <cassert>
 #include <fstream>
 #include "GLT/Model.hpp"
-#include "FNT/Face.hpp"
 #include "TGA/tga.hpp"
 #include "Movement.hpp"
 
 GraphicsComponent::GraphicsComponent( MovementComponent const& i_movement, GameLogicComponent const& i_gameLogic )
 : k_movement ( i_movement )
 , k_gameLogic ( i_gameLogic )
+, fontFace { "resource/font/ocraext.ttf", 72 }
 {}
 
 void GraphicsComponent::Initialize( GraphicsSettings const& i_settings )
@@ -27,9 +27,11 @@ void GraphicsComponent::Initialize( GraphicsSettings const& i_settings )
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    // Font init
-    fnt::Face face { "resource/font/ocraext.ttf", 12 };
-
+    char32_t numbers[11] =
+    {
+        '0','1','2','3','4','5','6','7','8','9',0
+    };
+    fontFace.LoadGlyphs( numbers );
     // Load catalogs
     m_modelCatalog.LoadConfiguration( i_settings.m_modelCatalog );
     m_shaderCatalog.LoadConfiguration( i_settings.m_shaderCatalog );
@@ -37,7 +39,7 @@ void GraphicsComponent::Initialize( GraphicsSettings const& i_settings )
 
     // Projection settings
     m_geometryTransform.Reset();
-    m_geometryTransform.DefineOrthographicProjection( -16.0, 16.0, -10.0, 10.0, -10.0, 10.0 );
+    m_geometryTransform.DefineOrthographicProjection( -16.0, 16.0, -10.0, 10.0, -1.0, 1.0 );
 
     // Load shaders
     {
@@ -80,7 +82,26 @@ void GraphicsComponent::Initialize( GraphicsSettings const& i_settings )
             character = static_cast<char>( shaderFile.get() );
         }
         m_shaders.push_back( glt::LoadShaderCode( vertexShader.c_str(), fragmentShader.c_str() ) );
-        glUniform1i(glGetUniformLocation(m_shaders.back().m_shaderID, "colorMap"), 0);
+        shaderFile.close();
+        vertexShader.clear();
+        fragmentShader.clear();
+
+        shaderFile.open( "resource/shader/Text.vs" );
+        character = static_cast<char>( shaderFile.get() );
+        while ( shaderFile.good() )
+        {
+            vertexShader += character;
+            character = static_cast<char>( shaderFile.get() );
+        }
+        shaderFile.close();
+        shaderFile.open( "resource/shader/Text.fs" );
+        character = static_cast<char>( shaderFile.get() );
+        while ( shaderFile.good() )
+        {
+            fragmentShader += character;
+            character = static_cast<char>( shaderFile.get() );
+        }
+        m_shaders.push_back( glt::LoadShaderCode( vertexShader.c_str(), fragmentShader.c_str() ) );
     }
 }
 
@@ -162,15 +183,15 @@ void GraphicsComponent::Update()
         entity.m_frame.m_position[2] = movementData.m_position[2];
     }
 
-    playerScoreOffset = static_cast<size_t>(k_gameLogic.GetPlayerScore())%10 * sizeof(GL_UNSIGNED_INT) * 6;
-    aiScoreOffset = static_cast<size_t>(k_gameLogic.GetAIScore())%10 * sizeof(GL_UNSIGNED_INT) * 6;
+    playerScore = std::to_string( k_gameLogic.GetPlayerScore() );
+    aiScore = std::to_string( k_gameLogic.GetAiScore() );
 }
 
 void GraphicsComponent::Render() const
 {
     glClear( GL_COLOR_BUFFER_BIT );
 
-    glUseProgram( m_shaders.front().m_shaderID );
+    glUseProgram( m_shaders[0].m_shaderID );
     for ( auto const& entity : m_data )
     {
         // Select the vertex array to draw
@@ -182,23 +203,28 @@ void GraphicsComponent::Render() const
         glDrawElements( model.m_mode, model.m_count, model.m_type, model.m_indices );
     }
 
-    glUseProgram( m_shaders.back().m_shaderID );
-    int scoreOffset { 0 };
-    std::size_t const offsets[2] =
+    glUseProgram( m_shaders[2].m_shaderID );
+    glt::GeometryTransform geometryTransform;
+    geometryTransform.Reset();
+    geometryTransform.DefineOrthographicProjection( 0.0, 960.0, 0.0, 600.0, -1.0, 1.0 );
+    glBindTexture( GL_TEXTURE_2D, fontFace.Texture().Name() );
+    glBindVertexArray( fontFace.VertexArray() );
+
+    glt::Frame cursor { { { 320, 500, 0 } }, { { 0, 0, 1 } }, { { 0, 1, 0 } } };
+    for ( auto const& character : playerScore )
     {
-        playerScoreOffset,
-        aiScoreOffset
-    };
-    glBindTexture( GL_TEXTURE_2D, m_texes.front().Name() );
-    for ( auto const& element : m_elements )
+        fnt::Glyph glyph = fontFace.GlyphData( character );
+        glUniformMatrix4fv( (GLint)m_shaders.back().m_mvpLocation, 1, GL_FALSE, &geometryTransform.BuildMVPMatrix( cursor ).m_data[0] );
+        glDrawElements( GL_TRIANGLES, 6, GL_UNSIGNED_INT, glyph.m_indicesOffset );
+        cursor.m_position.Add( { glyph.m_advance, 0.0, 0.0 } );
+    }
+
+    cursor.m_position = vec::Vector3{ 640, 500, 0 };
+    for ( auto const& character : aiScore )
     {
-        // Select the vertex array to draw
-        assert( element.m_modelID > 0 );
-        ModelData const& model ( m_models.at( std::size_t( element.m_modelID - 1 ) ) );
-        glBindVertexArray( model.m_vertexArray );
-        // Set the matrix uniform for the vertex shader
-        glUniformMatrix4fv( (GLint)m_shaders.back().m_mvpLocation, 1, GL_FALSE, &m_geometryTransform.BuildMVPMatrix( element.m_frame ).m_data[0] );
-        glDrawElements( model.m_mode, 6, model.m_type, reinterpret_cast<GLvoid const*>( reinterpret_cast<char const*>(model.m_indices)+offsets[scoreOffset] ) );
-        ++scoreOffset;
+        fnt::Glyph glyph = fontFace.GlyphData( character );
+        glUniformMatrix4fv( (GLint)m_shaders.back().m_mvpLocation, 1, GL_FALSE, &geometryTransform.BuildMVPMatrix( cursor ).m_data[0] );
+        glDrawElements( GL_TRIANGLES, 6, GL_UNSIGNED_INT, glyph.m_indicesOffset );
+        cursor.m_position.Add( { glyph.m_advance, 0.0, 0.0 } );
     }
 }

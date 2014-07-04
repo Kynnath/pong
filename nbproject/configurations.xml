@@ -8,6 +8,9 @@
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
                    projectFiles="true">
+      <logicalFolder name="f4" displayName="font" projectFiles="true">
+        <itemPath>resource/font/ocraext.ttf</itemPath>
+      </logicalFolder>
       <logicalFolder name="f1" displayName="model" projectFiles="true">
         <itemPath>resource/model/ball.obj</itemPath>
         <itemPath>resource/model/catalog</itemPath>
@@ -17,6 +20,8 @@
       <logicalFolder name="f3" displayName="shader" projectFiles="true">
         <itemPath>resource/shader/PassThrough.fs</itemPath>
         <itemPath>resource/shader/PassThrough.vs</itemPath>
+        <itemPath>resource/shader/Text.fs</itemPath>
+        <itemPath>resource/shader/Text.vs</itemPath>
         <itemPath>resource/shader/Textured.fs</itemPath>
         <itemPath>resource/shader/Textured.vs</itemPath>
         <itemPath>resource/shader/catalog</itemPath>
@@ -131,6 +136,8 @@
       </compileType>
       <item path="default.conf" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="resource/font/ocraext.ttf" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="resource/model/ball.obj" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resource/model/catalog" ex="false" tool="3" flavor2="0">
@@ -142,6 +149,10 @@
       <item path="resource/shader/PassThrough.fs" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resource/shader/PassThrough.vs" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resource/shader/Text.fs" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resource/shader/Text.vs" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resource/shader/Textured.fs" ex="false" tool="3" flavor2="0">
       </item>
@@ -293,6 +304,8 @@
       </compileType>
       <item path="default.conf" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="resource/font/ocraext.ttf" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="resource/model/ball.obj" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resource/model/catalog" ex="false" tool="3" flavor2="0">
@@ -304,6 +317,10 @@
       <item path="resource/shader/PassThrough.fs" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resource/shader/PassThrough.vs" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resource/shader/Text.fs" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resource/shader/Text.vs" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resource/shader/Textured.fs" ex="false" tool="3" flavor2="0">
       </item>
