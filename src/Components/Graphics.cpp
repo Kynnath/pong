@@ -173,6 +173,16 @@ void GraphicsComponent::AddTexture( std::string const& i_texture )
     m_texes.push_back( glt::Texture { tga::MakeImage( "resource/texture/" + m_textureCatalog.GetStringProperty( i_texture + "::file" ) ) } );
 }
 
+static GLfloat GetLength( std::string const& i_string, fnt::Face const& i_face )
+{
+    GLfloat length = 0;
+    for ( auto const& character : i_string )
+    {
+        length += i_face.GlyphData( static_cast<uint32_t>(character) ).m_advance;
+    }
+    return length;
+}
+
 void GraphicsComponent::Update()
 {
     for ( auto & entity : m_data )
@@ -184,7 +194,9 @@ void GraphicsComponent::Update()
     }
 
     playerScore = std::to_string( k_gameLogic.GetPlayerScore() );
+    playerScoreLength = GetLength( playerScore, fontFace );
     aiScore = std::to_string( k_gameLogic.GetAiScore() );
+    aiScoreLength = GetLength( aiScore, fontFace );
 }
 
 void GraphicsComponent::Render() const
@@ -210,19 +222,19 @@ void GraphicsComponent::Render() const
     glBindTexture( GL_TEXTURE_2D, fontFace.Texture().Name() );
     glBindVertexArray( fontFace.VertexArray() );
 
-    glt::Frame cursor { { { 320, 500, 0 } }, { { 0, 0, 1 } }, { { 0, 1, 0 } } };
+    glt::Frame cursor { { { 300.0f - ( playerScoreLength / 2.0f ), 500, 0 } }, { { 0, 0, 1 } }, { { 0, 1, 0 } } };
     for ( auto const& character : playerScore )
     {
-        fnt::Glyph glyph = fontFace.GlyphData( character );
+        fnt::Glyph glyph = fontFace.GlyphData( static_cast<uint32_t>(character) );
         glUniformMatrix4fv( (GLint)m_shaders.back().m_mvpLocation, 1, GL_FALSE, &geometryTransform.BuildMVPMatrix( cursor ).m_data[0] );
         glDrawElements( GL_TRIANGLES, 6, GL_UNSIGNED_INT, glyph.m_indicesOffset );
         cursor.m_position.Add( { glyph.m_advance, 0.0, 0.0 } );
     }
 
-    cursor.m_position = vec::Vector3{ 640, 500, 0 };
+    cursor.m_position = vec::Vector3{ 660.0f - ( aiScoreLength / 2.0f ), 500, 0 };
     for ( auto const& character : aiScore )
     {
-        fnt::Glyph glyph = fontFace.GlyphData( character );
+        fnt::Glyph glyph = fontFace.GlyphData( static_cast<uint32_t>(character) );
         glUniformMatrix4fv( (GLint)m_shaders.back().m_mvpLocation, 1, GL_FALSE, &geometryTransform.BuildMVPMatrix( cursor ).m_data[0] );
         glDrawElements( GL_TRIANGLES, 6, GL_UNSIGNED_INT, glyph.m_indicesOffset );
         cursor.m_position.Add( { glyph.m_advance, 0.0, 0.0 } );

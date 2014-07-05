@@ -74,7 +74,9 @@ class GraphicsComponent
     fnt::Face fontFace;
 
     std::string playerScore;
+    GLfloat playerScoreLength;
     std::string aiScore;
+    GLfloat aiScoreLength;
 
     public:
         GraphicsComponent( MovementComponent const& i_movement, GameLogicComponent const& i_gameLogic );
