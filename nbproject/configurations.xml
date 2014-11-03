@@ -11,6 +11,9 @@
       <logicalFolder name="f4" displayName="font" projectFiles="true">
         <itemPath>resource/font/ocraext.ttf</itemPath>
       </logicalFolder>
+      <logicalFolder name="f5" displayName="gui" projectFiles="true">
+        <itemPath>resource/gui/scores.csv</itemPath>
+      </logicalFolder>
       <logicalFolder name="f1" displayName="model" projectFiles="true">
         <itemPath>resource/model/ball.obj</itemPath>
         <itemPath>resource/model/catalog</itemPath>
@@ -137,6 +140,8 @@
       <item path="default.conf" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resource/font/ocraext.ttf" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resource/gui/scores.csv" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resource/model/ball.obj" ex="false" tool="3" flavor2="0">
       </item>
@@ -305,6 +310,8 @@
       <item path="default.conf" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resource/font/ocraext.ttf" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resource/gui/scores.csv" ex="false" tool="3" flavor2="0">
       </item>
       <item path="resource/model/ball.obj" ex="false" tool="3" flavor2="0">
       </item>
