@@ -57,7 +57,6 @@ void Application::SetUp()
         m_window.setFramerateLimit( (unsigned int)config.GetIntProperty( "Window::framerate" ) );
         m_window.setKeyRepeatEnabled( false );
     }
-
     // Load resources
     {
         GraphicsSettings const graphicsSettings = { config.GetStringProperty( "Catalog::models" ),
@@ -73,7 +72,10 @@ void Application::SetUp()
         m_graphics.AddTexture( "Id1" );
 
     }
-
+    // Initialize interface
+    {
+        m_interface.Init();
+    }
     // Load entities
     {
         MovementData movementData =
@@ -126,7 +128,6 @@ void Application::SetUp()
         m_graphics.AddEntity( graphicsData );
         m_collisionDetection.AddEntity( collisionData );
     }
-
     // Load interface
     {
         GraphicsData graphicsData =
@@ -199,6 +200,7 @@ void Application::Update()
 void Application::Render()
 {
     m_graphics.Render();
+    m_interface.Draw();
     m_window.display();
 }
 

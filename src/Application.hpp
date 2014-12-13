@@ -10,6 +10,7 @@
 
 #include <random>
 #include "SFML/Window.hpp"
+#include "GUI/Interface.hpp"
 #include "Components/AIComponent.hpp"
 #include "Components/CollisionDetection.hpp"
 #include "Components/CollisionResolution.hpp"
@@ -27,6 +28,7 @@ class Application
     CollisionResolutionComponent m_collisionResolution;
     GameLogicComponent m_gameLogic;
     GraphicsComponent m_graphics;
+    gui::Interface m_interface;
     bool m_running;
 
     void SetUp();
@@ -34,7 +36,7 @@ class Application
     void Update();
     void Render();
     void CleanUp();
-    
+
     void ProcessSignals();
     void ResetLevel();
 

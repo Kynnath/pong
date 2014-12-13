@@ -27,7 +27,7 @@ void GraphicsComponent::Initialize( GraphicsSettings const& i_settings )
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    char32_t numbers[11] =
+    char32_t numbers[] =
     {
         '0','1','2','3','4','5','6','7','8','9',0
     };
@@ -215,7 +215,7 @@ void GraphicsComponent::Render() const
         glDrawElements( model.m_mode, model.m_count, model.m_type, model.m_indices );
     }
 
-    glUseProgram( m_shaders[2].m_shaderID );
+    /*glUseProgram( m_shaders[2].m_shaderID );
     glt::GeometryTransform geometryTransform;
     geometryTransform.Reset();
     geometryTransform.DefineOrthographicProjection( 0.0, 960.0, 0.0, 600.0, -1.0, 1.0 );
@@ -238,5 +238,5 @@ void GraphicsComponent::Render() const
         glUniformMatrix4fv( (GLint)m_shaders.back().m_mvpLocation, 1, GL_FALSE, &geometryTransform.BuildMVPMatrix( cursor ).m_data[0] );
         glDrawElements( GL_TRIANGLES, 6, GL_UNSIGNED_INT, glyph.m_indicesOffset );
         cursor.m_position.Add( { glyph.m_advance, 0.0, 0.0 } );
-    }
+    }*/
 }

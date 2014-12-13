@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="94">
+<configurationDescriptor version="95">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
@@ -88,14 +88,16 @@
       </toolsSet>
       <compileType>
         <ccTool>
+          <architecture>2</architecture>
           <standard>8</standard>
           <incDir>
             <pElem>../../../../../lib/freetype-2.5.3/include</pElem>
-            <pElem>../../../../../lib/glew-1.10.0/include</pElem>
+            <pElem>../../../../../lib/glew-1.11.0/include</pElem>
             <pElem>../../../../../lib/SFML-2.1/include</pElem>
             <pElem>../libconf/src</pElem>
             <pElem>../libfont/src</pElem>
             <pElem>../libgltools/src</pElem>
+            <pElem>../libgui/src</pElem>
             <pElem>../libmatrix/src</pElem>
             <pElem>../libobj/src</pElem>
             <pElem>../libtga/src</pElem>
@@ -103,16 +105,21 @@
             <pElem>../libvector/src</pElem>
           </incDir>
           <commandLine>-Wfatal-errors -Wall -Wextra -pedantic -Winit-self -Wmissing-include-dirs -Wswitch-default -Wswitch-enum -Wswitch-default -Wfloat-equal -Wshadow -Wcast-qual -Wcast-align -Wwrite-strings -Wconversion -Wsign-conversion -Wlogical-op -Wmissing-declarations -Wmissing-noreturn -Wmissing-format-attribute -Wpacked -Wredundant-decls -Wunreachable-code -Winline -Winvalid-pch -Wvolatile-register-var -Wdisabled-optimization -Wstack-protector</commandLine>
+          <preprocessorList>
+            <Elem>GLEW_STATIC</Elem>
+          </preprocessorList>
           <warningLevel>2</warningLevel>
         </ccTool>
         <linkerTool>
           <linkerAddLib>
             <pElem>../../../../../lib/freetype-2.5.3/lib</pElem>
-            <pElem>../../../../../lib/glew-1.10.0/lib</pElem>
+            <pElem>../../../../../lib/glew-1.11.0/lib</pElem>
             <pElem>../../../../../lib/SFML-2.1/lib</pElem>
             <pElem>../libconf/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
+            <pElem>../libcsv/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
             <pElem>../libfont/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
             <pElem>../libgltools/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
+            <pElem>../libgui/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
             <pElem>../libmatrix/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
             <pElem>../libobj/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
             <pElem>../libtga/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
@@ -120,21 +127,24 @@
             <pElem>../libvector/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
           </linkerAddLib>
           <linkerLibItems>
+            <linkerLibLibItem>libgui</linkerLibLibItem>
             <linkerLibLibItem>libfont</linkerLibLibItem>
-            <linkerLibLibItem>libobj</linkerLibLibItem>
-            <linkerLibLibItem>libgltools</linkerLibLibItem>
-            <linkerLibLibItem>libconf</linkerLibLibItem>
-            <linkerLibLibItem>libvector</linkerLibLibItem>
-            <linkerLibLibItem>libmatrix</linkerLibLibItem>
-            <linkerLibLibItem>libtga</linkerLibLibItem>
-            <linkerLibLibItem>libtools</linkerLibLibItem>
-            <linkerLibLibItem>freetype</linkerLibLibItem>
             <linkerLibLibItem>sfml-window-d</linkerLibLibItem>
             <linkerLibLibItem>sfml-system-d</linkerLibLibItem>
-            <linkerLibLibItem>glew32.dll</linkerLibLibItem>
+            <linkerLibLibItem>libgltools</linkerLibLibItem>
+            <linkerLibLibItem>freetype</linkerLibLibItem>
+            <linkerLibLibItem>glew32</linkerLibLibItem>
+            <linkerLibLibItem>libtga</linkerLibLibItem>
             <linkerLibLibItem>opengl32</linkerLibLibItem>
             <linkerLibLibItem>z</linkerLibLibItem>
+            <linkerLibLibItem>libconf</linkerLibLibItem>
+            <linkerLibLibItem>libcsv</linkerLibLibItem>
+            <linkerLibLibItem>libmatrix</linkerLibLibItem>
+            <linkerLibLibItem>libobj</linkerLibLibItem>
+            <linkerLibLibItem>libtools</linkerLibLibItem>
+            <linkerLibLibItem>libvector</linkerLibLibItem>
           </linkerLibItems>
+          <commandLine>-DGLEW_STATIC</commandLine>
         </linkerTool>
       </compileType>
       <item path="default.conf" ex="false" tool="3" flavor2="0">
@@ -251,14 +261,16 @@
         <ccTool>
           <developmentMode>5</developmentMode>
           <stripSymbols>true</stripSymbols>
+          <architecture>2</architecture>
           <standard>8</standard>
           <incDir>
             <pElem>../../../../../lib/freetype-2.5.3/include</pElem>
-            <pElem>../../../../../lib/glew-1.10.0/include</pElem>
+            <pElem>../../../../../lib/glew-1.11.0/include</pElem>
             <pElem>../../../../../lib/SFML-2.1/include</pElem>
             <pElem>../libconf/src</pElem>
             <pElem>../libfont/src</pElem>
             <pElem>../libgltools/src</pElem>
+            <pElem>../libgui/src</pElem>
             <pElem>../libmatrix/src</pElem>
             <pElem>../libobj/src</pElem>
             <pElem>../libtga/src</pElem>
@@ -266,6 +278,9 @@
             <pElem>../libvector/src</pElem>
           </incDir>
           <commandLine>-mwindows -Wfatal-errors -Wall -Wextra -pedantic -Winit-self -Wmissing-include-dirs -Wswitch-default -Wswitch-enum -Wswitch-default -Wfloat-equal -Wshadow -Wcast-qual -Wcast-align -Wwrite-strings -Wconversion -Wsign-conversion -Wlogical-op -Wmissing-declarations -Wmissing-noreturn -Wmissing-format-attribute -Wpacked -Wredundant-decls -Wunreachable-code -Winvalid-pch -Wvolatile-register-var -Wdisabled-optimization -Wstack-protector</commandLine>
+          <preprocessorList>
+            <Elem>GLEW_STATIC</Elem>
+          </preprocessorList>
           <warningLevel>2</warningLevel>
         </ccTool>
         <fortranCompilerTool>
@@ -277,11 +292,13 @@
         <linkerTool>
           <linkerAddLib>
             <pElem>../../../../../lib/freetype-2.5.3/lib</pElem>
-            <pElem>../../../../../lib/glew-1.10.0/lib</pElem>
+            <pElem>../../../../../lib/glew-1.11.0/lib</pElem>
             <pElem>../../../../../lib/SFML-2.1/lib</pElem>
             <pElem>../libconf/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
+            <pElem>../libcsv/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
             <pElem>../libfont/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
             <pElem>../libgltools/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
+            <pElem>../libgui/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
             <pElem>../libmatrix/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
             <pElem>../libobj/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
             <pElem>../libtga/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
@@ -290,21 +307,24 @@
           </linkerAddLib>
           <stripSymbols>true</stripSymbols>
           <linkerLibItems>
+            <linkerLibLibItem>libgui</linkerLibLibItem>
             <linkerLibLibItem>libfont</linkerLibLibItem>
-            <linkerLibLibItem>libobj</linkerLibLibItem>
+            <linkerLibLibItem>sfml-window-d</linkerLibLibItem>
+            <linkerLibLibItem>sfml-system-d</linkerLibLibItem>
             <linkerLibLibItem>libgltools</linkerLibLibItem>
-            <linkerLibLibItem>libconf</linkerLibLibItem>
-            <linkerLibLibItem>libvector</linkerLibLibItem>
-            <linkerLibLibItem>libmatrix</linkerLibLibItem>
-            <linkerLibLibItem>libtga</linkerLibLibItem>
-            <linkerLibLibItem>libtools</linkerLibLibItem>
             <linkerLibLibItem>freetype</linkerLibLibItem>
-            <linkerLibLibItem>sfml-window</linkerLibLibItem>
-            <linkerLibLibItem>sfml-system</linkerLibLibItem>
-            <linkerLibLibItem>glew32.dll</linkerLibLibItem>
+            <linkerLibLibItem>glew32</linkerLibLibItem>
+            <linkerLibLibItem>libtga</linkerLibLibItem>
             <linkerLibLibItem>opengl32</linkerLibLibItem>
             <linkerLibLibItem>z</linkerLibLibItem>
+            <linkerLibLibItem>libconf</linkerLibLibItem>
+            <linkerLibLibItem>libcsv</linkerLibLibItem>
+            <linkerLibLibItem>libmatrix</linkerLibLibItem>
+            <linkerLibLibItem>libobj</linkerLibLibItem>
+            <linkerLibLibItem>libtools</linkerLibLibItem>
+            <linkerLibLibItem>libvector</linkerLibLibItem>
           </linkerLibItems>
+          <commandLine>-DGLEW_STATIC</commandLine>
         </linkerTool>
       </compileType>
       <item path="default.conf" ex="false" tool="3" flavor2="0">
