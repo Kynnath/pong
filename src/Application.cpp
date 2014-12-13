@@ -10,6 +10,7 @@
 #include "GL/glew.h"
 #include "CFG/Config.hpp"
 #include "GLT/Model.hpp"
+#include "GUI/GameData.hpp"
 #include "OBJ/Object.hpp"
 
 
@@ -195,6 +196,7 @@ void Application::Update()
     ProcessSignals();
 
     m_graphics.Update();
+    m_interface.Update({m_gameLogic.GetPlayerScore(),m_gameLogic.GetAiScore()});
 }
 
 void Application::Render()

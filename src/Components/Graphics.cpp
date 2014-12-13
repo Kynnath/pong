@@ -14,9 +14,9 @@
 #include "Movement.hpp"
 
 GraphicsComponent::GraphicsComponent( MovementComponent const& i_movement, GameLogicComponent const& i_gameLogic )
-: k_movement ( i_movement )
-, k_gameLogic ( i_gameLogic )
-, fontFace { "resource/font/ocraext.ttf", 72 }
+  : k_movement ( i_movement )
+  , k_gameLogic ( i_gameLogic )
+  , fontFace { "resource/font/ocraext.ttf", 72 }
 {}
 
 void GraphicsComponent::Initialize( GraphicsSettings const& i_settings )
@@ -57,8 +57,8 @@ void GraphicsComponent::Initialize( GraphicsSettings const& i_settings )
         character = static_cast<char>( shaderFile.get() );
         while ( shaderFile.good() )
         {
-            fragmentShader += character;
-            character = static_cast<char>( shaderFile.get() );
+          fragmentShader += character;
+          character = static_cast<char>( shaderFile.get() );
         }
         m_shaders.push_back( glt::LoadShaderCode( vertexShader.c_str(), fragmentShader.c_str() ) );
         shaderFile.close();
@@ -70,16 +70,16 @@ void GraphicsComponent::Initialize( GraphicsSettings const& i_settings )
         character = static_cast<char>( shaderFile.get() );
         while ( shaderFile.good() )
         {
-            vertexShader += character;
-            character = static_cast<char>( shaderFile.get() );
+          vertexShader += character;
+          character = static_cast<char>( shaderFile.get() );
         }
         shaderFile.close();
         shaderFile.open( "resource/shader/Textured.fs" );
         character = static_cast<char>( shaderFile.get() );
         while ( shaderFile.good() )
         {
-            fragmentShader += character;
-            character = static_cast<char>( shaderFile.get() );
+          fragmentShader += character;
+          character = static_cast<char>( shaderFile.get() );
         }
         m_shaders.push_back( glt::LoadShaderCode( vertexShader.c_str(), fragmentShader.c_str() ) );
         shaderFile.close();
@@ -201,42 +201,17 @@ void GraphicsComponent::Update()
 
 void GraphicsComponent::Render() const
 {
-    glClear( GL_COLOR_BUFFER_BIT );
+  glClear( GL_COLOR_BUFFER_BIT );
 
-    glUseProgram( m_shaders[0].m_shaderID );
-    for ( auto const& entity : m_data )
-    {
-        // Select the vertex array to draw
-        assert( entity.m_modelID > 0 );
-        ModelData const& model ( m_models.at( std::size_t( entity.m_modelID - 1 ) ) );
-        glBindVertexArray( model.m_vertexArray );
-        // Set the matrix uniform for the vertex shader
-        glUniformMatrix4fv( (GLint)m_shaders.front().m_mvpLocation, 1, GL_FALSE, &m_geometryTransform.BuildMVPMatrix( entity.m_frame ).m_data[0] );
-        glDrawElements( model.m_mode, model.m_count, model.m_type, model.m_indices );
-    }
-
-    /*glUseProgram( m_shaders[2].m_shaderID );
-    glt::GeometryTransform geometryTransform;
-    geometryTransform.Reset();
-    geometryTransform.DefineOrthographicProjection( 0.0, 960.0, 0.0, 600.0, -1.0, 1.0 );
-    glBindTexture( GL_TEXTURE_2D, fontFace.Texture().Name() );
-    glBindVertexArray( fontFace.VertexArray() );
-
-    glt::Frame cursor { { { 300.0f - ( playerScoreLength / 2.0f ), 500, 0 } }, { { 0, 0, 1 } }, { { 0, 1, 0 } } };
-    for ( auto const& character : playerScore )
-    {
-        fnt::Glyph glyph = fontFace.GlyphData( static_cast<uint32_t>(character) );
-        glUniformMatrix4fv( (GLint)m_shaders.back().m_mvpLocation, 1, GL_FALSE, &geometryTransform.BuildMVPMatrix( cursor ).m_data[0] );
-        glDrawElements( GL_TRIANGLES, 6, GL_UNSIGNED_INT, glyph.m_indicesOffset );
-        cursor.m_position.Add( { glyph.m_advance, 0.0, 0.0 } );
-    }
-
-    cursor.m_position = vec::Vector3{ 660.0f - ( aiScoreLength / 2.0f ), 500, 0 };
-    for ( auto const& character : aiScore )
-    {
-        fnt::Glyph glyph = fontFace.GlyphData( static_cast<uint32_t>(character) );
-        glUniformMatrix4fv( (GLint)m_shaders.back().m_mvpLocation, 1, GL_FALSE, &geometryTransform.BuildMVPMatrix( cursor ).m_data[0] );
-        glDrawElements( GL_TRIANGLES, 6, GL_UNSIGNED_INT, glyph.m_indicesOffset );
-        cursor.m_position.Add( { glyph.m_advance, 0.0, 0.0 } );
-    }*/
+  glUseProgram( m_shaders[0].m_shaderID );
+  for ( auto const& entity : m_data )
+  {
+    // Select the vertex array to draw
+    assert( entity.m_modelID > 0 );
+    ModelData const& model ( m_models.at( std::size_t( entity.m_modelID - 1 ) ) );
+    glBindVertexArray( model.m_vertexArray );
+    // Set the matrix uniform for the vertex shader
+    glUniformMatrix4fv( (GLint)m_shaders.front().m_mvpLocation, 1, GL_FALSE, &m_geometryTransform.BuildMVPMatrix( entity.m_frame ).m_data[0] );
+    glDrawElements( model.m_mode, model.m_count, model.m_type, model.m_indices );
+  }
 }
