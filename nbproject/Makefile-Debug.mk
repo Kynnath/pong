@@ -54,8 +54,8 @@ OBJECTFILES= \
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=-m64 -Wfatal-errors -Wall -Wextra -pedantic -Winit-self -Wmissing-include-dirs -Wswitch-default -Wswitch-enum -Wswitch-default -Wfloat-equal -Wshadow -Wcast-qual -Wcast-align -Wwrite-strings -Wconversion -Wsign-conversion -Wlogical-op -Wmissing-declarations -Wmissing-noreturn -Wmissing-format-attribute -Wpacked -Wredundant-decls -Wunreachable-code -Winline -Winvalid-pch -Wvolatile-register-var -Wdisabled-optimization -Wstack-protector
-CXXFLAGS=-m64 -Wfatal-errors -Wall -Wextra -pedantic -Winit-self -Wmissing-include-dirs -Wswitch-default -Wswitch-enum -Wswitch-default -Wfloat-equal -Wshadow -Wcast-qual -Wcast-align -Wwrite-strings -Wconversion -Wsign-conversion -Wlogical-op -Wmissing-declarations -Wmissing-noreturn -Wmissing-format-attribute -Wpacked -Wredundant-decls -Wunreachable-code -Winline -Winvalid-pch -Wvolatile-register-var -Wdisabled-optimization -Wstack-protector
+CCFLAGS=-m64 -Wfatal-errors -Wall -Wextra -pedantic -Winit-self -Wmissing-include-dirs -Wswitch-default -Wswitch-enum -Wswitch-default -Wfloat-equal -Wshadow -Wcast-qual -Wcast-align -Wwrite-strings -Wconversion -Wsign-conversion -Wlogical-op -Wmissing-declarations -Wmissing-noreturn -Wmissing-format-attribute -Wpacked -Wredundant-decls -Wunreachable-code -Winvalid-pch -Wvolatile-register-var -Wdisabled-optimization -Wstack-protector -std=c++1y
+CXXFLAGS=-m64 -Wfatal-errors -Wall -Wextra -pedantic -Winit-self -Wmissing-include-dirs -Wswitch-default -Wswitch-enum -Wswitch-default -Wfloat-equal -Wshadow -Wcast-qual -Wcast-align -Wwrite-strings -Wconversion -Wsign-conversion -Wlogical-op -Wmissing-declarations -Wmissing-noreturn -Wmissing-format-attribute -Wpacked -Wredundant-decls -Wunreachable-code -Winvalid-pch -Wvolatile-register-var -Wdisabled-optimization -Wstack-protector -std=c++1y
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -77,67 +77,67 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/pongclone.exe: ${OBJECTFILES}
 ${OBJECTDIR}/src/Application.o: src/Application.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DGLEW_STATIC -I../../../../../lib/freetype-2.5.3/include -I../../../../../lib/glew-1.11.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libfont/src -I../libgltools/src -I../libgui/src -I../libmatrix/src -I../libobj/src -I../libtga/src -I../libtools/src -I../libvector/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Application.o src/Application.cpp
+	$(COMPILE.cc) -g -Wall -DGLEW_STATIC -I../../../../../lib/freetype-2.5.3/include -I../../../../../lib/glew-1.11.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libfont/src -I../libgltools/src -I../libgui/src -I../libmatrix/src -I../libobj/src -I../libtga/src -I../libtools/src -I../libvector/src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Application.o src/Application.cpp
 
 ${OBJECTDIR}/src/Components/AIComponent.o: src/Components/AIComponent.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DGLEW_STATIC -I../../../../../lib/freetype-2.5.3/include -I../../../../../lib/glew-1.11.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libfont/src -I../libgltools/src -I../libgui/src -I../libmatrix/src -I../libobj/src -I../libtga/src -I../libtools/src -I../libvector/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/AIComponent.o src/Components/AIComponent.cpp
+	$(COMPILE.cc) -g -Wall -DGLEW_STATIC -I../../../../../lib/freetype-2.5.3/include -I../../../../../lib/glew-1.11.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libfont/src -I../libgltools/src -I../libgui/src -I../libmatrix/src -I../libobj/src -I../libtga/src -I../libtools/src -I../libvector/src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/AIComponent.o src/Components/AIComponent.cpp
 
 ${OBJECTDIR}/src/Components/CollisionDetection.o: src/Components/CollisionDetection.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DGLEW_STATIC -I../../../../../lib/freetype-2.5.3/include -I../../../../../lib/glew-1.11.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libfont/src -I../libgltools/src -I../libgui/src -I../libmatrix/src -I../libobj/src -I../libtga/src -I../libtools/src -I../libvector/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/CollisionDetection.o src/Components/CollisionDetection.cpp
+	$(COMPILE.cc) -g -Wall -DGLEW_STATIC -I../../../../../lib/freetype-2.5.3/include -I../../../../../lib/glew-1.11.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libfont/src -I../libgltools/src -I../libgui/src -I../libmatrix/src -I../libobj/src -I../libtga/src -I../libtools/src -I../libvector/src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/CollisionDetection.o src/Components/CollisionDetection.cpp
 
 ${OBJECTDIR}/src/Components/CollisionResolution.o: src/Components/CollisionResolution.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DGLEW_STATIC -I../../../../../lib/freetype-2.5.3/include -I../../../../../lib/glew-1.11.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libfont/src -I../libgltools/src -I../libgui/src -I../libmatrix/src -I../libobj/src -I../libtga/src -I../libtools/src -I../libvector/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/CollisionResolution.o src/Components/CollisionResolution.cpp
+	$(COMPILE.cc) -g -Wall -DGLEW_STATIC -I../../../../../lib/freetype-2.5.3/include -I../../../../../lib/glew-1.11.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libfont/src -I../libgltools/src -I../libgui/src -I../libmatrix/src -I../libobj/src -I../libtga/src -I../libtools/src -I../libvector/src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/CollisionResolution.o src/Components/CollisionResolution.cpp
 
 ${OBJECTDIR}/src/Components/EntityId.o: src/Components/EntityId.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DGLEW_STATIC -I../../../../../lib/freetype-2.5.3/include -I../../../../../lib/glew-1.11.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libfont/src -I../libgltools/src -I../libgui/src -I../libmatrix/src -I../libobj/src -I../libtga/src -I../libtools/src -I../libvector/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/EntityId.o src/Components/EntityId.cpp
+	$(COMPILE.cc) -g -Wall -DGLEW_STATIC -I../../../../../lib/freetype-2.5.3/include -I../../../../../lib/glew-1.11.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libfont/src -I../libgltools/src -I../libgui/src -I../libmatrix/src -I../libobj/src -I../libtga/src -I../libtools/src -I../libvector/src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/EntityId.o src/Components/EntityId.cpp
 
 ${OBJECTDIR}/src/Components/GameLogicComponent.o: src/Components/GameLogicComponent.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DGLEW_STATIC -I../../../../../lib/freetype-2.5.3/include -I../../../../../lib/glew-1.11.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libfont/src -I../libgltools/src -I../libgui/src -I../libmatrix/src -I../libobj/src -I../libtga/src -I../libtools/src -I../libvector/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/GameLogicComponent.o src/Components/GameLogicComponent.cpp
+	$(COMPILE.cc) -g -Wall -DGLEW_STATIC -I../../../../../lib/freetype-2.5.3/include -I../../../../../lib/glew-1.11.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libfont/src -I../libgltools/src -I../libgui/src -I../libmatrix/src -I../libobj/src -I../libtga/src -I../libtools/src -I../libvector/src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/GameLogicComponent.o src/Components/GameLogicComponent.cpp
 
 ${OBJECTDIR}/src/Components/Graphics.o: src/Components/Graphics.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DGLEW_STATIC -I../../../../../lib/freetype-2.5.3/include -I../../../../../lib/glew-1.11.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libfont/src -I../libgltools/src -I../libgui/src -I../libmatrix/src -I../libobj/src -I../libtga/src -I../libtools/src -I../libvector/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/Graphics.o src/Components/Graphics.cpp
+	$(COMPILE.cc) -g -Wall -DGLEW_STATIC -I../../../../../lib/freetype-2.5.3/include -I../../../../../lib/glew-1.11.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libfont/src -I../libgltools/src -I../libgui/src -I../libmatrix/src -I../libobj/src -I../libtga/src -I../libtools/src -I../libvector/src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/Graphics.o src/Components/Graphics.cpp
 
 ${OBJECTDIR}/src/Components/ModelId.o: src/Components/ModelId.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DGLEW_STATIC -I../../../../../lib/freetype-2.5.3/include -I../../../../../lib/glew-1.11.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libfont/src -I../libgltools/src -I../libgui/src -I../libmatrix/src -I../libobj/src -I../libtga/src -I../libtools/src -I../libvector/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/ModelId.o src/Components/ModelId.cpp
+	$(COMPILE.cc) -g -Wall -DGLEW_STATIC -I../../../../../lib/freetype-2.5.3/include -I../../../../../lib/glew-1.11.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libfont/src -I../libgltools/src -I../libgui/src -I../libmatrix/src -I../libobj/src -I../libtga/src -I../libtools/src -I../libvector/src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/ModelId.o src/Components/ModelId.cpp
 
 ${OBJECTDIR}/src/Components/Movement.o: src/Components/Movement.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DGLEW_STATIC -I../../../../../lib/freetype-2.5.3/include -I../../../../../lib/glew-1.11.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libfont/src -I../libgltools/src -I../libgui/src -I../libmatrix/src -I../libobj/src -I../libtga/src -I../libtools/src -I../libvector/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/Movement.o src/Components/Movement.cpp
+	$(COMPILE.cc) -g -Wall -DGLEW_STATIC -I../../../../../lib/freetype-2.5.3/include -I../../../../../lib/glew-1.11.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libfont/src -I../libgltools/src -I../libgui/src -I../libmatrix/src -I../libobj/src -I../libtga/src -I../libtools/src -I../libvector/src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/Movement.o src/Components/Movement.cpp
 
 ${OBJECTDIR}/src/Components/RNGSystem.o: src/Components/RNGSystem.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DGLEW_STATIC -I../../../../../lib/freetype-2.5.3/include -I../../../../../lib/glew-1.11.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libfont/src -I../libgltools/src -I../libgui/src -I../libmatrix/src -I../libobj/src -I../libtga/src -I../libtools/src -I../libvector/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/RNGSystem.o src/Components/RNGSystem.cpp
+	$(COMPILE.cc) -g -Wall -DGLEW_STATIC -I../../../../../lib/freetype-2.5.3/include -I../../../../../lib/glew-1.11.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libfont/src -I../libgltools/src -I../libgui/src -I../libmatrix/src -I../libobj/src -I../libtga/src -I../libtools/src -I../libvector/src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/RNGSystem.o src/Components/RNGSystem.cpp
 
 ${OBJECTDIR}/src/Components/ShaderId.o: src/Components/ShaderId.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DGLEW_STATIC -I../../../../../lib/freetype-2.5.3/include -I../../../../../lib/glew-1.11.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libfont/src -I../libgltools/src -I../libgui/src -I../libmatrix/src -I../libobj/src -I../libtga/src -I../libtools/src -I../libvector/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/ShaderId.o src/Components/ShaderId.cpp
+	$(COMPILE.cc) -g -Wall -DGLEW_STATIC -I../../../../../lib/freetype-2.5.3/include -I../../../../../lib/glew-1.11.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libfont/src -I../libgltools/src -I../libgui/src -I../libmatrix/src -I../libobj/src -I../libtga/src -I../libtools/src -I../libvector/src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/ShaderId.o src/Components/ShaderId.cpp
 
 ${OBJECTDIR}/src/Components/TextureId.o: src/Components/TextureId.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Components
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DGLEW_STATIC -I../../../../../lib/freetype-2.5.3/include -I../../../../../lib/glew-1.11.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libfont/src -I../libgltools/src -I../libgui/src -I../libmatrix/src -I../libobj/src -I../libtga/src -I../libtools/src -I../libvector/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/TextureId.o src/Components/TextureId.cpp
+	$(COMPILE.cc) -g -Wall -DGLEW_STATIC -I../../../../../lib/freetype-2.5.3/include -I../../../../../lib/glew-1.11.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libfont/src -I../libgltools/src -I../libgui/src -I../libmatrix/src -I../libobj/src -I../libtga/src -I../libtools/src -I../libvector/src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Components/TextureId.o src/Components/TextureId.cpp
 
 ${OBJECTDIR}/src/main.o: src/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DGLEW_STATIC -I../../../../../lib/freetype-2.5.3/include -I../../../../../lib/glew-1.11.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libfont/src -I../libgltools/src -I../libgui/src -I../libmatrix/src -I../libobj/src -I../libtga/src -I../libtools/src -I../libvector/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main.o src/main.cpp
+	$(COMPILE.cc) -g -Wall -DGLEW_STATIC -I../../../../../lib/freetype-2.5.3/include -I../../../../../lib/glew-1.11.0/include -I../../../../../lib/SFML-2.1/include -I../libconf/src -I../libfont/src -I../libgltools/src -I../libgui/src -I../libmatrix/src -I../libobj/src -I../libtga/src -I../libtools/src -I../libvector/src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main.o src/main.cpp
 
 # Subprojects
 .build-subprojects:

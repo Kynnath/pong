@@ -9,10 +9,9 @@
 
 int main()
 {
-    Application app;
+  Application app;
 
-    app.Run();
+  app.Run();
 
-    return 0;
+  return 0;
 }
-
