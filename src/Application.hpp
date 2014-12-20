@@ -11,6 +11,7 @@
 #include <random>
 #include "SFML/Window.hpp"
 #include "GUI/Interface.hpp"
+#include "MSG/Messenger.hpp"
 #include "Components/AIComponent.hpp"
 #include "Components/CollisionDetection.hpp"
 #include "Components/CollisionResolution.hpp"
@@ -20,29 +21,30 @@
 
 class Application
 {
-    sf::Window m_window;
-    std::minstd_rand m_rng;
-    MovementComponent m_movement;
-    AIComponent m_ai;
-    CollisionDetectionComponent m_collisionDetection;
-    CollisionResolutionComponent m_collisionResolution;
-    GameLogicComponent m_gameLogic;
-    GraphicsComponent m_graphics;
-    gui::Interface m_interface;
-    bool m_running;
+  msg::Messenger m_messenger;
+  sf::Window m_window;
+  std::minstd_rand m_rng;
+  MovementComponent m_movement;
+  AIComponent m_ai;
+  CollisionDetectionComponent m_collisionDetection;
+  CollisionResolutionComponent m_collisionResolution;
+  GameLogicComponent m_gameLogic;
+  GraphicsComponent m_graphics;
+  gui::Interface m_interface;
+  bool m_running;
 
-    void SetUp();
-    void ProcessInput();
-    void Update();
-    void Render();
-    void CleanUp();
+  void SetUp();
+  void ProcessInput();
+  void Update();
+  void Render();
+  void CleanUp();
 
-    void ProcessSignals();
-    void ResetLevel();
+  void ProcessSignals();
+  void ResetLevel();
 
-    public:
-        Application();
-        void Run();
+  public:
+    Application();
+    void Run();
 };
 
 #endif	/* APPLICATION_HPP */

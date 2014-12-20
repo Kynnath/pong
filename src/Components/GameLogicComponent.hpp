@@ -9,6 +9,7 @@
 #define	GAMELOGICCOMPONENT_HPP
 
 #include <vector>
+#include "MSG/Messenger.hpp"
 
 enum class PlayerInput
 {
@@ -35,24 +36,25 @@ class CollisionDetectionComponent;
 
 class GameLogicComponent
 {
-    CollisionDetectionComponent const& k_collisionDetection;
-    MovementComponent & m_movement;
-    std::vector<PlayerInput> m_playerInput;
-    std::vector<GameSignal> m_signal;
-    int m_playerScore;
-    int m_aiScore;
+  msg::Messenger & m_messenger;
+  CollisionDetectionComponent const& k_collisionDetection;
+  MovementComponent & m_movement;
+  std::vector<PlayerInput> m_playerInput;
+  std::vector<GameSignal> m_signal;
+  int m_playerScore;
+  int m_aiScore;
 
-    void ClearSignals();
+  void ClearSignals();
 
-    public:
-        GameLogicComponent( CollisionDetectionComponent const& i_collisionDetection, MovementComponent & i_movement );
-        int const& GetPlayerScore() const;
-        int const& GetAiScore() const;
-        void Update();
-        void PushInput( PlayerInput const& i_input );
-        void ProcessInput();
-        void ProcessEvent( GameEvent const& i_event );
-        std::vector<GameSignal> const& GetSignals() const;
+  public:
+    GameLogicComponent( msg::Messenger & i_messenger, CollisionDetectionComponent const& i_collisionDetection, MovementComponent & i_movement );
+    int const& GetPlayerScore() const;
+    int const& GetAiScore() const;
+    void Update();
+    void PushInput( PlayerInput const& i_input );
+    void ProcessInput();
+    void ProcessEvent( GameEvent const& i_event );
+    std::vector<GameSignal> const& GetSignals() const;
 };
 
 #endif	/* GAMELOGICCOMPONENT_HPP */

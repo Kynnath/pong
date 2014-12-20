@@ -98,6 +98,7 @@
             <pElem>../libgltools/src</pElem>
             <pElem>../libgui/src</pElem>
             <pElem>../libmatrix/src</pElem>
+            <pElem>../libmessenger/src</pElem>
             <pElem>../libobj/src</pElem>
             <pElem>../libtga/src</pElem>
             <pElem>../libtools/src</pElem>
@@ -120,6 +121,7 @@
             <pElem>../libgltools/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
             <pElem>../libgui/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
             <pElem>../libmatrix/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
+            <pElem>../libmessenger/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
             <pElem>../libobj/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
             <pElem>../libtga/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
             <pElem>../libtools/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
@@ -139,6 +141,7 @@
             <linkerLibLibItem>libconf</linkerLibLibItem>
             <linkerLibLibItem>libcsv</linkerLibLibItem>
             <linkerLibLibItem>libmatrix</linkerLibLibItem>
+            <linkerLibLibItem>libmessenger</linkerLibLibItem>
             <linkerLibLibItem>libobj</linkerLibLibItem>
             <linkerLibLibItem>libtools</linkerLibLibItem>
             <linkerLibLibItem>libvector</linkerLibLibItem>
@@ -271,6 +274,7 @@
             <pElem>../libgltools/src</pElem>
             <pElem>../libgui/src</pElem>
             <pElem>../libmatrix/src</pElem>
+            <pElem>../libmessenger/src</pElem>
             <pElem>../libobj/src</pElem>
             <pElem>../libtga/src</pElem>
             <pElem>../libtools/src</pElem>
@@ -299,6 +303,7 @@
             <pElem>../libgltools/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
             <pElem>../libgui/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
             <pElem>../libmatrix/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
+            <pElem>../libmessenger/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
             <pElem>../libobj/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
             <pElem>../libtga/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
             <pElem>../libtools/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}</pElem>
@@ -308,8 +313,8 @@
           <linkerLibItems>
             <linkerLibLibItem>libgui</linkerLibLibItem>
             <linkerLibLibItem>libfont</linkerLibLibItem>
-            <linkerLibLibItem>sfml-window-d</linkerLibLibItem>
-            <linkerLibLibItem>sfml-system-d</linkerLibLibItem>
+            <linkerLibLibItem>sfml-window</linkerLibLibItem>
+            <linkerLibLibItem>sfml-system</linkerLibLibItem>
             <linkerLibLibItem>libgltools</linkerLibLibItem>
             <linkerLibLibItem>freetype</linkerLibLibItem>
             <linkerLibLibItem>glew32</linkerLibLibItem>
@@ -319,6 +324,7 @@
             <linkerLibLibItem>libconf</linkerLibLibItem>
             <linkerLibLibItem>libcsv</linkerLibLibItem>
             <linkerLibLibItem>libmatrix</linkerLibLibItem>
+            <linkerLibLibItem>libmessenger</linkerLibLibItem>
             <linkerLibLibItem>libobj</linkerLibLibItem>
             <linkerLibLibItem>libtools</linkerLibLibItem>
             <linkerLibLibItem>libvector</linkerLibLibItem>
