@@ -82,14 +82,14 @@ void GameLogicComponent::ProcessEvent( GameEvent const& i_event)
     case ( GameEvent::e_ballHitsAIGoalLine ):
     {
       m_playerScore += 1;
-      m_messenger.Post({1,m_playerScore});
+      m_messenger.Post({0},{1,m_playerScore});
       m_signal.push_back( GameSignal::e_resetLevel );
       break;
     }
     case ( GameEvent::e_ballHitsPlayerGoalLine ):
     {
       m_aiScore += 1;
-      m_messenger.Post({2,m_aiScore});
+      m_messenger.Post({0},{2,m_aiScore});
       m_signal.push_back( GameSignal::e_resetLevel );;
       break;
     }

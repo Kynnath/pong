@@ -153,33 +153,33 @@ void Application::SetUp()
 
 void Application::ProcessInput()
 {
-    sf::Event event;
-    while ( m_window.pollEvent( event ) )
+  sf::Event event;
+  while ( m_window.pollEvent( event ) )
+  {
+    if ( event.type == sf::Event::Closed )
     {
-        if ( event.type == sf::Event::Closed )
-        {
-            m_gameLogic.PushInput( PlayerInput::e_quit );
-        }
-        else if ( event.type == sf::Event::KeyPressed )
-        {
-            if ( event.key.code == sf::Keyboard::Up )
-            {
-                m_gameLogic.PushInput( PlayerInput::e_moveUp );
-            }
-            else if ( event.key.code == sf::Keyboard::Down )
-            {
-                m_gameLogic.PushInput( PlayerInput::e_moveDown );
-            }
-        }
-        else if ( event.type == sf::Event::KeyReleased )
-        {
-            if ( event.key.code == sf::Keyboard::Up ||
-                 event.key.code == sf::Keyboard::Down )
-            {
-                m_gameLogic.PushInput( PlayerInput::e_stopMoving );
-            }
-        }
+      m_gameLogic.PushInput( PlayerInput::e_quit );
     }
+    else if ( event.type == sf::Event::KeyPressed )
+    {
+      if ( event.key.code == sf::Keyboard::Up )
+      {
+          m_gameLogic.PushInput( PlayerInput::e_moveUp );
+      }
+      else if ( event.key.code == sf::Keyboard::Down )
+      {
+          m_gameLogic.PushInput( PlayerInput::e_moveDown );
+      }
+    }
+    else if ( event.type == sf::Event::KeyReleased )
+    {
+      if ( event.key.code == sf::Keyboard::Up ||
+           event.key.code == sf::Keyboard::Down )
+      {
+        m_gameLogic.PushInput( PlayerInput::e_stopMoving );
+      }
+    }
+  }
 }
 
 void Application::Update()
