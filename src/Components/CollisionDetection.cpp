@@ -20,8 +20,9 @@ void CollisionDetectionComponent::AddEntity( CollisionData const& i_data )
   m_data.push_back( i_data );
 }
 
-CollisionDetectionComponent::CollisionDetectionComponent( MovementComponent const& i_movement )
-  : k_movement ( i_movement )
+CollisionDetectionComponent::CollisionDetectionComponent( msg::Messenger & i_messenger, MovementComponent const& i_movement )
+  : r_messenger {i_messenger}
+  , k_movement ( i_movement )
   , m_boundaries ( { 10.0f, -10.0f, -16.0f, 16.0f } )
   , m_boundaryCheck ( { 0, BoundaryCheck::e_bottom } )
   , m_collisionDetected ( false )
@@ -60,11 +61,13 @@ void CollisionDetectionComponent::Update()
     if ( entityMovData.m_position[0] + entity->m_sizeX > m_boundaries.m_right )
     {
       // Player scores a point
+      r_messenger.Post({1},{int(GameEvent::e_ballHitsAIGoalLine),0});
       m_eventList.push_back( GameEvent::e_ballHitsAIGoalLine );
     }
     else if ( entityMovData.m_position[0] - entity->m_sizeX < m_boundaries.m_left )
     {
       // AI scores a point
+      r_messenger.Post({1},{int(GameEvent::e_ballHitsPlayerGoalLine),0});
       m_eventList.push_back( GameEvent::e_ballHitsPlayerGoalLine );
     }
     else if ( entityMovData.m_position[1] + entity->m_sizeY > m_boundaries.m_top )

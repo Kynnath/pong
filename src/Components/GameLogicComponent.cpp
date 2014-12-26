@@ -11,12 +11,12 @@
 #include "CollisionResolution.hpp"
 #include "Movement.hpp"
 
-GameLogicComponent::GameLogicComponent( msg::Messenger & i_messenger, CollisionDetectionComponent const& i_collisionDetection, MovementComponent & i_movement )
-  : m_messenger ( i_messenger )
-  , k_collisionDetection ( i_collisionDetection )
-  , m_movement ( i_movement )
-  , m_playerScore ( 0 )
-  , m_aiScore ( 0 )
+GameLogicComponent::GameLogicComponent( msg::Messenger & i_messenger, MovementComponent & i_movement )
+  : m_messenger { i_messenger }
+  , m_scores { m_messenger.Register({1}) }
+  , m_movement { i_movement }
+  , m_playerScore { 0 }
+  , m_aiScore { 0 }
 {}
 
 int const& GameLogicComponent::GetPlayerScore() const
@@ -31,9 +31,10 @@ int const& GameLogicComponent::GetAiScore() const
 
 void GameLogicComponent::Update()
 {
-  for ( auto const& event : k_collisionDetection.GetEvents() )
+  while (!m_scores.IsEmpty())
   {
-    ProcessEvent( event );
+    ProcessEvent( GameEvent(m_scores.Front().m_id) );
+    m_scores.Pop();
   }
 }
 
@@ -44,12 +45,11 @@ void GameLogicComponent::PushInput( PlayerInput const& i_input )
 
 void GameLogicComponent::ProcessInput()
 {
-  ClearSignals();
   for ( auto const& input : m_playerInput )
   {
     if ( input == PlayerInput::e_quit )
     {
-      m_signal.push_back( GameSignal::e_quit );
+      m_messenger.Post({3},{int(GameSignal::e_quit),0});
     }
     else if ( input == PlayerInput::e_moveUp )
     {
@@ -83,14 +83,14 @@ void GameLogicComponent::ProcessEvent( GameEvent const& i_event)
     {
       m_playerScore += 1;
       m_messenger.Post({0},{1,m_playerScore});
-      m_signal.push_back( GameSignal::e_resetLevel );
+      m_messenger.Post({3},{int(GameSignal::e_resetLevel),0});
       break;
     }
     case ( GameEvent::e_ballHitsPlayerGoalLine ):
     {
       m_aiScore += 1;
       m_messenger.Post({0},{2,m_aiScore});
-      m_signal.push_back( GameSignal::e_resetLevel );;
+      m_messenger.Post({3},{int(GameSignal::e_resetLevel),0});
       break;
     }
     default:
@@ -98,14 +98,4 @@ void GameLogicComponent::ProcessEvent( GameEvent const& i_event)
       assert(false);
     }
   }
-}
-
-void GameLogicComponent::ClearSignals()
-{
-  m_signal.clear();
-}
-
-std::vector<GameSignal> const& GameLogicComponent::GetSignals() const
-{
-  return m_signal;
 }

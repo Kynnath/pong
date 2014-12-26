@@ -22,6 +22,7 @@
 class Application
 {
   msg::Messenger m_messenger;
+  msg::Dequeueer m_signals;
   sf::Window m_window;
   std::minstd_rand m_rng;
   MovementComponent m_movement;

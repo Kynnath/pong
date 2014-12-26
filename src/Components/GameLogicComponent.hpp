@@ -13,22 +13,22 @@
 
 enum class PlayerInput
 {
-    e_moveUp,
-    e_moveDown,
-    e_stopMoving,
-    e_quit
+  e_moveUp,
+  e_moveDown,
+  e_stopMoving,
+  e_quit
 };
 
 enum class GameSignal
 {
-    e_quit,
-    e_resetLevel
+  e_quit,
+  e_resetLevel
 };
 
 enum class GameEvent
 {
-    e_ballHitsPlayerGoalLine,
-    e_ballHitsAIGoalLine
+  e_ballHitsPlayerGoalLine,
+  e_ballHitsAIGoalLine
 };
 
 class MovementComponent;
@@ -37,24 +37,20 @@ class CollisionDetectionComponent;
 class GameLogicComponent
 {
   msg::Messenger & m_messenger;
-  CollisionDetectionComponent const& k_collisionDetection;
+  msg::Dequeueer m_scores;
   MovementComponent & m_movement;
   std::vector<PlayerInput> m_playerInput;
-  std::vector<GameSignal> m_signal;
   int m_playerScore;
   int m_aiScore;
 
-  void ClearSignals();
-
   public:
-    GameLogicComponent( msg::Messenger & i_messenger, CollisionDetectionComponent const& i_collisionDetection, MovementComponent & i_movement );
+    GameLogicComponent( msg::Messenger & i_messenger, MovementComponent & i_movement );
     int const& GetPlayerScore() const;
     int const& GetAiScore() const;
     void Update();
     void PushInput( PlayerInput const& i_input );
     void ProcessInput();
     void ProcessEvent( GameEvent const& i_event );
-    std::vector<GameSignal> const& GetSignals() const;
 };
 
 #endif	/* GAMELOGICCOMPONENT_HPP */

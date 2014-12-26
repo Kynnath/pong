@@ -15,15 +15,16 @@
 
 
 Application::Application()
-  : m_window ()
-  , m_movement ()
-  , m_ai ( m_movement )
-  , m_collisionDetection ( m_movement )
-  , m_collisionResolution ( m_movement, m_collisionDetection )
-  , m_gameLogic ( m_messenger, m_collisionDetection, m_movement )
-  , m_graphics ( m_movement, m_gameLogic )
+  : m_signals {m_messenger.Register({3})}
+  , m_window {}
+  , m_movement {}
+  , m_ai { m_movement }
+  , m_collisionDetection { m_messenger, m_movement }
+  , m_collisionResolution { m_movement, m_collisionDetection }
+  , m_gameLogic { m_messenger, m_movement }
+  , m_graphics { m_movement, m_gameLogic }
   , m_interface { m_messenger }
-  , m_running ( false )
+  , m_running { false }
 {}
 
 void Application::Run()
@@ -214,16 +215,20 @@ void Application::CleanUp()
 
 void Application::ProcessSignals()
 {
-  for ( auto const& signal : m_gameLogic.GetSignals() )
+  while (!m_signals.IsEmpty())
   {
-    if ( signal == GameSignal::e_quit )
+    switch (GameSignal(m_signals.Front().m_id))
     {
-      m_running = false;
+      case GameSignal::e_quit:
+        m_running = false;
+        break;
+      case GameSignal::e_resetLevel:
+        ResetLevel();
+        break;
+      default:
+        break;
     }
-    else
-    {
-      ResetLevel();
-    }
+    m_signals.Pop();
   }
 }
 
