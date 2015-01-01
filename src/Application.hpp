@@ -8,7 +8,6 @@
 #ifndef APPLICATION_HPP
 #define	APPLICATION_HPP
 
-#include <random>
 #include "SFML/Window.hpp"
 #include "GUI/Interface.hpp"
 #include "MSG/Messenger.hpp"
@@ -22,9 +21,8 @@
 class Application
 {
   msg::Messenger m_messenger;
-  msg::Dequeueer m_signals;
+  msg::Dequeueer m_commands;
   sf::Window m_window;
-  std::minstd_rand m_rng;
   MovementComponent m_movement;
   AIComponent m_ai;
   CollisionDetectionComponent m_collisionDetection;
@@ -40,8 +38,7 @@ class Application
   void Render();
   void CleanUp();
 
-  void ProcessSignals();
-  void ResetLevel();
+  void ProcessCommands();
 
   public:
     Application();

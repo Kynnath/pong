@@ -14,23 +14,23 @@
 
 struct MovementData
 {
-    EntityID m_entityID;
-    vec::Vector3 m_position;
-    vec::Vector3 m_speed;
+  EntityID m_entityID;
+  vec::Vector3 m_position;
+  vec::Vector3 m_speed;
 };
 
 class MovementComponent
 {
-    std::vector< MovementData > m_data;
-    std::vector< MovementData > m_buffer;
+  std::vector< MovementData > m_data;
+  std::vector< MovementData > m_buffer;
 
-    void Swap();
+  void Swap();
 
-    public:
-        void AddEntity( MovementData const& i_data );
-        void Update();
-        MovementData const& GetData( EntityID const& i_entityID ) const;
-        void SetData( EntityID const& i_entityID, MovementData const& i_data );
+  public:
+      void AddEntity( MovementData const& i_data );
+      void Update();
+      MovementData const& GetData( EntityID const& i_entityID ) const;
+      void SetData( EntityID const& i_entityID, MovementData const& i_data );
 };
 
 #endif	/* MOVEMENT_HPP */

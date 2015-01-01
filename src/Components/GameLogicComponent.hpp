@@ -8,21 +8,19 @@
 #ifndef GAMELOGICCOMPONENT_HPP
 #define	GAMELOGICCOMPONENT_HPP
 
+#include <random>
 #include <vector>
 #include "MSG/Messenger.hpp"
 
-enum class PlayerInput
+struct PlayerInput
 {
-  e_moveUp,
-  e_moveDown,
-  e_stopMoving,
-  e_quit
-};
-
-enum class GameSignal
-{
-  e_quit,
-  e_resetLevel
+  enum
+  {
+    e_quit,
+    e_moveUp,
+    e_moveDown,
+    e_stopMoving
+  };
 };
 
 enum class GameEvent
@@ -36,8 +34,10 @@ class CollisionDetectionComponent;
 
 class GameLogicComponent
 {
+  std::minstd_rand m_rng;
   msg::Messenger & m_messenger;
   msg::Dequeueer m_scores;
+  msg::Dequeueer m_commands;
   MovementComponent & m_movement;
   std::vector<PlayerInput> m_playerInput;
   int m_playerScore;
@@ -49,8 +49,8 @@ class GameLogicComponent
     int const& GetAiScore() const;
     void Update();
     void PushInput( PlayerInput const& i_input );
-    void ProcessInput();
     void ProcessEvent( GameEvent const& i_event );
+    void ResetLevel();
 };
 
 #endif	/* GAMELOGICCOMPONENT_HPP */

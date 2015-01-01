@@ -8,15 +8,18 @@
 #ifndef AICOMPONENT_HPP
 #define	AICOMPONENT_HPP
 
+#include "MSG/Messenger.hpp"
+
 class MovementComponent;
 
 class AIComponent
 {
-    MovementComponent & m_movement;
+  msg::Messenger & r_messenger;
+  MovementComponent & m_movement;
 
-    public:
-        AIComponent( MovementComponent & io_movement );
-        void Update();
+  public:
+    AIComponent(msg::Messenger & io_messenger, MovementComponent & io_movement);
+    void Update();
 };
 
 #endif	/* AICOMPONENT_HPP */

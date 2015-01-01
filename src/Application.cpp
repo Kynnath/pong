@@ -15,16 +15,16 @@
 
 
 Application::Application()
-  : m_signals {m_messenger.Register({3})}
+  : m_commands {m_messenger.Register({4})}
   , m_window {}
   , m_movement {}
-  , m_ai { m_movement }
-  , m_collisionDetection { m_messenger, m_movement }
-  , m_collisionResolution { m_movement, m_collisionDetection }
-  , m_gameLogic { m_messenger, m_movement }
-  , m_graphics { m_movement, m_gameLogic }
-  , m_interface { m_messenger }
-  , m_running { false }
+  , m_ai {m_messenger, m_movement}
+  , m_collisionDetection {m_messenger, m_movement}
+  , m_collisionResolution {m_movement, m_collisionDetection}
+  , m_gameLogic {m_messenger, m_movement}
+  , m_graphics {m_movement, m_gameLogic}
+  , m_interface {m_messenger}
+  , m_running {false}
 {}
 
 void Application::Run()
@@ -77,7 +77,8 @@ void Application::SetUp()
   }
   // Initialize interface
   {
-      m_interface.Init();
+    // Commands: exit, move up, move down, stop
+    m_interface.Init({4},{0,1,2,3});
   }
   // Load entities
   {
@@ -149,7 +150,7 @@ void Application::SetUp()
 
   m_running = true;
 
-  ResetLevel();
+  m_gameLogic.ResetLevel();
 }
 
 void Application::ProcessInput()
@@ -157,48 +158,28 @@ void Application::ProcessInput()
   sf::Event event;
   while ( m_window.pollEvent( event ) )
   {
-    if ( event.type == sf::Event::Closed )
-    {
-      m_gameLogic.PushInput( PlayerInput::e_quit );
-    }
-    else if ( event.type == sf::Event::KeyPressed )
-    {
-      if ( event.key.code == sf::Keyboard::Up )
-      {
-          m_gameLogic.PushInput( PlayerInput::e_moveUp );
-      }
-      else if ( event.key.code == sf::Keyboard::Down )
-      {
-          m_gameLogic.PushInput( PlayerInput::e_moveDown );
-      }
-    }
-    else if ( event.type == sf::Event::KeyReleased )
-    {
-      if ( event.key.code == sf::Keyboard::Up ||
-           event.key.code == sf::Keyboard::Down )
-      {
-        m_gameLogic.PushInput( PlayerInput::e_stopMoving );
-      }
-    }
+    m_interface.ProcessInput(event);
   }
+  ProcessCommands();
 }
 
 void Application::Update()
 {
-    m_gameLogic.ProcessInput();
-    m_ai.Update();
-    m_movement.Update();
+  m_ai.Update();
+  
+  m_gameLogic.Update();
+  
+  
+  m_movement.Update();
+  m_collisionDetection.Update();
+  while ( m_collisionDetection.CollisionDetected() )
+  {
+    m_collisionResolution.Update();
     m_collisionDetection.Update();
-    while ( m_collisionDetection.CollisionDetected() )
-    {
-      m_collisionResolution.Update();
-      m_collisionDetection.Update();
-    }
-    m_gameLogic.Update();
-    ProcessSignals();
+  }
 
-    m_graphics.Update();
-    m_interface.Update();
+  m_graphics.Update();
+  m_interface.Update();
 }
 
 void Application::Render()
@@ -213,47 +194,18 @@ void Application::CleanUp()
     m_window.close();
 }
 
-void Application::ProcessSignals()
+void Application::ProcessCommands()
 {
-  while (!m_signals.IsEmpty())
+  while (!m_commands.IsEmpty())
   {
-    switch (GameSignal(m_signals.Front().m_id))
+    switch (m_commands.Front().m_id)
     {
-      case GameSignal::e_quit:
+      case PlayerInput::e_quit:
         m_running = false;
-        break;
-      case GameSignal::e_resetLevel:
-        ResetLevel();
         break;
       default:
         break;
     }
-    m_signals.Pop();
+    m_commands.Pop();
   }
-}
-
-void Application::ResetLevel()
-{
-    MovementData movementData =
-    {
-        1,
-        {
-            -15.0f, 0.0f, 0.0f
-        },
-        {
-            0.0f, 0.0f, 0.0f
-        }
-    };
-    m_movement.SetData( 1, movementData );
-
-    movementData.m_entityID = 2;
-    movementData.m_position[0] = 15.0f;
-    m_movement.SetData( 2, movementData );
-
-    movementData.m_entityID = 3;
-    movementData.m_position[0] = 0.0f;
-    std::uniform_real_distribution<> speedY ( -3.0f,  3.0f );
-    std::uniform_real_distribution<> speedX ( -2.0f, -4.0f );
-    movementData.m_speed = vec::Vector3{ speedX(m_rng), speedY(m_rng), 0.0 };
-    m_movement.SetData( 3, movementData );
 }
