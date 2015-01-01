@@ -15,10 +15,10 @@ class MovementComponent;
 class AIComponent
 {
   msg::Messenger & r_messenger;
-  MovementComponent & m_movement;
+  MovementComponent const& k_movement;
 
   public:
-    AIComponent(msg::Messenger & io_messenger, MovementComponent & io_movement);
+    AIComponent(msg::Messenger & io_messenger, MovementComponent const& i_movement);
     void Update();
 };
 
