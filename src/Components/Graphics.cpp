@@ -78,23 +78,6 @@ void GraphicsComponent::Initialize( GraphicsSettings const& i_settings )
     shaderFile.close();
     vertexShader.clear();
     fragmentShader.clear();
-
-    shaderFile.open( "resource/shader/Text.vs" );
-    character = static_cast<char>( shaderFile.get() );
-    while ( shaderFile.good() )
-    {
-      vertexShader += character;
-      character = static_cast<char>( shaderFile.get() );
-    }
-    shaderFile.close();
-    shaderFile.open( "resource/shader/Text.fs" );
-    character = static_cast<char>( shaderFile.get() );
-    while ( shaderFile.good() )
-    {
-      fragmentShader += character;
-      character = static_cast<char>( shaderFile.get() );
-    }
-    m_shaders.push_back( glt::LoadShaderCode( vertexShader.c_str(), fragmentShader.c_str() ) );
   }
 }
 
