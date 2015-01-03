@@ -14,6 +14,23 @@
 #include "OBJ/Object.hpp"
 
 
+namespace
+{
+  void ConfigureWindow(sf::Window & io_window, cfg::Config const& i_config)
+  {
+    auto const resolutionX = i_config.GetIntProperty( "Window::resolutionX" );
+    auto const resolutionY = i_config.GetIntProperty( "Window::resolutionY" );
+    auto const& title = i_config.GetStringProperty( "Window::title" );
+
+    auto const mode = sf::VideoMode{ (unsigned int)resolutionX , (unsigned int)resolutionY };
+    auto const context = sf::ContextSettings{ 0, 0, 0, 3, 2 };
+
+    io_window.create( mode, title, sf::Style::None, context );
+    io_window.setFramerateLimit( (unsigned int)i_config.GetIntProperty( "Window::framerate" ) );
+    io_window.setKeyRepeatEnabled( false );
+  }
+}
+
 Application::Application()
   : m_commands {m_messenger.Register({4})}
   , m_window {}
@@ -22,7 +39,7 @@ Application::Application()
   , m_collisionDetection {m_messenger, m_movement}
   , m_collisionResolution {m_movement, m_collisionDetection}
   , m_gameLogic {m_messenger, m_movement}
-  , m_graphics {m_movement, m_gameLogic}
+  , m_graphics {m_movement}
   , m_interface {m_messenger}
   , m_running {false}
 {}
@@ -43,23 +60,10 @@ void Application::Run()
 
 void Application::SetUp()
 {
-  // Load configuration
   cfg::Config const config ( "default.conf" );
 
-  // Create the window
-  {
-    int const& resolutionX ( config.GetIntProperty( "Window::resolutionX" ) );
-    int const& resolutionY ( config.GetIntProperty( "Window::resolutionY" ) );
-    std::string const& title ( config.GetStringProperty( "Window::title" ) );
-
-    sf::VideoMode const mode ( (unsigned int)resolutionX , (unsigned int)resolutionY );
-    sf::ContextSettings const context { 0, 0, 0, 3, 2 };
-
-    m_window.create( mode, title, sf::Style::None, context );
-
-    m_window.setFramerateLimit( (unsigned int)config.GetIntProperty( "Window::framerate" ) );
-    m_window.setKeyRepeatEnabled( false );
-  }
+  ConfigureWindow(m_window, config);
+  
   // Load resources
   {
     GraphicsSettings const graphicsSettings = { config.GetStringProperty( "Catalog::models" ),
@@ -132,21 +136,6 @@ void Application::SetUp()
     m_graphics.AddEntity( graphicsData );
     m_collisionDetection.AddEntity( collisionData );
   }
-  // Load interface
-  {
-    GraphicsData graphicsData =
-    {
-      4,  // entity id player score
-      { { { -8, 8, 0 } }, { { 0, 0, 1 } }, { { 0, 1, 0 } } }, // Frame
-      3, // ModelID for numbers
-      0
-    };
-    m_graphics.AddElement( graphicsData );
-
-    graphicsData.m_id = 5; // AI score id
-    graphicsData.m_frame.m_position = { 8, 8, 0 };
-    m_graphics.AddElement( graphicsData );
-  }
 
   m_running = true;
 
@@ -156,7 +145,7 @@ void Application::SetUp()
 void Application::ProcessInput()
 {
   sf::Event event;
-  while ( m_window.pollEvent( event ) )
+  while ( m_window.pollEvent(event) )
   {
     m_interface.ProcessInput(event);
   }
@@ -168,7 +157,6 @@ void Application::Update()
   m_ai.Update();
   
   m_gameLogic.Update();
-  
   
   m_movement.Update();
   m_collisionDetection.Update();

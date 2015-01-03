@@ -1,11 +1,7 @@
-[Id1]
-    file = "PassThrough.vs"
+[PassThrough]
+  vertex = "PassThrough.vs"
+  fragment = "PassThrough.fs"
 
-[Id2]
-    file = "PassThrough.fs"
-
-[Id3]
-    file = "Textured.vs"
-
-[Id4]
-    file = "Textured.fs"
+[Textured]
+  vertex = "Textured.vs"
+  fragment = "Textured.fs"
