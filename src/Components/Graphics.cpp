@@ -11,7 +11,31 @@
 #include <fstream>
 #include "GLT/Model.hpp"
 #include "TGA/tga.hpp"
+#include "TLS/Tools.hpp"
 #include "Movement.hpp"
+#include <iostream>
+namespace
+{
+  constexpr auto shaderLoc = "resource/shader/";
+  
+  std::vector<glt::Shader> LoadShaders(cfg::Config const& i_catalog)
+  {
+    std::vector<glt::Shader> shaders;
+    for(auto shaderName = std::begin(i_catalog); shaderName != std::end(i_catalog); ++shaderName)
+    {
+      std::ifstream fragmentFile { shaderLoc + shaderName->second.GetString() };
+      auto const fragmentShader = tls::StringFromFile( fragmentFile );
+      
+      ++shaderName;
+      
+      std::ifstream vertexFile { shaderLoc + shaderName->second.GetString() };
+      auto const vertexShader = tls::StringFromFile( vertexFile );
+      
+      shaders.push_back( glt::LoadShaderCode( vertexShader.c_str(), fragmentShader.c_str() ) );
+    }
+    return shaders;
+  }
+}
 
 GraphicsComponent::GraphicsComponent( MovementComponent const& i_movement )
   : k_movement ( i_movement )
@@ -34,51 +58,7 @@ void GraphicsComponent::Initialize( GraphicsSettings const& i_settings )
   m_geometryTransform.Reset();
   m_geometryTransform.DefineOrthographicProjection( -16.0, 16.0, -10.0, 10.0, -1.0, 1.0 );
 
-  // Load shaders
-  {
-    std::ifstream shaderFile { "resource/shader/PassThrough.vs" };
-    std::string vertexShader;
-    char character = static_cast<char>( shaderFile.get() );
-    while ( shaderFile.good() )
-    {
-      vertexShader += character;
-      character = static_cast<char>( shaderFile.get() );
-    }
-    shaderFile.close();
-    shaderFile.open( "resource/shader/PassThrough.fs" );
-    std::string fragmentShader;
-    character = static_cast<char>( shaderFile.get() );
-    while ( shaderFile.good() )
-    {
-      fragmentShader += character;
-      character = static_cast<char>( shaderFile.get() );
-    }
-    m_shaders.push_back( glt::LoadShaderCode( vertexShader.c_str(), fragmentShader.c_str() ) );
-    shaderFile.close();
-    vertexShader.clear();
-    fragmentShader.clear();
-    // Function Load shader
-
-    shaderFile.open( "resource/shader/Textured.vs" );
-    character = static_cast<char>( shaderFile.get() );
-    while ( shaderFile.good() )
-    {
-      vertexShader += character;
-      character = static_cast<char>( shaderFile.get() );
-    }
-    shaderFile.close();
-    shaderFile.open( "resource/shader/Textured.fs" );
-    character = static_cast<char>( shaderFile.get() );
-    while ( shaderFile.good() )
-    {
-      fragmentShader += character;
-      character = static_cast<char>( shaderFile.get() );
-    }
-    m_shaders.push_back( glt::LoadShaderCode( vertexShader.c_str(), fragmentShader.c_str() ) );
-    shaderFile.close();
-    vertexShader.clear();
-    fragmentShader.clear();
-  }
+  m_shaders = LoadShaders(m_shaderCatalog);
 }
 
 void GraphicsComponent::AddModel( ModelID const& i_modelID, glt::Model const& i_model )
